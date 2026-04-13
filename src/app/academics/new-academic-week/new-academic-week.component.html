@@ -1,0 +1,27 @@
+<mat-toolbar>
+  Add a new Week
+</mat-toolbar>
+
+<mat-dialog-content>
+  @if (EntryID) {
+    <section id="wk" >
+      <label>RGD No:</label>
+      <label>{{EntryID}}</label>
+    </section>
+  }
+  <section>
+
+    <mat-form-field>
+      <mat-label>Enter a Week Number</mat-label>
+      <input matInput type="number" [(ngModel)]="WeekValueType" placeholder="E.g. Week 1">
+    </mat-form-field>
+  </section>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button matRipple matTooltip="submit" (click)="dialogRef.close(false)" color="primary">
+    Close
+  </button>
+  <button mat-raised-button matRipple matTooltip="close" color="primary" (click)="submit()">
+    Submit
+  </button>
+</mat-dialog-actions>

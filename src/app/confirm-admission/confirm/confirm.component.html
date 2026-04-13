@@ -1,0 +1,73 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row">
+        <!-- <img  [src]="this.passportPicture" id="profilePicture"> -->
+        <span class="title">CONFIRM ADMISSION</span>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-dialog-content class="content mat-typography">
+   <section>
+    <mat-label>Application Number</mat-label>
+    <mat-label>{{ApplicationNumber}}</mat-label>
+   </section>
+
+   <section>
+    <mat-label>Admission Number</mat-label>
+    <mat-label>{{admissionNumber}}</mat-label>
+   </section>
+    <section>
+        <mat-form-field>
+        <mat-label id="title">Assign the Applicant to a class</mat-label>
+        <mat-select [(ngModel)]="selectedClass">
+            <mat-option value="Play Group">
+                <mat-icon>person_add</mat-icon>
+                Play Group
+            </mat-option>
+            <mat-option value="Nursery One">
+                <mat-icon>person_add</mat-icon>
+                Nursery One</mat-option>
+            <mat-option value="Nursery Two">
+                <mat-icon>person_add</mat-icon>
+                Nursery Two</mat-option>
+            <mat-option value="Kindergaten One">
+                <mat-icon>person_add</mat-icon>
+                Kindergaten One</mat-option>
+            <mat-option value="Kindergarten Two">
+                <mat-icon>person_add</mat-icon> 
+                Kindergarten Two</mat-option>
+            <mat-option value="Grade One">
+                <mat-icon>person_add</mat-icon>
+                Grade One</mat-option>
+            <mat-option value="Grade Two">
+                <mat-icon>person_add</mat-icon>
+                Grade Two</mat-option>
+            <mat-option value="Grade Three">
+                <mat-icon>person_add</mat-icon>
+                Grade Three</mat-option>
+            <mat-option value="Grade Four">
+                <mat-icon>person_add</mat-icon>
+                Grade Four</mat-option>
+            <mat-option value="Grade Five">
+                <mat-icon>person_add</mat-icon> 
+                Grade Five</mat-option>
+            <mat-option value="Grade Six">
+                <mat-icon>person_add</mat-icon> 
+                Grade Six</mat-option>
+            <mat-option value="JHS One">
+                <mat-icon>person_add</mat-icon>
+                JHS One</mat-option>
+            <mat-option value="JHS Two">
+                <mat-icon>person_add</mat-icon>
+                JHS Two</mat-option>
+        </mat-select>
+    </mat-form-field>
+    </section>
+    <mat-checkbox matInput class="confirm" 
+    (change)="confirmedApp('Confirm')" [(ngModel)]="confirmApplicant">Confirm this Applicant</mat-checkbox>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+    <button mat-raised-button  matRipple color="primary" type="submit" (click)="confirm()">
+    <!-- [disabled]="!(applicationForm.valid && applicationForm.dirty) -->
+        <mat-icon>thumb_up_alt</mat-icon>
+        CONFIRM</button>
+        <!-- <button mat-raised-button color="primary" (click)="previous()">PREVIOUS</button> -->
+ </mat-dialog-actions>

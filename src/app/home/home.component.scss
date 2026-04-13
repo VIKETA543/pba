@@ -1,0 +1,51 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.navigation-items{
+    display: inline-block;
+    width: 100%;
+    flex: 1;
+}
+.navigation-items:first-child{
+    background-color: rgb(1, 12, 48);
+    color:whitesmoke;
+}
+.navigation-items{
+    /* background-color:aliceblue; */
+    color: rgb(1, 12, 48);;
+    display: flex;
+    padding: 0px;
+}
+menu{
+    list-style: none;
+}
+menu li{
+    display: inline-block;
+    margin: 10px;
+    font-size: 1.2vw;
+    font-weight: bolder;
+    font-family: 'Tahoma';
+    border-right: 1px solid mediumaquamarine;
+    padding-right: 5px;
+    transition: 1s ease-in-out;
+    cursor: pointer;
+
+}
+menu li:hover{
+    color: maroon;
+}
+#beacon{
+    width: 120px;
+    border-radius: .3em;
+    margin: 3px;
+    margin-right: 10px;
+}
+menu li a{
+    color: white;
+}
+#signup-login{
+    background-color: rgb(1, 85, 57);
+    position: absolute;
+    right: 0;
+}

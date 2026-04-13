@@ -1,0 +1,21 @@
+<mat-toolbar>
+    Find Staff
+</mat-toolbar>
+<mat-dialog-content>
+    <form [formGroup]="staffIdform">
+    <mat-form-field>
+        <mat-label>Enter Staff ID</mat-label>
+        <input matInput formControlName="staffId" placeholder="data">
+    </mat-form-field>
+</form>
+</mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-raised-button matRipple (click)="dialogRef.close(false)" color="primary">
+            Close
+        </button>
+        <button mat-raised-button matRipple color="primary" (click)="submit()">
+            Submit
+        </button>
+    </mat-dialog-actions>
+
+

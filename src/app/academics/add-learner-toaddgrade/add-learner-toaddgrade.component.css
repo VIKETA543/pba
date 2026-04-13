@@ -1,0 +1,77 @@
+::ng-deep .mat-bottom-sheet-container{
+    border-radius: 0px;
+    padding: 0px;
+min-width: 40% !important;
+
+}
+mat-toolbar{
+    background-color: rgb(3, 94, 97); ;
+    color:whitesmoke
+}
+#wrapper{
+    display: flex;
+    overflow: hidden;
+    width: calc(100%);
+
+}
+.Detailed{
+ 
+    display: flex;
+    border:  1px solid rgb(1, 1, 36);
+    width: cal(100% - 5%);
+}
+mat-label{
+    padding: 10px;
+     border: none;
+     display: block; 
+     border-right:1px solid rgb(1, 1, 36);
+}
+mat-label:first-child{
+width: calc(100% - 60%);
+}
+mat-label:last-child{
+width: calc(100% - 40%);
+}
+#imagecontainer{
+    width: calc(100% - 80%);
+    height: auto;
+    overflow: hidden;
+    margin: 10px;
+    padding: 10x;
+    background-color: darkgrey;
+}
+img{
+    width: 98%;
+    
+}
+#inner-wrapper{
+    width: calc(100% - 20%);
+       margin: 10px;
+}
+button{
+    width: auto;
+    border-radius: .3em;
+    padding: 10px;
+    border: 0px;
+    outline: none;
+    transition: 1s;
+}
+button:last-child{
+    background-color: rgb(3, 68, 124);
+    color: whitesmoke;
+}
+button:first-child{
+    background-color: rgb(3, 124, 104);
+    color: whitesmoke;
+}
+button:hover{
+    background-color: rgb(237, 241, 243);
+    color: rgb(6, 79, 151);
+}
+button:first-child:hover{
+    background-color: rgb(124, 3, 3);
+    color: whitesmoke;
+}
+mat-dialog-actions{
+    background-color: rgb(151, 151, 151);
+}

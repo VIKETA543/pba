@@ -1,0 +1,270 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row fxLayout="row">
+    <img  [src]="this.passportPicture" id="profilePicture">
+    <span class="title">Educational Commitments</span>
+  </mat-toolbar-row>
+
+</mat-toolbar>
+<mat-dialog-content class="content mat-typography">
+  <form [formGroup]="applicationForm">
+    <section>
+      <mat-form-field>
+        <mat-label>Application Number</mat-label>
+        <input matInput type="text" formControlName="applicationNumber" required="" readonly="">
+        @if (applicationForm.controls.applicationNumber.touched && applicationForm.controls.applicationNumber.invalid) {
+          <mat-error
+            >
+            @if (applicationForm.controls.applicationNumber.errors.required) {
+              <span>This field is
+              mandatory</span>
+            }
+            @if (applicationForm.controls.applicationNumber.errors.pattern) {
+              <span>This field is invalid</span>
+            }
+          </mat-error>
+        }
+      </mat-form-field>
+
+      <h4>Are parents of the child still in marriage?</h4>
+      <hr>
+
+        <mat-checkbox matInput class="gender" formControlName="isParentMarying"
+          (change)="parentsMarrying('Yes',$event.checked)" [(ngModel)]="isParentMarrying">Still in
+        Marriage</mat-checkbox>
+        <mat-checkbox matInput class="gender" formControlName="isParentMarying"
+          (change)="parentsMarrying('Divorced',$event.checked)"
+        [(ngModel)]="isParentDevorced">Devorced</mat-checkbox>
+        <mat-checkbox matInput class="gender" formControlName="isParentMarying"
+          (change)="parentsMarrying('Seperated',$event.checked)"
+        [(ngModel)]="isParentSeperated">Seperated</mat-checkbox>
+
+      </section>
+      <mat-card>
+        <h4>Select who takes care of applicant's education</h4>
+
+        <section>
+          <hr>
+            <mat-checkbox matInput class="gender" formControlName="applicantCommitment"
+            (change)="paymentofFee('Father',$event.checked)" [(ngModel)]="isFather">Father</mat-checkbox>
+
+            <mat-checkbox matInput class="gender" formControlName="applicantCommitment"
+            (change)="paymentofFee('Mother',$event.checked)" [(ngModel)]="isMother">Mother</mat-checkbox>
+
+            <mat-checkbox matInput class="gender" formControlName="applicantCommitment"
+            (change)="paymentofFee('Guardian',$event.checked)" [(ngModel)]="isGuardian">Guardian</mat-checkbox>
+            <mat-checkbox matInput class="gender" formControlName="applicantCommitment"
+              (change)="paymentofFee('Institution',$event.checked)"
+            [(ngModel)]="isInstitution">Institution</mat-checkbox>
+          </section>
+        </mat-card>
+        <hr>
+          @if (isFather ||isMother||isGuardian) {
+            <mat-card>
+              <mat-label>Provide information for who takes care of applicants Education</mat-label>
+              <mat-form-field>
+                <mat-label>Select title</mat-label>
+                <mat-select formControlName="PayeeTitle">
+                  <mat-option value="Mr">Mr.</mat-option>
+                  <mat-option value="Mrs">Mrs.</mat-option>
+                  <mat-option value="Miss">Miss.</mat-option>
+                  <mat-option value="Prof">Rev.</mat-option>
+                  <mat-option value="Dr">Dr.</mat-option>
+                  <mat-option value="Nana">Nana.</mat-option>
+                  <mat-option value="Prof">Prof.</mat-option>
+                </mat-select>
+                @if (applicationForm.controls.PayeeTitle.touched && applicationForm.controls.PayeeTitle.invalid) {
+                  <mat-error
+                    >
+                    @if (applicationForm.controls.PayeeTitle.errors.required) {
+                      <span>This field is mandatory</span>
+                    }
+                    @if (applicationForm.controls.PayeeTitle.errors.pattern) {
+                      <span>This field is invalid</span>
+                    }
+                  </mat-error>
+                }
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Enter Name</mat-label>
+                <input matInput formControlName="nameofPayee" type="text" required="">
+                @if (applicationForm.controls.nameofPayee.touched && applicationForm.controls.nameofPayee.invalid) {
+                  <mat-error
+                    >
+                    @if (applicationForm.controls.nameofPayee.errors.required) {
+                      <span>This field is mandatory</span>
+                    }
+                    @if (applicationForm.controls.nameofPayee.errors.pattern) {
+                      <span>This field is invalid</span>
+                    }
+                  </mat-error>
+                }
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Address</mat-label>
+                <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+                cdkAutosizeMaxRows="5" formControlName="PayeeAddress"></textarea>
+                @if (applicationForm.controls.PayeeAddress.touched && applicationForm.controls.PayeeAddress.invalid) {
+                  <mat-error
+                    >
+                    @if (applicationForm.controls.PayeeAddress.errors.required) {
+                      <span>This field is mandatory</span>
+                    }
+                    @if (applicationForm.controls.PayeeAddress.errors.pattern) {
+                      <span>This field is invalid</span>
+                    }
+                  </mat-error>
+                }
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Digital Address</mat-label>
+                <input matInput formControlName="digitalAddressofPayee" type="text" required="">
+                @if (applicationForm.controls.digitalAddressofPayee.touched && applicationForm.controls.digitalAddressofPayee.invalid) {
+                  <mat-error
+                    >
+                    @if (applicationForm.controls.digitalAddressofPayee.errors.required) {
+                      <span>This field is
+                      mandatory</span>
+                    }
+                    @if (applicationForm.controls.digitalAddressofPayee.errors.pattern) {
+                      <span>This field is
+                      invalid</span>
+                    }
+                  </mat-error>
+                }
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Email Address</mat-label>
+                <input matInput formControlName="emailofPayee" type="text" required="">
+                @if (applicationForm.controls.emailofPayee.touched && applicationForm.controls.emailofPayee.invalid) {
+                  <mat-error
+                    >
+                    @if (applicationForm.controls.emailofPayee.errors.required) {
+                      <span>This field is mandatory</span>
+                    }
+                    @if (applicationForm.controls.emailofPayee.errors.pattern) {
+                      <span>This field is invalid</span>
+                    }
+                  </mat-error>
+                }
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Phone Number</mat-label>
+                <input matInput formControlName="PhoneNumberofPayee" type="text" required="">
+                @if (applicationForm.controls.PhoneNumberofPayee.touched && applicationForm.controls.PhoneNumberofPayee.invalid) {
+                  <mat-error
+                    >
+                    @if (applicationForm.controls.PhoneNumberofPayee.errors.required) {
+                      <span>This field is
+                      mandatory</span>
+                    }
+                    @if (applicationForm.controls.PhoneNumberofPayee.errors.pattern) {
+                      <span>This field is
+                      invalid</span>
+                    }
+                  </mat-error>
+                }
+              </mat-form-field>
+            </mat-card>
+          }
+
+          @if (isInstitution) {
+            <mat-card>
+              <h4>Provide information for Intitution which takes care of applicants Education</h4>
+              <hr>
+                <mat-form-field>
+                  <mat-label>Name of Institution </mat-label>
+                  <input matInput formControlName="nameofInstitution" type="text" required="">
+                  @if (applicationForm.controls.nameofInstitution.touched && applicationForm.controls.nameofInstitution.invalid) {
+                    <mat-error
+                      >
+                      @if (applicationForm.controls.nameofInstitution.errors.required) {
+                        <span>This field is
+                        mandatory</span>
+                      }
+                      @if (applicationForm.controls.nameofInstitution.errors.pattern) {
+                        <span>This field is invalid</span>
+                      }
+                    </mat-error>
+                  }
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Postal Address of the Institution</mat-label>
+                  <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+                  cdkAutosizeMaxRows="5" formControlName="postalAddressofInstitution"></textarea>
+                  @if (applicationForm.controls.postalAddressofInstitution.touched && applicationForm.controls.postalAddressofInstitution.invalid) {
+                    <mat-error
+                      >
+                      @if (applicationForm.controls.postalAddressofInstitution.errors.required) {
+                        <span>This field is
+                        mandatory</span>
+                      }
+                      @if (applicationForm.controls.postalAddressofInstitution.errors.pattern) {
+                        <span>This field is
+                        invalid</span>
+                      }
+                    </mat-error>
+                  }
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Digital Address</mat-label>
+                  <input matInput formControlName="digitalAddressofInstitution" type="text" required="">
+                  @if (applicationForm.controls.digitalAddressofInstitution.touched && applicationForm.controls.digitalAddressofInstitution.invalid) {
+                    <mat-error
+                      >
+                      @if (applicationForm.controls.digitalAddressofInstitution.errors.required) {
+                        <span>This field is
+                        mandatory</span>
+                      }
+                      @if (applicationForm.controls.digitalAddressofInstitution.errors.pattern) {
+                        <span>This field is
+                        invalid</span>
+                      }
+                    </mat-error>
+                  }
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Email Address</mat-label>
+                  <input matInput formControlName="emailofInstitution" type="text" required="">
+                  @if (applicationForm.controls.emailofInstitution.touched && applicationForm.controls.emailofInstitution.invalid) {
+                    <mat-error
+                      >
+                      @if (applicationForm.controls.emailofInstitution.errors.required) {
+                        <span>This field is
+                        mandatory</span>
+                      }
+                      @if (applicationForm.controls.emailofInstitution.errors.pattern) {
+                        <span>This field is
+                        invalid</span>
+                      }
+                    </mat-error>
+                  }
+                </mat-form-field>
+                <mat-form-field>
+                  <mat-label>Phone Number of Institution</mat-label>
+                  <input matInput formControlName="PhoneNumberofInstitution" type="text" required="">
+                  @if (applicationForm.controls.PhoneNumberofInstitution.touched && applicationForm.controls.PhoneNumberofInstitution.invalid) {
+                    <mat-error
+                      >
+                      @if (applicationForm.controls.PhoneNumberofInstitution.errors.required) {
+                        <span>This field is
+                        mandatory</span>
+                      }
+                      @if (applicationForm.controls.PhoneNumberofInstitution.errors.pattern) {
+                        <span>This field is
+                        invalid</span>
+                      }
+                    </mat-error>
+                  }
+                </mat-form-field>
+              </mat-card>
+            }
+          </form>
+        </mat-dialog-content>
+
+        <mat-dialog-actions align="center">
+          <button mat-raised-button color="primary" type="submit" (click)="handleSubmit()">
+        <!-- [disabled]="!(applicationForm.valid && applicationForm.dirty) -->
+        <!-- <mat-icon>home</mat-icon> -->
+        CONTINUE</button>
+    <button mat-raised-button color="primary" mat-dialog-close (click)="previous()">PREVIOUS</button>
+</mat-dialog-actions>

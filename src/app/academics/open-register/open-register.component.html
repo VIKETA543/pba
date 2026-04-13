@@ -1,0 +1,86 @@
+<mat-toolbar>
+  Open Register for the term to begin
+</mat-toolbar>
+<mat-dialog-content>
+  <p>The register is opened ones at the begining of every academic term. Complete the form and submit.</p>
+  <section>
+    <mat-form-field>
+      <mat-label>Select Academic Term</mat-label>
+      <mat-select  (selectionChange)="setTerm($event)">
+        <!-- *ngIf="term" -->
+        @for (t of term; track t) {
+          <mat-option value="{{t.Tid}}">{{t.TermlyObject}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </section>
+  <section>
+    <mat-form-field>
+      <mat-label>Select Academic Year</mat-label>
+      <!-- *ngIf="session" -->
+      <mat-select  (selectionChange)="setYear($event)">
+        @for (y of session; track y) {
+          <mat-option value="{{y.sessionID}}">{{y.ac_session}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </section>
+
+  <section>
+    <mat-form-field>
+      <mat-label>Select begining week</mat-label>
+      <!-- *ngIf="week" -->
+      <mat-select  (selectionChange)="setWeekBegins($event)">
+        @for (w of week; track w) {
+          <mat-option value="{{w.WeekID}}">{{w.WeekDescription}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </section>
+
+  <section>
+    <mat-form-field>
+      <mat-label>Academic Term Begins</mat-label>
+      <input matInput type="datetime" #begins [matDatepicker]="termBeginsDate" (dateInput)="selectTermBengins($event)" >
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="termBeginsDate"></mat-datepicker-toggle>
+      <mat-datepicker #termBeginsDate></mat-datepicker>
+    </mat-form-field>
+  </section>
+  <section>
+    <mat-form-field>
+      <mat-label>Academic Term Ends</mat-label>
+      <input matInput type="datetime" #ends [matDatepicker]="termEndsDate" (dateInput)="selectedTermEnds($event)">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="termEndsDate" ></mat-datepicker-toggle>
+      <mat-datepicker #termEndsDate></mat-datepicker>
+    </mat-form-field>
+  </section>
+  <section>
+    <mat-form-field>
+      <mat-label>Enter the total number of weeks in the term</mat-label>
+      <input matInput type="number" (keyup)="calTotalDays()" [(ngModel)]="numberofWeeks">
+    </mat-form-field>
+  </section>
+  <section id="total-section">
+    <mat-label>Displays the total number of days in atten for the new term</mat-label>
+    @if (totalDays) {
+      <mat-label>{{totalDays}} days in the term</mat-label>
+    }
+
+  </section>
+  <div class="card flex justify-center">
+    <mat-slide-toggle labelPosition="before" aria-label="CURRENT"
+    (change)="isSelected($event)">Set this as the current term</mat-slide-toggle>
+  </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+
+  <button mat-raised-button matRipple matTooltip="dismiss" (click)="dismise()" color="primary">
+    Dismiss
+  </button>
+  <button mat-raised-button matRipple matTooltip="Save Data" (click)="submit()">Submit</button>
+
+</mat-dialog-actions>

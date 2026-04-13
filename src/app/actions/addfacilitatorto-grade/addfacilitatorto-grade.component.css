@@ -1,0 +1,38 @@
+mat-toolbar{
+
+    color: rgb(1, 17, 31);
+    border-bottom: 1px solid  rgb(1, 17, 31);;
+}
+mat-form-field{
+    width: 100%;
+    font-size: 1.5vw;
+    font-weight: bold;
+    margin-top: 10px;
+}
+mat-label{
+    font-size: 1.5vw;
+}
+button{
+    width: auto;
+    border-radius: .3em;
+    padding: 10px;
+    border: 0px;
+    outline: none;
+    transition: 1s;
+}
+button:last-child{
+    background-color: rgb(3, 68, 124);
+    color: whitesmoke;
+}
+button:first-child{
+    background-color: rgb(3, 124, 104);
+    color: whitesmoke;
+}
+button:hover{
+    background-color: rgb(237, 241, 243);
+    color: rgb(6, 79, 151);
+}
+button:first-child:hover{
+    background-color: rgb(124, 3, 3);
+    color: whitesmoke;
+}

@@ -1,0 +1,118 @@
+mat-toolbar{
+    background-color: rgb(2, 141, 129);
+    box-shadow: 1px 0px 15px 0px rgb(112, 112, 112);
+    font-size: 2vw;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+}
+section{
+    display: flex;
+    width: 97%;
+    padding: 10px;
+    /* box-shadow: 1px 0px 15px 0px rgb(112, 112, 112); */
+    overflow: hidden;
+    border: 1px solid lightgreen;
+}
+mat-label{
+    display: block;
+    width: calc(100% - 60%);
+    font-size: 1.5vw;
+}
+mat-label:first-child{
+    border-right: 1px solid lightgreen;
+    width: calc(100% - 70%);
+}
+mat-label:last-child{
+   margin-left: 10px;
+    width: calc(100% - 70%);
+}
+mat-form-field{
+    max-width: calc(100% - 0%);
+    width: 100%;
+}
+#dept_ID{
+    width: calc(100% - 50%);
+    box-shadow: 1px 0px 15px 0px rgb(112, 112, 112);
+    margin-left: 10px;
+    overflow: hidden;
+}
+#dept_ID>mat-label{
+    display: block;
+    width: 100%;
+    border-right: 0px;
+    padding: 10px;
+}
+.deptData:first-child{
+    color: rgb(2, 29, 117);
+    border-bottom: 1px solid rgb(112, 112, 112);;
+}
+#tenure{
+    max-width: calc(100% - 70%);
+}
+#spanDate{
+    width: calc(100% - 30%);
+    box-shadow: 1px 0px 15px 0px rgb(112, 112, 112);
+    margin-left: 10px;
+    overflow: hidden;
+    padding-bottom: 0px;
+    
+}
+#spanDate>mat-label{
+    display: block;
+    width: 100%;
+    border-right: 0px;
+    padding: 10px;
+  
+}
+
+#dates{
+    display: flex;
+}
+#dates>mat-form-field{
+    margin: 5px;
+    margin-bottom: 0px;
+}
+mat-hint{
+    padding: 10px;
+    text-align: center;
+}
+mat-dialog-actions{
+    background-color: rgb(102, 104, 105);
+}
+mat-form-field{
+    width: calc(100% - 0%);
+    padding: 0%;
+    margin: 0px auto;
+}
+button{
+    border-radius: 0%;
+    padding: 0%;
+    width: calc(100% - 80%);
+    border-radius: .3em;
+    transition: 1s;
+}
+button:last-child{
+    background-color: rgb(3, 68, 124);
+    color: whitesmoke;
+}
+button:hover{
+    background-color: rgb(237, 241, 243);
+    color: rgb(6, 79, 151);
+}
+button:first-child:hover{
+    background-color: rgb(124, 3, 3);
+    color: whitesmoke;
+}
+@media only screen and (max-width:800px) {
+mat-label{
+        font-size: 5vw;
+    }
+    mat-toolbar{
+        font-size: 4vw;
+        color: green;
+    }
+    section{
+        width: 100%;
+    }
+   
+}

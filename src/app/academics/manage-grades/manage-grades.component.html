@@ -1,0 +1,79 @@
+<mat-toolbar>
+  ACADEMIC GRADES
+</mat-toolbar>
+<mat-dialog-content>
+
+  @for (data of this.data; track data) {
+    <div>
+      <section id="header">
+        <mat-label> {{data.GradeDescription}}</mat-label>
+      </section>
+      <div class="inner-content-wrapper">
+        <section class="main-section">
+          <section class="inner-wrapper">
+            <mat-label>Grade ID</mat-label>
+            <mat-label>{{data.SerialNumber}} </mat-label>
+          </section>
+          <section class="inner-wrapper">
+            <mat-label>Assigned Date</mat-label>
+            <mat-label>{{data.DateAssigned}}</mat-label>
+          </section>
+          <section class="inner-wrapper">
+            <mat-label>Department ID</mat-label>
+            <mat-label>
+              {{data.DepartmentID}}
+            </mat-label>
+          </section>
+          <section class="inner-wrapper">
+            <mat-label>Department</mat-label>
+            <mat-label>
+              {{data.DeptName}}
+            </mat-label>
+          </section>
+        </section>
+        <section class="main-section" id="middle-section">
+          <button class="btn-actions" (click)="openRename(data.SerialNumber,data.GradeDescription)"
+            mat-raised-button matRipple matTooltipPosition="left" matTooltip="View all learners mounted to this grade"
+            color="primary">
+            Show Learners
+          </button>
+        </section>
+        <section class="main-section">
+          <button class="btn-actions" (click)="openRename(data.SerialNumber,data.GradeDescription)"
+            mat-raised-button matRipple matTooltipPosition="left" matTooltip="Replace the details of this Grade"
+            color="primary">
+            Edit Details
+          </button>
+          <button class="btn-actions" (click)="openAddFacilitator(data.SerialNumber,data.GradeDescription)"
+            mat-raised-button matRipple matTooltipPosition="left" matTooltip="Add a facilitator to this grade"
+            color="primary">
+            Add Facilitator
+          </button>
+          <button class="btn-actions" (click)="dropBottomsheet()" mat-raised-button matRipple
+            matTooltipPosition="left" matTooltip="Remove a facilitator from this grade" color="primary">
+            Drop Facilitator
+          </button>
+          <button class="btn-actions"
+            (click)="addLearner(data.SerialNumber,data.GradeDescription,data.DepartmentID)" mat-raised-button
+            matRipple matTooltipPosition="left" matTooltip="Add a new learner to this grade" color="primary">
+            Add Learner
+          </button>
+          <button class="btn-actions" (click)="dropLearner()" mat-raised-button matTooltipPosition="left"
+            matRipple matTooltip="Remove a learner from this grade" color="primary">
+            Drop Learner
+          </button>
+        </section>
+      </div>
+    </div>
+  }
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button class="actions" mat-raised-button matRipple matTooltipPosition="left" matTooltip="Close"
+    (click)="dialogRef.close(false)" color="primary">
+    Close
+  </button>
+  <button class="actions" mat-raised-button matRipple matTooltipPosition="left" matTooltip="Submit" color="primary"
+    (click)="submit()">
+    Submit
+  </button>
+</mat-dialog-actions>

@@ -1,0 +1,265 @@
+<mat-toolbar>
+  ATTENDANCE REGISTER FOR &nbsp;&nbsp;<span id="title">{{ attendanceData[0].GradeDescription}}</span>
+  <button menuButton [matMenuTriggerFor]="list" id="dropMenu">
+    <mat-icon matRipple>more_vert</mat-icon>
+  </button>
+  <mat-menu #list="matMenu">
+    <button matRipple class="btn-menu-item" matTooltip="Start new weekly attendance" (click)="startNewWeek()">
+      Start new Week
+    </button>
+    <button matRipple class="btn-menu-item" matTooltip="Displays objects for attendance Register">
+      Drop Week
+    </button>
+    <button matRipple class="btn-menu-item" matTooltip="Select to close the selected week" (click)="showClosing()">
+      Close Attendance
+    </button>
+    <button matRipple class="btn-menu-item">
+      Activate Attendance
+    </button>
+    <button matRipple class="btn-menu-item" matTooltip="Select to delete attendance object for a learner"
+      (click)="openisDropping()">
+      Drop Learner Attendance
+    </button>
+    <button matRipple class="btn-menu-item" matTooltip="Displays Statistics on weekly attendance">
+    </button>
+  </mat-menu>
+
+</mat-toolbar>
+<div id="header-title">
+  <div class="head-data">
+    <span>{{attendanceData[0].FullName}} - {{attendanceData[0].StaffID}} </span><br>
+    <span>{{attendanceData[0].DeptName}}</span>
+  </div>
+  <div class="head-data">
+    <span>{{attendanceObjects[0].ac_session}} - {{attendanceObjects[0].TermlyObject}} </span><br>
+    @if (attendanceRecrd) {
+      <span>{{attendanceRecrd[0].weeklyattendanceID}} -
+      {{attendanceRecrd[0].WeekDescription}}</span>
+    }
+  </div>
+</div>
+
+<mat-dialog-content>
+  <div id="container">
+
+
+    <!-- <div class="card">
+    <p-table [value]="attendanceRecrd" [tableStyle]="{ 'min-width': '50rem' }">
+      <ng-template #header>
+        <tr>
+          <th>No</th>
+          <th>Name of Leaner</th>
+          <th>LearnerID</th>
+          <th>Monday</th>
+          <th>Tuesday</th>
+          <th>Wednesday</th>
+          <th>Thursday</th>
+          <th>Friday</th>
+        </tr>
+      </ng-template>
+      <ng-template #body let-attendanceRecrd>
+        <tr>
+
+          <td> <mat-slide-toggle labelPosition="before" aria-label={{attendanceRecrd.AdmissionNumber}}
+          checked='{{attendanceRecrd.Monday}}' (change)="Monday($event,attendanceRecrd[0].weeklyattendanceID)"></mat-slide-toggle>
+        </td>
+        <td>
+          <mat-slide-toggle labelPosition="before" aria-label={{attendanceRecrd.AdmissionNumber}}  checked="{{attendanceRecrd.Tuesday}}"
+          (change)="Tuesday($event,attendanceRecrd[0].weeklyattendanceID)"></mat-slide-toggle></td>
+          <td>
+            <mat-slide-toggle labelPosition="before" aria-label={{attendanceRecrd.AdmissionNumber}} checked="{{attendanceRecrd.Wednesday}}" (change)="Wednesday($event,attendanceRecrd[0].weeklyattendanceID)"></mat-slide-toggle>
+
+          </td>
+
+          <td>
+            <mat-slide-toggle labelPosition="before" aria-label={{attendanceRecrd.AdmissionNumber}}
+              checked="{{attendanceRecrd.Thursday}}"
+            (change)="Thursday($event,attendanceRecrd[0].weeklyattendanceID)"></mat-slide-toggle>
+          </td>
+          <td>
+
+            <mat-slide-toggle labelPosition="before" aria-label={{attendanceRecrd.AdmissionNumber}} checked="{{attendanceRecrd.Friday}}"
+            (change)="Friday($event,attendanceRecrd[0].weeklyattendanceID)"></mat-slide-toggle>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table> -->
+
+  <!-- </div> -->
+
+
+  @if (attendanceRecrd) {
+    <div>
+      <section>
+        <label class="serial">No</label>
+        <label class="register-heaer">Name of Leaner</label>
+        <label class="register-learnerid">LearnerID</label>
+        <label class="register-params">Monday</label>
+        <label class="register-params">Tusday</label>
+        <label class="register-params">Wednesday</label>
+        <label class="register-params">Thursday</label>
+        <label class="register-params">Friday</label>
+      </section>
+      @for (d of attendanceRecrd; track d) {
+        <section>
+          <label class="serial">{{counter+1}}</label>
+          <label class="register-heaer">{{d.applicantSurname}} {{d.applicantLastname}}
+            {{d.applicantMiddlename}}
+          </label>
+          <label class="register-learnerid">{{d.AdmissionNumber}}</label>
+          <label class="register-params">
+            <mat-slide-toggle labelPosition="before" aria-label={{d.AdmissionNumber}} checked='{{d.Monday}}'
+            (change)="Monday($event,attendanceRecrd[0].weeklyattendanceID)"></mat-slide-toggle>
+          </label>
+          <label class="register-params">
+            <mat-slide-toggle labelPosition="before" aria-label={{d.AdmissionNumber}}
+              checked="{{d.Tuesday}}"
+            (change)="Tuesday($event,attendanceRecrd[0].weeklyattendanceID)"></mat-slide-toggle>
+          </label>
+          <label class="register-params">
+            <mat-slide-toggle labelPosition="before" aria-label={{d.AdmissionNumber}}
+              checked="{{d.Wednesday}}"
+            (change)="Wednesday($event,attendanceRecrd[0].weeklyattendanceID)"></mat-slide-toggle>
+          </label>
+          <label class="register-params">
+            <mat-slide-toggle labelPosition="before" aria-label={{d.AdmissionNumber}}
+              checked="{{d.Thursday}}"
+            (change)="Thursday($event,attendanceRecrd[0].weeklyattendanceID)"></mat-slide-toggle>
+          </label>
+          <label class="register-params">
+            <mat-slide-toggle labelPosition="before" aria-label={{d.AdmissionNumber}}
+              checked="{{d.Friday}}"
+            (change)="Friday($event,attendanceRecrd[0].weeklyattendanceID)"></mat-slide-toggle>
+          </label>
+        </section>
+      }
+    </div>
+  } @else {
+    <div>
+      <p>No Activity Initiated yet!
+      </p>
+      <button id='activity-today' mat-raised-button matRipple matTooltip="Start todays activity"
+      (click)="activity()">Start Activity</button>
+    </div>
+  }
+
+</div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button class="button" mat-raised-button matRipple matTooltip="submit" (click)="dialogRef.close(false)"
+    color="primary">
+    Close
+  </button>
+  <button class="button" mat-raised-button matRipple matTooltip="close" color="primary" (click)="submit()">
+    Submit
+  </button>
+</mat-dialog-actions>
+@if(loadedWeeks){
+  <div id="new-Week-container">
+    <header>START A NEW WEEK</header>
+    @if (serialNumber) {
+      <span id="rgdNumber">RegistryID: {{serialNumber}}</span>
+    }
+    <mat-form-field id="week">
+      <mat-label>Select the active week to proceed</mat-label>
+      <mat-select (selectionChange)="getWeek($event)">
+
+        @for (w of loadedWeeks; track w) {
+          <mat-option value="{{w.WeekID}}">{{w.WeekDescription}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <div class="btn-actions">
+      <button id="closeweek" (click)="close()" mat-raised-button matRipple matTooltip="submit" color="primary">
+        Close
+      </button>
+      <button class="btn-new-week" mat-raised-button matRipple matTooltip="close" color="primary" (click)="submit()">
+        Submit
+      </button>
+    </div>
+  </div>
+}
+@if (isclosing) {
+  <div id="new-Week-container">
+    <header>CLOSE THIS WEEK</header>
+    <p class="message">Clossing &nbsp;{{attendanceRecrd[0].WeekDescription}} &nbsp;
+      of&nbsp;{{attendanceObjects[0].TermlyObject}} &nbsp; for &nbsp;{{attendanceObjects[0].ac_session}}&nbsp; year
+    </p>
+    <hr>
+      <button class="btn-new-week" mat-raised-button matRipple matTooltip="close" color="primary"
+        (click)="closeWeek(attendanceRecrd[0].weeklyattendanceID)">
+        Submit
+      </button>
+      <button id="closeweek" (click)="exit()" mat-raised-button matRipple matTooltip="submit" color="primary">
+        Close
+      </button>
+    </div>
+  }
+
+  @if (isDropping) {
+    <div id="new-Week-container">
+      <header>DROP ATTENDANCE</header>
+      <!-- <p>Clossing &nbsp;{{attendanceRecrd[0].WeekDescription}} &nbsp; of&nbsp;{{attendanceObjects[0].TermlyObject}} &nbsp; for &nbsp;{{attendanceObjects[0].ac_session}}&nbsp; year </p>  -->
+      <div class="message">
+        <label>Enter Admission Number</label>
+        <input matInput [(ngModel)]="learnerID" id="learnerID" placeholder="E.g. BHA242500001">
+      </div>
+      <hr>
+        <button class="btn-new-week" mat-raised-button matRipple matTooltip="Submit" color="primary"
+          (click)="dropLearner()">
+          Submit
+        </button>
+        <button id="closeweek" (click)="closeDropping()" mat-raised-button matRipple matTooltip="submit" color="primary">
+          Close
+        </button>
+      </div>
+    }
+
+
+
+
+
+
+    @if (prevAttn) {
+      <div class="data-card">
+        <div id="header-Info">
+          @if (base64Image) {
+            <img
+              [src]="sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' + base64Image)">
+            }
+            <section>
+              <label id="name-details">{{headers[0].applicantLastname}} {{headers[0].applicantMiddlename}}
+              {{headers[0].applicantSurname}}</label>
+            </section>
+          </div>
+          <div id="main-container">
+            <div class="data-wraper">
+              <label class="serial">Serial</label>
+              <label class="year h">Academic Year</label>
+              <label class="term h">Term</label>
+              <label class="week h">Week</label>
+              <label class="attnId h">AttnID</label>
+              <label class="attnId h">Action</label>
+              <!-- <label class="days">Mon</label>
+              <label class="days">Tue</label>
+              <label class="days">Wed</label>
+              <label class="days">Thur</label>
+              <label class="days">Fri</label> -->
+            </div>
+            @for ( d of prevAttn ; track  d) {
+              <div class="data-wraper info">
+                <label class="serial">{{index+1}}</label>
+                <label class="year">{{d.ac_session}}
+                </label>
+                <label class="term ">{{d.TermlyObject}}</label>
+                <label class="week ">{{d.WeekDescription}}</label>
+                <label class="attnId ">{{d.weeklyattendanceID}}</label>
+                <label class="attnId ">
+                  <button class="delete"
+                  (click)="dropAttendance(d.weeklyattendanceID,headers[0].AdmissionNumber,d.WeekID,d.Tid,d.ac_session)">Delete</button>
+                </label>
+              </div>
+            }
+          </div>
+        </div>
+      }

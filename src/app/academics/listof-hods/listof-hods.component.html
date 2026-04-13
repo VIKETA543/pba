@@ -1,0 +1,51 @@
+<mat-toolbar>
+  <span>
+    Departments
+  </span>
+  <section id="search-container">
+    <input matInput type="text" placeholder="Search" [(ngModel)]="search" matTooltip="Enter Department head Id">
+    <button matButton matTooltip="Search" matRipple (click)="handleSearch()">
+      <mat-icon>search</mat-icon>
+    </button>
+  </section>
+</mat-toolbar>
+<mat-dialog-content>
+  @for (resdata of responseData; track resdata) {
+    <div>
+      <menu class="menu-data">
+        <div class="info-data-object">
+          <span class="deptName">{{resdata.FullName}}</span>
+          <section>
+            <mat-label>Department ID</mat-label>
+            <mat-label>{{resdata.AssignedDepartment}}</mat-label>
+          </section>
+          <section>
+            <mat-label>Department</mat-label>
+            <mat-label>{{resdata.DeptName}}</mat-label>
+          </section>
+          <section>
+            <mat-label>Period Between</mat-label>
+            <mat-label>From: {{resdata.SpanFromDate}} - To: {{resdata.SpanToDate}}</mat-label>
+          </section>
+          <section>
+            <mat-label>Tenure</mat-label>
+            <mat-label>{{resdata.Tenure}}</mat-label>
+          </section>
+          <section>
+            <mat-label>Status</mat-label>
+            <mat-label>{{resdata.Status}}</mat-label>
+          </section>
+          <section>
+            <mat-label>Current Position</mat-label>
+            <mat-label>{{resdata.TenureStatus}}</mat-label>
+          </section>
+        </div>
+        @if ( resdata.Photo) {
+          <div class="info-data">
+            <img  [src]="sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' + resdata.Photo)">
+          </div>
+        }
+      </menu>
+    </div>
+  }
+</mat-dialog-content>

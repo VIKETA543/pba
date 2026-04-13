@@ -1,0 +1,25 @@
+<mat-toolbar>
+    <span>
+        Facilitators
+    </span>
+    <section id="search-container">
+        <input matInput type="text" placeholder="Search" [(ngModel)]="search" matTooltip="Enter Staff ID or Name">
+        <button id="search" matButton matTooltip="Search" matRipple (click)="handleSearch()">
+            <mat-icon>search</mat-icon>
+        </button>
+    </section>
+</mat-toolbar>
+
+
+
+<mat-dialog-actions>
+    <section id="footerSection">
+        <mat-label>Total Departments:</mat-label>
+        <!-- <mat-label>{{totalDept}}</mat-label> -->
+    </section>
+    <button mat-raised-button matRipple matTooltip="submit" (click)="dialogRef.close(false)" color="primary">
+        Close
+    </button>
+
+
+</mat-dialog-actions>

@@ -1,0 +1,135 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row fxLayout="row">
+    <img  [src]="this.passportPicture" id="profilePicture">
+    <span class="title">Parent or Guardian Consent</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-dialog-content>
+  <form [formGroup]="applicantionForm">
+    <mat-form-field>
+      <mat-label>Application Number</mat-label>
+      <input matInput type="text" formControlName="applicationNumber" required="">
+      @if (applicantionForm.controls.applicationNumber.touched && applicantionForm.controls.applicationNumber.invalid) {
+        <mat-error
+          >
+          @if (applicantionForm.controls.applicationNumber.errors.required) {
+            <span>This field is
+            mandatory</span>
+          }
+          @if (applicantionForm.controls.applicationNumber.errors.pattern) {
+            <span>This field is invalid</span>
+          }
+        </mat-error>
+      }
+    </mat-form-field>
+    <hr>
+      <section>
+        <h4>PARTICIPATION IN SCHOOL ACTIVITIES</h4>
+        <hr>
+          <mat-checkbox matInput class="gender" formControlName="ApplicantCanUsePlayEquiptment"
+            (change)="playEquipments('YES',$event.checked)" [(ngModel)]="isUsingPlayEquiptment">I hereby grant my
+          permission for my child to use all play equipment in Beaconhill Academy</mat-checkbox>
+
+          <mat-checkbox matInput class="gender" formControlName="ApplicantCanTakepartInschoolActivites"
+            (change)="takePartinSchoolActivities('YES',$event.checked)"
+            [(ngModel)]="isCantakepartinSchoolActivities">I hereby grant my
+          permission for my child to use all play equipment in Beaconhill Academy</mat-checkbox>
+          <mat-checkbox matInput class="gender" formControlName="ApplicancaLeaveschool"
+            (change)="canLeaveschoolPremises('YES',$event.checked)" [(ngModel)]="isApplicantcanleaveschool">I hereby
+            grant my
+            permission for my child to leave the school premisses for these activities under the supervision of the
+          the school</mat-checkbox>
+
+          <mat-checkbox matInput class="gender" formControlName="ApplicanCanbeEvaluated"
+            (change)="canbeEvaluated('YES',$event.checked)" [(ngModel)]="isApplicantCanbeEvaluated">I grant
+            permission for my child to be included in evaluation and use pictures connected with any of such
+          programmes</mat-checkbox>
+
+
+        </section>
+        <section class="emmergencyConsent">
+          <h3>CONSENT ON EMERGENCY MEDICAL CARE</h3>
+          <hr>
+            <mat-checkbox matInput class="gender" formControlName="emergencyMedicalCare"
+              (change)="emegencyCare('YES',$event.checked)" [(ngModel)]="isEmergencyMedicalCare">I grant permission
+              to the management of Beaconhill Academy to take my whatever steps may neccessary to obtain emergency medical
+            care if warranted. These steps may, but not limited to the following</mat-checkbox>
+          </section>
+          <mat-card>
+            <h4>Contact me on the following Numbers</h4>
+            <hr>
+              <mat-form-field>
+                <mat-label>Emergency Contacts 1</mat-label>
+                <input matInput type="text" formControlName="EmergencyContact1">
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Emergency Contacts 2</mat-label>
+                <input matInput type="text" formControlName="EmergencyContact2">
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Emergency Contacts 2</mat-label>
+                <input matInput type="text" formControlName="EmergencyContact3">
+              </mat-form-field>
+            </mat-card>
+            <hr>
+
+              <mat-card>
+                <h4>Contact my family Doctor</h4>
+                <hr>
+                  <mat-form-field>
+                    <mat-label>Emergency Contacts 1</mat-label>
+                    <input matInput type="text" formControlName="familyDocterContact1">
+                  </mat-form-field>
+
+                  <mat-form-field>
+                    <mat-label>Emergency Contacts 2</mat-label>
+                    <input matInput type="text" formControlName="familyDocterContact2">
+                  </mat-form-field>
+
+                  <mat-form-field>
+                    <mat-label>Emergency Contacts 2</mat-label>
+                    <input matInput type="text" formControlName="familyDocterContact3">
+                  </mat-form-field>
+                </mat-card>
+                <hr>
+                  <mat-card>
+                    <h4>If you cannot contact me or my ward's doctor, do any of the following</h4>
+
+                    <mat-checkbox matInput class="gender" formControlName="callSchoolDoctor"
+                    (change)="canCallSchoolDoctor('YES',$event.checked)" [(ngModel)]="isCallingSchoolDoctor">Call the school doctor</mat-checkbox>
+
+
+                    <mat-checkbox matInput class="gender" formControlName="callAmbulanceService"
+                    (change)="canCallAmbulance('YES',$event.checked)" [(ngModel)]="isCallinganbulance">Call ambulance service</mat-checkbox>
+
+                    <mat-checkbox matInput class="gender" formControlName="sendchildtoHospital"
+                    (change)="sentToHospital('YES',$event.checked)" [(ngModel)]="isSendchildtoHospital">Have the child taken to an emergency hospital by a staff member</mat-checkbox>
+
+                    <mat-checkbox matInput class="gender" formControlName="payallMedicalExpense"
+                    (change)="payAllMedicalExpenses('YES',$event.checked)" [(ngModel)]="isPayallMedicalExpense">Any expenses incured in this section shall be borne by me.</mat-checkbox>
+
+
+                  </mat-card>
+                  <hr>
+                    <section>
+                      <h4>DECLARATION</h4>
+                      <hr>
+                        <mat-checkbox matInput class="gender" formControlName="declaration"
+                        (change)="Declaration('YES',$event.checked)" [(ngModel)]="isDeclaration">I hereby declare that, all information provided is true to the best of my knowledge. The Management of Beaconhill Academy reserves the right to withdraw my child if later found that, any false information has been provided at the time of enrollment</mat-checkbox>
+
+                        <!-- <mat-icon>home</mat-icon> -->
+
+
+                      </section>
+                    </form>
+                  </mat-dialog-content>
+
+                  <mat-dialog-actions align="center">
+                    <button mat-raised-button color="primary" type="submit" (click)="handleSubmit()">
+        <!-- [disabled]="!(applicationForm.valid && applicationForm.dirty) -->
+        <!-- <mat-icon>home</mat-icon> -->
+        PREVIEW APPLICATION</button>
+    <button mat-raised-button color="primary" mat-dialog-close (click)="previous()">PREVIOUS</button>
+</mat-dialog-actions>

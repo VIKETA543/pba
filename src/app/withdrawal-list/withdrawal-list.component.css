@@ -1,0 +1,104 @@
+mat-dialog-content{
+    display: flex;
+    flex:1;
+    padding: 10px;
+}
+section{
+    width: calc(100% - 10%);
+
+    color: whitesmoke;
+    overflow: auto;
+}
+
+section:first-child{
+    width: calc(100% - 20%);
+margin: 2rem;
+}
+section:last-child{
+    background-color: rgb(245, 241, 241);
+    border: 1px solid rgb(199, 198, 198);
+    box-shadow: 0px 1px 10px 1px rgb(124, 124, 124);
+    color: rgb(9, 78, 139);
+    border-radius: 1em;
+
+}
+#profilePicture{
+    width: 100%;
+    height: 100hv;
+}
+mat-label{
+    display: block;
+    width: 100%;
+    padding: 5px;
+    
+}
+div{
+    display: flex;
+   border: 1px solid  rgb(193, 191, 194);;
+}
+mat-form-field{
+    width: calc(100% - 5%);
+    margin: 5px auto;
+}
+div>mat-label:first-child{
+    color: rgb(98, 99, 100);
+}
+div>mat-label:last-child{
+    color: rgb(34, 34, 34);
+}
+mat-checkbox{
+    color: whitesmoke;
+    margin-right: 10px;
+}
+mat-toolbar{
+    padding: 10px;
+    margin: 0;
+    background-color:  rgb(193, 191, 194);
+    display: block;
+    max-width: 100%;
+    width: 100%;
+    color: rgb(5, 56, 165);
+}
+button{
+    outline: none;
+    border: 0;
+    box-shadow: 0px 0px 10px 2px gray;
+    margin: 1px;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: .2em;
+    transition: 1s;
+  }
+
+  button:first-child{
+    background-color: rgb(143, 2, 2);
+    color: whitesmoke;
+  }
+  button:last-child{
+    background-color: rgb(87, 2, 143);
+    color: whitesmoke;
+  }
+  button:first-child:hover,  button:last-child:hover{
+    background-color: whitesmoke;
+    border:1px soldi grey;
+    color:gray
+}
+mat-dialog-actions{
+    background-color: rgb(72, 73, 73); 
+    padding: 0px;   
+    color: whitesmoke;
+}
+
+@media only screen and (max-width: 800px){
+    mat-dialog-content{
+        display: block;
+        flex: 1;
+       
+    }
+    section{
+        display: block;
+        margin: 10px;
+        width: calc(100% - 5%);
+    }
+   
+}

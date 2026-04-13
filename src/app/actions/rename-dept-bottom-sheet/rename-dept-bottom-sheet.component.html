@@ -1,0 +1,17 @@
+
+<mat-toolbar>
+    <mat-label>{{dataObjects[0].DeptName}}</mat-label>
+    <mat-label>{{dataObjects[0].DeptId}}</mat-label>
+</mat-toolbar>
+<section>
+    <mat-form-field>
+        <mat-label id="head">Enter new name</mat-label>
+        <input matInput placeholder="New Name" [(ngModel)]="newName">
+    </mat-form-field>
+    <button mat-raised-button matRipple matTooltip="submit" (click)="submit()" color="primary">
+        Submit
+    </button>
+
+
+
+

@@ -1,0 +1,29 @@
+<mat-toolbar>
+  Operations for this department
+</mat-toolbar>
+<mat-dialog-content>
+
+  @if (operationsData) {
+    <section>
+      <mat-form-field>
+        <mat-label>Currents details on operation</mat-label>
+        <textarea matInput placeholder="" [(ngModel)]="currentOperation">{{operationsData}}</textarea>
+      </mat-form-field>
+    </section>
+  }
+
+  <section>
+    <mat-form-field>
+      <mat-label>Add detailed information on the operations for this department</mat-label>
+      <textarea matInput placeholder="" [(ngModel)]="newOperations">{{operationsData}}</textarea>
+    </mat-form-field>
+  </section>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button matRipple color="primary" (click)="handsubmit()">
+    Replace all
+  </button>
+  <button mat-raised-button matRipple color="primary" (click)="handleUpdate()">
+    Add to existing information
+  </button>
+</mat-dialog-actions>

@@ -1,0 +1,26 @@
+<mat-toolbar>
+  Manage Terms and Semesters
+</mat-toolbar>
+<mat-dialog-content>
+  @if(list){
+    <div >
+      <header><span>Term</span><span>Status</span><span>Date</span><span>Academic State</span></header>
+      @for (lst of list; track lst) {
+        <section>
+          <label>{{lst.TermlyObject}}</label>
+        <!-- <mat-checkbox value=""  checked='{{lst.Status}}' </mat-checkbox> -->
+        <mat-slide-toggle labelPosition="before" aria-label="{{lst.TermlyObject}}" checked='{{lst.Status}}' (change)="isSelected($event)"></mat-slide-toggle>
+        <label>{{lst.DateCreated}}</label>
+        <label>{{lst.AcademicState}}</label>
+      </section>
+    }
+
+  </div>
+}
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button matRipple matTooltip="dismiss" (click)="dismiss()" color="primary">
+    Dismiss
+  </button>
+
+</mat-dialog-actions>

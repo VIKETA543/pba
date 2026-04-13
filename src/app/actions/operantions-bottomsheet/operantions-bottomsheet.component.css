@@ -1,0 +1,29 @@
+mat-toolbar{
+    border-bottom: 1px solid lightblue ;
+    background-color: aliceblue;
+    }
+
+    mat-form-field{
+        width: 90%;
+        margin: 10px;
+    }
+    mat-label{
+        margin: 10px;
+        color: rgb(2, 34, 105);
+        font-size: 1.5vw;
+    }
+    button{
+        transition: 1s;
+    }
+    button:first-child{
+        background-color: rgb(2, 34, 105);
+        color: whitesmoke;
+    }
+    button:last-child{
+        background-color: azure;
+        color: rgb(2, 34, 105);
+    }
+    button:hover{
+        color: green;
+        background-color: whitesmoke;
+    }

@@ -1,0 +1,55 @@
+section{
+    overflow: hidden;
+    display: flex;
+}
+mat-form-field{
+    width: 100%;
+    margin: 5px;
+}
+mat-toolbar{
+    background-color: rgb(3, 94, 97); ;
+    color: white;
+    
+         border-radius: px !important;
+}
+#total-section{
+    background-color: whitesmoke;
+    padding: 10px;
+    /* box-shadow: 0px 0px 5px 1px grey; */
+
+    mat-label{
+      border: 1px dotted rgb(4, 69, 112);  
+      padding: 10px;
+    }
+}
+#total-section>mat-label:first-child{
+    width: 80%;
+    margin-right: 10px;
+}
+mat-dialog-actions{
+    background-color: rgb(255, 255, 255);
+}
+button{
+    width: auto;
+    border-radius: .3em;
+    padding: 10px;
+    border: 0px;
+    outline: none;
+    margin: 10px;
+    transition: 1s;
+    background-color: rgb(3, 124, 104);
+    color: whitesmoke;
+}
+button:hover{
+    background-color: rgb(237, 241, 243);
+    color: rgb(6, 79, 151);
+}
+p{
+  font-size: clamp(1rem, 2.5vw + 1rem, 2rem);
+line-height: 1;
+    color: grey;
+}
+mat-dialog-content{
+    max-height: 90vh;
+       
+}

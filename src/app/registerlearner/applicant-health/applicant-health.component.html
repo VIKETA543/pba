@@ -1,0 +1,191 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row fxLayout="row">
+    <img  [src]="this.passportPicture" id="profilePicture">
+    <span class="title">Applicant Health Details</span>
+  </mat-toolbar-row>
+
+</mat-toolbar>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="applicationForm">
+    <section>
+      <mat-form-field>
+        <mat-label>Application Number</mat-label>
+        <input matInput type="text" formControlName="applicationNumber" required="" readonly="">
+        @if (applicationForm.controls.applicationNumber.touched && applicationForm.controls.applicationNumber.invalid) {
+          <mat-error
+            >
+            @if (applicationForm.controls.applicationNumber.errors.required) {
+              <span>This field is
+              mandatory</span>
+            }
+            @if (applicationForm.controls.applicationNumber.errors.pattern) {
+              <span>This field is invalid</span>
+            }
+          </mat-error>
+        }
+      </mat-form-field>
+    </section>
+    <section>
+      <h4>Applicant' Medical Information</h4>
+      <hr>
+
+        <mat-card-content>
+          <mat-label>Does applicant has normal health condition?</mat-label>
+          <mat-checkbox matInput class="gender" formControlName="isApplicantinGoodHealth"
+            (change)="applicantHealthAction('Yes',$event.checked)"
+          [(ngModel)]="isNormalHealth_Yes">YES</mat-checkbox>
+
+          <mat-checkbox matInput class="gender" formControlName="isApplicantinGoodHealth"
+            (change)="applicantHealthAction('No',$event.checked)"
+          [(ngModel)]="isNormalHealth_No">NO</mat-checkbox>
+        </mat-card-content>
+        @if (isNormalHealth_No) {
+          <mat-form-field>
+            <mat-label>If No, Please specify</mat-label>
+            <textarea matInput formControlName="descofHealth" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+              cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5">
+            </textarea>
+          </mat-form-field>
+        }
+        <hr>
+
+          <mat-card-content>
+            <mat-label>Does applicant has normal eye sight?</mat-label>
+            <mat-checkbox matInput class="gender" formControlName="applicanhasnormalEyesight"
+              (change)="applicantEyeAction('Yes',$event.checked)"
+            [(ngModel)]="isNormaEyesight_Yes">YES</mat-checkbox>
+
+            <mat-checkbox matInput class="gender" formControlName="applicanhasnormalEyesight"
+              (change)="applicantEyeAction('No',$event.checked)"
+            [(ngModel)]="isNormaEyesight_No">NO</mat-checkbox>
+          </mat-card-content>
+          @if (isNormaEyesight_No) {
+            <mat-form-field>
+              <mat-label>If No, Please specify</mat-label>
+              <textarea matInput formControlName="descofEyeProblem" cdkTextareaAutosize
+                #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5">
+              </textarea>
+            </mat-form-field>
+          }
+          <hr>
+            <mat-card-content>
+              <mat-label>Does applicant has normal hearing?</mat-label>
+              <mat-checkbox matInput class="gender" formControlName="applicanhasnormalhearing"
+                (change)="applicantHearingAction('Yes',$event.checked)"
+              [(ngModel)]="isNormalHearing_Yes">YES</mat-checkbox>
+
+              <mat-checkbox matInput class="gender" formControlName="applicanhasnormalhearing"
+                (change)="applicantHearingAction('No',$event.checked)"
+              [(ngModel)]="isNormalHearing_No">NO</mat-checkbox>
+              @if (isNormalHearing_No) {
+                <mat-form-field>
+                  <mat-label>If No, Please specify</mat-label>
+                  <textarea matInput formControlName="descofHearingProblem" cdkTextareaAutosize
+                    #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5">
+                  </textarea>
+                </mat-form-field>
+              }
+
+            </mat-card-content>
+            <hr>
+              <mat-card-content>
+                <mat-label>Does the applicant has any food Allergies?</mat-label>
+                <mat-checkbox matInput class="gender" formControlName="foodAllergies"
+                (change)="foodAllergyAction('Yes',$event.checked)" [(ngModel)]="isFoodAllergies_YES">YES</mat-checkbox>
+
+                <mat-checkbox matInput class="gender" formControlName="foodAllergies"
+                  (change)="foodAllergyAction('No',$event.checked)"
+                [(ngModel)]="isFoodAllergies_No">NO</mat-checkbox>
+
+
+                @if (isFoodAllergies_YES) {
+                  <mat-form-field>
+                    <mat-label>If Yes, specify the types of food</mat-label>
+                    <textarea matInput type="text" formControlName="foodAllergyDetails" cdkTextareaAutosize
+                      #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5">
+                    </textarea>
+                  </mat-form-field>
+                }
+              </mat-card-content>
+              <hr>
+                <mat-card-content>
+                  <mat-label>Is the applicant fully immunized</mat-label>
+                  <mat-checkbox matInput class="gender" formControlName="applicantFullyImmuzed"
+                  (change)="fullyImunizedAction('Yes',$event.checked)" [(ngModel)]="isFullyImmuzed">YES</mat-checkbox>
+                </mat-card-content>
+                <hr>
+                  <mat-card-content>
+                    <mat-label>Does applicant has any significant trauma issue</mat-label>
+                    <mat-checkbox matInput class="gender" formControlName="traumaRelated"
+                    (change)="traumaAction('Yes',$event.checked)" [(ngModel)]="isTraumaRelated_Yes">YES</mat-checkbox>
+
+                    <mat-checkbox matInput class="gender" formControlName="traumaRelated"
+                    (change)="traumaAction('No',$event.checked)" [(ngModel)]="isTraumaRelated_No">NO</mat-checkbox>
+
+
+                    @if (isTraumaRelated_Yes) {
+                      <mat-form-field>
+                        <mat-label>If Yes, explain in simple terms</mat-label>
+                        <textarea matInput type="text" formControlName="foodAllergyDetails" cdkTextareaAutosize
+                          #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5">
+                        </textarea>
+                      </mat-form-field>
+                    }
+                  </mat-card-content>
+
+
+                </section>
+                <hr>
+                  <section>
+                    <h4>Applicants' Psychological Well-Being</h4>
+                    <hr>
+
+                      <mat-form-field>
+                        <mat-label>How well adjusted is and cooperative is the applicant</mat-label>
+                        <textarea matInput type="text" formControlName="adjustability" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                          cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5">
+                        </textarea>
+                      </mat-form-field>
+                      @if (applicationForm.controls.adjustability.touched && applicationForm.controls.adjustability.invalid) {
+                        <mat-error
+                          >
+                          @if (applicationForm.controls.adjustability.errors.required) {
+                            <span>This field is
+                            mandatory</span>
+                          }
+                          @if (applicationForm.controls.adjustability.errors.pattern) {
+                            <span>This field is
+                            invalid</span>
+                          }
+                        </mat-error>
+                      }
+
+                      <mat-form-field>
+                        <mat-label>What is Applicant's Attitude</mat-label>
+                        <textarea matInput type="text" formControlName="applicantAttide" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                          cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5">
+                        </textarea>
+                      </mat-form-field>
+                      @if (applicationForm.controls.applicantAttide.touched && applicationForm.controls.applicantAttide.invalid) {
+                        <mat-error
+                          >
+                          @if (applicationForm.controls.applicantAttide.errors.required) {
+                            <span>This field is
+                            mandatory</span>
+                          }
+                          @if (applicationForm.controls.applicantAttide.errors.pattern) {
+                            <span>This field is
+                            invalid</span>
+                          }
+                        </mat-error>
+                      }
+                    </section>
+                  </form>
+                </mat-dialog-content>
+                <mat-dialog-actions align="center">
+                  <button mat-raised-button color="primary" type="submit" (click)="handleSubmit()">
+        <!-- [disabled]="!(applicationForm.valid && applicationForm.dirty) -->
+        <!-- <mat-icon>home</mat-icon> -->
+        CONTINUE</button>
+    <button mat-raised-button color="primary" mat-dialog-close (click)="previous()">PREVIOUS</button>
+</mat-dialog-actions>

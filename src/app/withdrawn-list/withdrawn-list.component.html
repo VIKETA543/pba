@@ -1,0 +1,249 @@
+<mat-toolbar>
+
+  <h4 id="header"> Withdrawn Learners</h4>
+  <button id="loadAll" mat-raised-button matRipple  matTooltip="Load detailed records on withdrawal" (click)="sidenavAll.toggle()" (click)="searchAll()">
+    <mat-icon id="view_comfy">view_comfy</mat-icon>
+  </button>
+  <input matInput placeholder="Admission Number" [(ngModel)]="adminNumber" matTooltip="Enter admission number">
+  <button id="search" mat-raised-button matRipple (click)="searchLeaner()" matTooltip="Forward">
+    <mat-icon>arrow_forward</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" position="start" opened="false">
+    <mat-toolbar id="mattoolbar-2">
+      <span>Detailed Information</span>
+      <button mat-raised-button type="submit" id="add-reg" matRipple>
+        <mat-icon> local_printshop</mat-icon></button>
+      </mat-toolbar>
+      @if (detailedDataSource) {
+        <section >
+          <div>
+            <mat-label>Amission Number</mat-label>
+            <mat-label>{{detailedDataSource[0].ADNO}}</mat-label>
+          </div>
+          <div>
+            <mat-label>Grade of Learner</mat-label>
+            <mat-label>{{detailedDataSource[0].GRADE}}</mat-label>
+          </div>
+          <div>
+            <mat-label>Full Name</mat-label>
+            <mat-label>{{detailedDataSource[0].SN}} {{detailedDataSource[0].MN}} {{detailedDataSource[0].LN}}</mat-label>
+          </div>
+          <div>
+            <mat-label>Grade </mat-label>
+            <mat-label>{{detailedDataSource[0].GRADE}}</mat-label>
+          </div>
+          <div>
+            <mat-label>Date of withdrawal</mat-label>
+            <mat-label>{{detailedDataSource[0].WDATE}}</mat-label>
+          </div>
+          <div>
+            <mat-label>Date Executed</mat-label>
+            <mat-label>{{detailedDataSource[0].WDATE}}</mat-label>
+          </div>
+          <div>
+            <mat-label>Reasons</mat-label>
+            <mat-label>{{detailedDataSource[0].RES}}</mat-label>
+          </div>
+          <div>
+            <mat-label>Detail Information for Reasons</mat-label>
+            <mat-label>{{detailedDataSource[0].DET_INFO}}</mat-label>
+          </div>
+          <div>
+            <mat-label>Guadian Name</mat-label>
+            <mat-label>{{detailedDataSource[0].GUADIAN}}</mat-label>
+          </div>
+          <div>
+            <mat-label>Guadian Contact </mat-label>
+            <mat-label>{{detailedDataSource[0].GUARDIAN_TEL}}</mat-label>
+          </div>
+          <div>
+            <mat-label>Confirmed</mat-label>
+            <mat-label>{{detailedDataSource[0].CONFIRMED}}</mat-label>
+          </div>
+          <div>
+            <mat-label>Confirmed By </mat-label>
+            <mat-label>{{detailedDataSource[0].OFFICER}}</mat-label>
+          </div>
+          <div>
+            <mat-label>Authorisation</mat-label>
+            <mat-label>{{detailedDataSource[0].AUTHBY}}</mat-label>
+          </div>
+          <div>
+            <mat-label>Withdrawal Letter Issued</mat-label>
+            <mat-label>{{detailedDataSource[0].WITHDRAWAL_LETTER}}</mat-label>
+          </div>
+          <div>
+            <mat-label>Withdrawal Authorisation</mat-label>
+            <mat-label>{{detailedDataSource[0].AUTH}}</mat-label>
+          </div>
+          <div>
+            <mat-label>Withdrawal Authorised by</mat-label>
+            <mat-label>{{detailedDataSource[0].AUTH_BY}}</mat-label>
+          </div>
+          <div>
+            <mat-label>Information</mat-label>
+            <mat-label>{{detailedDataSource[0].AUTH_MES}}</mat-label>
+          </div>
+        </section>
+      }
+    </mat-sidenav>
+
+    <mat-sidenav #sidenavAll="matSidenav" position="end" id="mat-sidenav ">
+      <mat-toolbar id="table-toolbar">
+        Detailed list of Withdrawn Learners
+      </mat-toolbar>
+      <mat-dialog-content>
+        <table mat-table [dataSource]="detailedDataSource" class="mat-elevation-z8">
+
+
+          <ng-container matColumnDef="No.">
+            <th class="th" mat-header-cell *matHeaderCellDef> No.</th>
+            <td class="td" mat-cell *matCellDef="let element   let i = index;"> {{i+1}} </td>
+          </ng-container>
+          <ng-container matColumnDef="Admission Number">
+            <th class="th" mat-header-cell *matHeaderCellDef> Admission Number</th>
+            <td class="td" mat-cell *matCellDef="let element"> {{element.ADNO}} </td>
+          </ng-container>
+          <!-- Name Column -->
+          <ng-container matColumnDef="Full Name">
+            <th class="th" mat-header-cell *matHeaderCellDef>Full Name</th>
+            <td class="td" mat-cell *matCellDef="let element"> {{element.SN}} {{element.MN}} {{element.LN}} </td>
+          </ng-container>
+          <ng-container matColumnDef="Grade">
+            <th class="th" mat-header-cell *matHeaderCellDef>Grade </th>
+            <td class="td" mat-cell *matCellDef="let element"> {{element.GRADE}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Date Withdrawn">
+            <th class="th" mat-header-cell *matHeaderCellDef> Date Withdrawn</th>
+            <td class="td" mat-cell *matCellDef="let element"> {{element.WDATE}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Reasons">
+            <th class="th" mat-header-cell *matHeaderCellDef >Reasons</th>
+            <td class="td"  mat-cell *matCellDef="let element" matTooltip="{{element.RES}}"> {{element.RES}} </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="Details">
+            <th class="th" mat-header-cell fxFlex="100px"  *matHeaderCellDef   mat-sort-header>Details</th>
+            <td class="td" mat-cell fxFlex="100px"  *matCellDef="let element" matTooltip="{{element.DET_INFO}}">
+              <!-- {{element.DET_INFO}} -->
+              {{(element.DET_INFO.length > 10) ? ((element.DET_INFO).slice(0, 10) + '...') : element.DET_INFO}}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Guardian Name">
+            <th class="th" mat-header-cell *matHeaderCellDef>Guardian</th>
+            <td class="td"  mat-cell *matCellDef="let element"> {{element.GUADIAN}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Guardian Tel">
+            <th class="th" mat-header-cell *matHeaderCellDef>Guardian Tel</th>
+            <td class="td" mat-cell *matCellDef="let element"> {{element.GUARDIAN_TEL}} </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="Confirmed">
+            <th class="th" mat-header-cell *matHeaderCellDef>Confirmed</th>
+            <td class="td" mat-cell *matCellDef="let element"> {{element.CONFIRMED}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Confirmed By">
+            <th class="th" mat-header-cell *matHeaderCellDef>Confirmed By</th>
+            <td class="td" mat-cell *matCellDef="let element"> {{element.OFFICER}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Authorised">
+            <th class="th" mat-header-cell *matHeaderCellDef>Authorised</th>
+            <td class="td" mat-cell *matCellDef="let element"> {{element.AUTH}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Administrator">
+            <th class="th" mat-header-cell *matHeaderCellDef>Administrator</th>
+            <td class="td" mat-cell *matCellDef="let element"> {{element.AUTH_ADMIN}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Comments" >
+            <th class="th" mat-header-cell *matHeaderCellDef>Comments</th>
+            <td class="td"  mat-cell *matCellDef="let element" matTooltip="{{element.AUTH_MESS}}">
+            {{(element.AUTH_MESS.length > 10) ? ((element.AUTH_MESS).slice(0, 10) + '...') : element.AUTH_MESS}}</td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="Actions">
+            <th class="th" mat-header-cell *matHeaderCellDef>Actions</th>
+
+
+            <td class="td" mat-cell *matCellDef="let row" class="btn-style">
+
+              <button mat-raised-button color="warn" matRipple class="Actions" matTooltip="Show details"
+                (click)="deleteRow(row.ADNO)" >
+
+                <mat-icon class="icon-view">
+                  delete
+                </mat-icon>
+              </button>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="detailedDataColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: detailedDataColumns;"></tr>
+        </table>
+
+      </mat-dialog-content>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-dialog-content>
+        <table mat-table [dataSource]="patialdataDatasource" class="mat-elevation-z8">
+          <ng-container matColumnDef="No.">
+            <th mat-header-cell *matHeaderCellDef> No.</th>
+            <td mat-cell *matCellDef="let element   let i = index;"> {{i+1}} </td>
+          </ng-container>
+          <ng-container matColumnDef="Admission Number">
+            <th mat-header-cell *matHeaderCellDef> Admission Number</th>
+            <td mat-cell *matCellDef="let element"> {{element.ADNO}} </td>
+          </ng-container>
+          <!-- Name Column -->
+          <ng-container matColumnDef="Full Name">
+            <th mat-header-cell *matHeaderCellDef>Full Name</th>
+            <td mat-cell *matCellDef="let element"> {{element.SN}} {{element.MN}} {{element.LN}} </td>
+          </ng-container>
+          <ng-container matColumnDef="Grade">
+            <th mat-header-cell *matHeaderCellDef>Grade </th>
+            <td mat-cell *matCellDef="let element"> {{element.GRADE}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Date Withdrawn">
+            <th mat-header-cell *matHeaderCellDef> Date Withdrawn</th>
+            <td mat-cell *matCellDef="let element"> {{element.WDATE}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <!-- <td mat-cell *matCellDef="let element"> {{element.action}} </td> -->
+
+            <td mat-cell *matCellDef="let row" class="btn-style">
+              <!-- (click)="sidenav.toggle()" -->
+              <button mat-raised-button color="warn" matRipple class="Actions" matTooltip="Show details"
+                (click)="showRegDetails(row.ADNO)" (click)="sidenav.toggle()">
+                <!-- *ngIf="!sidenavDetails.opened" -->
+                <mat-icon class="icon-view">
+                  visibility
+                </mat-icon>
+              </button>
+
+              <button mat-raised-button color="warn" matRipple class="Actions" matTooltip="Print Records">
+                <!-- *ngIf="!sidenavDetails.opened" -->
+                <mat-icon class="icon-view"> local_printshop</mat-icon>
+
+              </button>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </mat-dialog-content>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

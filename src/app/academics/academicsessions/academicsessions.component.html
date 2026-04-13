@@ -1,0 +1,42 @@
+<mat-toolbar>
+  Register new Academic Session
+</mat-toolbar>
+<mat-dialog-content>
+  @if (EntryID) {
+    <section>
+      <label>RGD No.</label>
+      <label>{{EntryID}}</label>
+    </section>
+  }
+  <section class="info">
+    <p>Register new academic session. Enter beginging year and ending ending year seperated by (-)</p>
+    <mat-form-field>
+      <mat-label>Enter Academic Session</mat-label>
+      <input matInput [(ngModel)]="academicsession" placeholder="e.g. 2024-2025">
+    </mat-form-field>
+  </section>
+  <section>
+    <p class="info">Select the date of when the academic year starts and it ends</p>
+    <mat-form-field>
+
+      <mat-label>Enter a date range</mat-label>
+      <mat-date-range-input [rangePicker]="picker">
+        <input matStartDate placeholder="Startdate" [(ngModel)]="Startdate">
+        <input matEndDate placeholder="End date"  [(ngModel)]="Enddate">
+      </mat-date-range-input>
+      <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+  </section>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-raised-button matRipple matTooltip="submit" (click)="submit()" color="primary">
+    Submit
+  </button>
+  <button mat-raised-button matRipple matTooltip="Dismiss" (click)="dismiss()" color="primary">
+    Dismiss
+  </button>
+
+</mat-dialog-actions>

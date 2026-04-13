@@ -1,0 +1,58 @@
+<mat-toolbar>
+  <span>
+    Academic Year Details
+  </span>
+  <mat-select [contentEditable]="true" placeholder="search academic year" matTooltip="Select option or enter academic year" (selectionChange)="isSelected($event)">
+    <!-- <mat-icon>search</mat-icon> -->
+    @for (l of list; track l) {
+      <mat-option   value="{{l.ac_session}}">{{l.ac_session}}</mat-option>
+    }
+  </mat-select>
+  <!-- <button mat-icon-button *ngIf="selected">Find</button> -->
+</mat-toolbar>
+@if (sessions) {
+  <mat-dialog-content>
+    @for (s of sessions; track s) {
+      <section >
+        <menu>
+          <div class="botton-items"></div>
+          <div>
+            <mat-label>Sn</mat-label>
+            <mat-label>{{s.sn}}</mat-label>
+          </div>
+          <div>
+            <mat-label>Session </mat-label>
+            <mat-label>{{s.ac_session}}</mat-label>
+          </div>
+          <div>
+            <mat-label>Description</mat-label>
+            <mat-label>{{s.Description}}</mat-label>
+          </div>
+          <div>
+            <mat-label>Academic Year Begins </mat-label>
+            <mat-label>{{s.SessionStartDate}}</mat-label>
+          </div>
+          <div>
+            <mat-label>Academic Year Ends </mat-label>
+            <mat-label>{{s.SessionEndate}}</mat-label>
+          </div>
+          <div>
+            <mat-label>Created Date</mat-label>
+            <mat-label>{{s.DateAssigned}}</mat-label>
+          </div>
+          <div class="botton-items">
+            <button  class="btn-del" matButton matRipple matTooltip="Delete Academic Year" (click)="delSession(s.ac_session)">Del </button>
+            <button  class="btn-del" matButton matRipple matTooltip="Edit academic year information" (click)="launchEdith(s.ac_session)">Edit</button>
+            <button  class="btn-del" matButton matRipple matTooltip="Add academic year" (click)="addNewAcademicyear()">New</button>
+          </div>
+        </menu>
+      </section>
+    }
+  </mat-dialog-content>
+}
+<mat-dialog-actions>
+  <button mat-raised-button matRipple matTooltip="dismiss" (click)="dismiss()" color="primary">
+    Dismiss
+  </button>
+
+</mat-dialog-actions>

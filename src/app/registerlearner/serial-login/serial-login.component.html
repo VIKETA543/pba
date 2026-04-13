@@ -1,0 +1,31 @@
+<mat-toolbar>
+    ADMISSIONS
+</mat-toolbar>
+<mat-dialog-content>
+    <form [formGroup]="applicationForm">
+        <section>
+            <img id=beacon src="assets/img/Beacon.png" alt="logo">
+        </section>
+        <section>
+            <mat-toolbar>APPLY</mat-toolbar> 
+            <mat-form-field>
+                <mat-label>SERIAL NUMBER</mat-label>
+                <input matInput type="text" formControlName="serialNumber" required="">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>PIN</mat-label>
+                <input matInput type="text" formControlName="pinNumber" required="">
+            </mat-form-field>
+        </section>
+
+    </form>
+
+   
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+    <button mat-raised-button color="primary" type="submit" (click)="handleSubmit()" >
+        
+        <mat-icon>login</mat-icon>
+        <span>LOGIN</span></button>
+    <!-- <button mat-raised-button color="primary" mat-dialog-close>close</button> -->
+</mat-dialog-actions>

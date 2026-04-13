@@ -1,0 +1,230 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row fxLayout="row">
+    <img  [src]="this.passportPicture" id="profilePicture">
+    <span class="title">Fathers information</span>
+  </mat-toolbar-row>
+
+</mat-toolbar>
+<mat-dialog-content class="mat-typography">
+
+  <form [formGroup]="applicationForm">
+    <mat-form-field>
+      <mat-label>Application Number</mat-label>
+      <input matInput type="text" formControlName="applicationNumber" readonly="true" required="">
+      @if (applicationForm.controls.applicationNumber.touched && applicationForm.controls.applicationNumber.invalid) {
+        <mat-error
+          >
+          @if (applicationForm.controls.applicationNumber.errors.required) {
+            <span>This field is
+            mandatory</span>
+          }
+          @if (applicationForm.controls.applicationNumber.errors.pattern) {
+            <span>This field is invalid</span>
+          }
+        </mat-error>
+      }
+    </mat-form-field>
+    <section>
+
+      <hr>
+        <mat-form-field>
+          <mat-label>Fathers' Name</mat-label>
+          <input matInput type="text" formControlName="fathersName" required="">
+          @if (applicationForm.controls.fathersName.touched && applicationForm.controls.fathersName.invalid) {
+            <mat-error
+              >
+              @if (applicationForm.controls.fathersName.errors.required) {
+                <span>This field is mandatory</span>
+              }
+              @if (applicationForm.controls.fathersName.errors.pattern) {
+                <span>This field is invalid</span>
+              }
+            </mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Fathers' Occupation</mat-label>
+          <input matInput type="text" formControlName="fathersOccupation" required="">
+          @if (applicationForm.controls.fathersOccupation.touched && applicationForm.controls.fathersOccupation.invalid) {
+            <mat-error
+              >
+              @if (applicationForm.controls.fathersOccupation.errors.required) {
+                <span>This field is
+                mandatory</span>
+              }
+              @if (applicationForm.controls.fathersOccupation.errors.pattern) {
+                <span>This field is invalid</span>
+              }
+            </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Fathers' Place of Work</mat-label>
+          <input matInput type="text" formControlName="fathersPlaceofWork" required="">
+          @if (applicationForm.controls.fathersPlaceofWork.touched && applicationForm.controls.fathersPlaceofWork.invalid) {
+            <mat-error
+              >
+              @if (applicationForm.controls.fathersPlaceofWork.errors.required) {
+                <span>This field is
+                mandatory</span>
+              }
+              @if (applicationForm.controls.fathersPlaceofWork.errors.pattern) {
+                <span>This field is
+                invalid</span>
+              }
+            </mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Fathers' Address</mat-label>
+
+          <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+          cdkAutosizeMaxRows="5" formControlName="fathersAddress"></textarea>
+          @if (applicationForm.controls.fathersAddress.touched && applicationForm.controls.fathersAddress.invalid) {
+            <mat-error
+              >
+              @if (applicationForm.controls.fathersAddress.errors.required) {
+                <span>This field is mandatory</span>
+              }
+              @if (applicationForm.controls.fathersAddress.errors.pattern) {
+                <span>This field is invalid</span>
+              }
+            </mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Fathers' Mobile Number</mat-label>
+          <input matInput type="text" formControlName="fatherMobileNumber" required="">
+          @if (applicationForm.controls.fatherMobileNumber.touched && applicationForm.controls.fatherMobileNumber.invalid) {
+            <mat-error
+              >
+              @if (applicationForm.controls.fatherMobileNumber.errors.required) {
+                <span>This field is
+                mandatory</span>
+              }
+              @if (applicationForm.controls.fatherMobileNumber.errors.pattern) {
+                <span>This field is
+                invalid</span>
+              }
+            </mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Fathers' Secondary Number</mat-label>
+          <input matInput type="text" formControlName="fatherSecondaryNumber" required="">
+          @if (applicationForm.controls.fatherSecondaryNumber.touched && applicationForm.controls.fatherSecondaryNumber.invalid) {
+            <mat-error
+              >
+              @if (applicationForm.controls.fatherSecondaryNumber.errors.required) {
+                <span>This field is
+                mandatory</span>
+              }
+              @if (applicationForm.controls.fatherSecondaryNumber.errors.pattern) {
+                <span>This field is
+                invalid</span>
+              }
+            </mat-error>
+          }
+        </mat-form-field>
+
+
+
+        <mat-form-field>
+          <mat-label>Father's Email Address</mat-label>
+          <input matInput type="text" formControlName="fathersEmailAdress" required="">
+          @if (applicationForm.controls.fathersEmailAdress.touched && applicationForm.controls.fathersEmailAdress.invalid) {
+            <mat-error
+              >
+              @if (applicationForm.controls.fathersEmailAdress.errors.required) {
+                <span>This field is
+                mandatory</span>
+              }
+              @if (applicationForm.controls.fathersEmailAdress.errors.pattern) {
+                <span>This field is
+                invalid</span>
+              }
+            </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Relationship with Child</mat-label>
+          <mat-select formControlName="relationship">
+            <mat-option value="Son">Son</mat-option>
+            <mat-option value="Daughter">Daughter</mat-option>
+            <mat-option value="Newphew">Newphew</mat-option>
+            <mat-option value="Brother">Brother</mat-option>
+            <mat-option value="Sister">Sister</mat-option>
+            <mat-option value="Uncle">Uncle</mat-option>
+            <mat-option value="Aunt">Aunt</mat-option>
+            <mat-option value="Grand Father">Grand Father</mat-option>
+            <mat-option value="Grand Mother">Grand Mother</mat-option>
+            <mat-option value="Institution">Institution</mat-option>
+            <mat-option value="Other">Other</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Father's Nationality</mat-label>
+          <input matInput type="text" formControlName="fatherNationality" required="">
+          @if (applicationForm.controls.fatherNationality.touched && applicationForm.controls.fatherNationality.invalid) {
+            <mat-error
+              >
+              @if (applicationForm.controls.fatherNationality.errors.required) {
+                <span>This field is
+                mandatory</span>
+              }
+              @if (applicationForm.controls.fatherNationality.errors.pattern) {
+                <span>This field is invalid</span>
+              }
+            </mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Father's Education </mat-label>
+          <mat-select formControlName="fathersEducation">
+            <mat-option value="JHS">Junior High</mat-option>
+            <mat-option value="SHS">Senior High</mat-option>
+            <mat-option value="Diploma">Diploma</mat-option>
+            <mat-option value="BscDegree">Bachelors Degree</mat-option>
+            <mat-option value="Mastersdegree">Master's Degree</mat-option>
+            <mat-option value="PHD">Doctorate</mat-option>
+            <mat-option value="Professional Qualification">Professional qualification</mat-option>
+            <mat-option value="TVET">TVET</mat-option>
+            <mat-option value="Other">Other</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </section>
+      <section>
+        <h4>Is the father of the Applicant's Alive?</h4>
+        <hr>
+
+          <mat-checkbox matInput class="gender" formControlName="isFatherAlive"
+            (change)="fatherAliveDeadChecked('Alive',$event.checked)"
+          [(ngModel)]="isFatherAlive">ALIVE</mat-checkbox>
+          <mat-checkbox matInput class="gender" formControlName="isFatherAlive"
+          (change)="fatherAliveDeadChecked('Dead',$event.checked)" [(ngModel)]="isFatherDead">DEAD</mat-checkbox>
+          <mat-checkbox matInput class="gender" formControlName="isFatherAlive"
+            (change)="fatherAliveDeadChecked('Unknown',$event.checked)"
+          [(ngModel)]="isfatherAliveUnknown">UNKNOWN</mat-checkbox>
+
+
+        </section>
+
+
+      </form>
+    </mat-dialog-content>
+    <mat-dialog-actions align="center">
+
+      <button mat-raised-button color="primary" type="submit" (click)="handleSubmit()"
+        >
+    <!-- [disabled]="!(applicationForm.valid && applicationForm.dirty) -->
+        <!-- <mat-icon>home</mat-icon> -->
+        CONTINUE</button>
+        <button mat-raised-button color="primary" (click)="previous()">PREVIOUS</button>
+        <!-- <button mat-raised-button color="primary" mat-dialog-close>Close</button> -->
+ </mat-dialog-actions>

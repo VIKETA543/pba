@@ -1,0 +1,40 @@
+<mat-toolbar>
+Drop Learner
+</mat-toolbar>
+<mat-dialog-content>
+    <div id="wrapper">
+        <section id="imagecontainer">
+            <img [src]="sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' + Photo)">
+        </section>
+        <div id="inner-wrapper">
+             <section class="Detailed">
+                <mat-label>Admission Number</mat-label>
+                <mat-label> {{learnerData.AdmissionNumber}}</mat-label>
+            </section>
+            <section class="Detailed">
+                <mat-label>Last Name</mat-label>
+                <mat-label> {{learnerData.applicantLastname}}</mat-label>
+            </section>
+
+            <section class="Detailed">
+                <mat-label>Middle Name</mat-label>
+               <mat-label>{{learnerData.applicantMiddlename}}</mat-label>
+            </section>
+
+            <section class="Detailed">
+                <mat-label>First Name</mat-label>
+                <mat-label>{{learnerData.applicantSurname}}</mat-label>
+            </section>
+        </div>
+    </div>
+</mat-dialog-content>
+
+    <mat-dialog-actions>
+         <button mat-raised-button matRipple matTooltip="submit" (click)="submit()" color="primary">
+        Submit
+    </button>
+      <button mat-raised-button matRipple matTooltip="Dismiss" (click)="dismiss()" color="primary">
+        Dismiss
+    </button>
+
+    </mat-dialog-actions>

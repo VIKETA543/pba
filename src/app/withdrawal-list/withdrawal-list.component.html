@@ -1,0 +1,88 @@
+<mat-toolbar>
+    <h3>Request for Authourisation</h3>
+</mat-toolbar>
+<mat-dialog-content>
+  
+    <section>
+        <img [src]="image.src" id="profilePicture">
+    </section>
+    <section>
+        <div>
+            <mat-label>Amission Number</mat-label>
+            <mat-label>{{data.ADNO}}</mat-label>
+        </div>
+        <div>
+            <mat-label>Grade of Learner</mat-label>
+            <mat-label>{{data.GRADE}}</mat-label>
+        </div>
+        <div>
+        <mat-label>Full Name of Learner</mat-label>
+        <mat-label>{{data.SN}} {{data.MN}} {{data.LN}}</mat-label>
+  
+        </div>
+        <div>
+            <mat-label>Grade of the Learner</mat-label>
+            <mat-label>{{data.GRADE}}</mat-label>
+        </div>
+        <div>
+            <mat-label>Withdrwal Status</mat-label>
+            <mat-label>{{data.STATUS}}</mat-label>
+        </div>
+        <div>
+            <mat-label>Date Executed</mat-label>
+            <mat-label>{{data.WDATE}}</mat-label>
+        </div>
+        <div>
+            <mat-label>Reasons for Withdrawing the Learner</mat-label>
+            <mat-label>{{data.WRES}}</mat-label>
+        </div>
+        <div>
+            <mat-label>Detail Information for Reaons</mat-label>
+            <mat-label>{{data.DETAILS}}</mat-label>
+        </div>
+        <div>
+            <mat-label>Guadian Name</mat-label>
+            <mat-label>{{data.GUARDIAN}}</mat-label>
+        </div>
+        <div>
+            <mat-label>Guadian Contact </mat-label>
+            <mat-label>{{data.GCONTACT}}</mat-label>
+        </div>
+        <div>
+            <mat-label>Confirmed by Officer In Charge </mat-label>
+            <mat-label>{{data.CONF}}</mat-label>
+        </div>
+
+        <div>
+            <mat-label>Confirmed By </mat-label>
+            <mat-label>{{data.CONBY}}</mat-label>
+        </div>
+
+        <div>
+            <mat-label>Authorisation</mat-label>
+            <mat-label>{{data.AUTHBY}}</mat-label>
+        </div>
+        <div>
+            <mat-label>Withdrawal Letter Issued</mat-label>
+            <mat-label>{{data.ADMLETTER}}</mat-label>
+        </div>
+
+        <div>
+            <mat-form-field>
+            <mat-label>Authority Notice</mat-label>
+            <textarea matInput placeholder="Message" [(ngModel)]="message"></textarea>
+           </mat-form-field>
+           
+        </div>
+    </section>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <mat-checkbox matInput class="confirm" (change)="handleAuth('YES')" [(ngModel)]="isAuthourised">Authourise Request</mat-checkbox>
+    <mat-checkbox matInput class="confirm" (change)="handleAuth('NO')" [(ngModel)]="isDenied">Deny Request</mat-checkbox>
+<button mat-raised-button matRipple (click)="dialogRef.close(false)" color="primary">
+    Close
+  </button>
+  <button mat-raised-button matRipple color="primary" (click)="submit()">
+    Authourise Withdraw
+  </button>
+</mat-dialog-actions>

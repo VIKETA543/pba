@@ -1,0 +1,18 @@
+<mat-toolbar>
+    Drop Learner
+</mat-toolbar>
+<mat-dialog-content>
+    <mat-form-field>
+        <mat-label>Enter Admission Number</mat-label>
+        <input matInput [(ngModel)]="AdmissionNumber" required="true" placeholder="e.g. BHAXXXXXXXX">
+    </mat-form-field>
+</mat-dialog-content>
+    <mat-dialog-actions>
+         <button  matRipple matTooltip="submit" (click)="submit()" color="primary">
+        Submit
+    </button>
+      <button  matRipple matTooltip="Dismiss" (click)="dismiss()" color="primary">
+        Dismiss
+    </button>
+
+    </mat-dialog-actions>

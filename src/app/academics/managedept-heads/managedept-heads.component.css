@@ -1,0 +1,163 @@
+mat-toolbar{
+    background-color: rgb(1, 45, 87);
+    box-shadow: 1px 0px 15px 0px rgb(112, 112, 112);
+    font-size: 2vw;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+}
+mat-dialog-actions{
+    background-color: rgb(102, 104, 105);
+
+}
+
+button{
+    border-radius: 0%;
+    padding: 0%;
+    width: calc(100% - 80%);
+    border-radius: .3em;
+    transition: 1s;
+}
+button:last-child{
+    background-color: rgb(2, 25, 46);
+    color: whitesmoke;
+}
+button:hover{
+    background-color: rgb(237, 241, 243);
+    color: rgb(6, 79, 151);
+}
+button:first-child:hover{
+    background-color: rgb(124, 3, 3);
+    color: whitesmoke;
+}
+menu{
+    margin: 10px;
+    padding: 15px;
+    border-radius: 0;
+    outline: none;
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    overflow: hidden;
+    box-shadow: 1px 0px 5px 0px rgb(112, 112, 112);
+}
+.textData{
+    width: calc(100% - 40%);
+    float: left;
+
+}
+.imageData{
+    width: calc(100% - 60%);
+    overflow: hidden;
+    position: relative;
+    box-shadow: 1px 0px 5px 0px rgb(112, 112, 112);   
+   /* margin-left: 1px; */
+}
+section{
+    display: flex;
+    
+    width: 100%;
+}
+section:nth-child(odd){
+background-color: aliceblue;
+}
+section:nth-child(even){
+background-color: azure;
+}
+#search-container{
+  
+    display: flex;
+}
+#search-container>input{
+    border: 0px;
+    outline: none;
+    border-top-left-radius: .3em;
+    border-bottom-left-radius: .3em;
+    background-color: aliceblue;
+    box-shadow: 1px 0px 5px 0px rgb(82, 81, 81);
+    padding-left:15px ;
+    width: auto;
+    transition: 1s;
+
+    flex: 1;
+}
+#search-container>input:hover{
+    background-color: rgb(43, 252, 252);
+    box-shadow: 1px 0px 10px 0px rgb(82, 81, 81);
+}
+#search-container>button{
+outline: none;
+margin: 0px;
+border: 0px;;
+background-color:azure;
+color: rgb(5, 49, 88);
+border-radius: 0%;
+width: 10%;
+padding: 5px;
+box-shadow: 1px 0px 5px 0px rgb(82, 81, 81);
+cursor: pointer;
+border-top-right-radius: .3em;
+border-bottom-right-radius: .3em;
+transition: 1s;
+}
+#search-container>button:hover{
+    background-color: rgb(8, 8, 8);
+    color:  rgb(250, 250, 250);;
+}
+span{
+    max-width: calc(100% - 10%);
+    width: calc(100% - 10%) ;
+}
+mat-label{
+    display: block;
+    border: 1px solid rgb(220, 222, 223);
+padding: .2rem;
+padding: 10px;
+font-size: clamp(1em,1.5em,2em);
+line-height: 1.5rem;
+}
+
+mat-label:first-child{
+    width: calc(100% - 70%);
+    font-size: 1.5vw;
+    color: rgb(75, 77, 76);
+    padding-left: 10px;
+   
+}
+mat-label:last-child{
+    width: calc(100% - 30%);
+    font-size: 1.5vw;
+}
+.btn-auth{
+    width: calc(100% - 60%);
+    font-size: 1.5vw;
+}
+.btn-auth:first-child{
+    background-color: rgb(4, 192, 199);
+}
+.authData{
+    width: calc(100% - 30%);
+padding: 10px;
+margin-right: 10px;
+flex: 1;
+
+}
+.bottom-footer{
+    display: flex;
+    flex: 1;
+    margin-top: 5px;
+}
+.footer-div{
+    padding: 0%;
+    margin: 0%;
+}
+.po-title{
+    display: block;
+    width: 100%;
+}
+mat-select{
+    padding: 0px;
+}
+.card{
+    display: flex;
+    flex: 1;
+}

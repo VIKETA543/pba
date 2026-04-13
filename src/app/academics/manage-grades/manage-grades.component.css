@@ -1,0 +1,113 @@
+mat-toolbar {
+    background-color: rgb(2, 141, 129);
+    box-shadow: 1px 0px 15px 0px rgb(112, 112, 112);
+    font-size: 2vw;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+}
+
+section>mat-label:first-child {
+    border-right: 1px solid rgb(2, 141, 129);
+  
+}
+
+#header {
+    background-color: rgb(2, 141, 129);
+    color: whitesmoke;
+      padding: 10px;
+}
+
+#header>mat-label {
+    color: whitesmoke;
+}
+
+div {
+    margin: 10px;
+
+    border: 1px solid rgb(2, 141, 129);
+    border-radius: .3em;
+    box-shadow: 0px 0px 20px 1px rgb(169, 170, 170);
+    overflow: hidden;
+}
+div:last-child{
+    border: 0px;
+    box-shadow: none;
+}
+
+.inner-content-wrapper {
+    display: flex;
+}
+
+.main-section {
+ box-shadow: 0px 0px 20px 1px rgb(169, 170, 170);
+ border: 1px solid rgb(169, 170, 170);
+ margin: 5px;
+ overflow: hidden;
+ width: auto;
+}
+#middle-section{
+    width: calc(100% - 90%);
+    padding: 10;
+}
+#middle-section>button{
+    margin: 10px;
+    max-width: calc(100% - 20%);
+}
+.main-section:last-child{
+    padding: 10px;
+        width: calc(100% - 90%);
+}
+.main-section:first-child {
+    width: calc(100% - 30%);
+}
+.inner-wrapper{
+    display: flex;
+}
+.inner-wrapper>mat-label {
+    color: black;
+    display: block;
+    width: calc(100% - 30%);
+    padding: 0px;
+    padding: 10px;
+}
+.btn-actions{
+    display: block;
+    padding: 1px;
+    margin: 5px;
+    width:calc(100% - 1%);
+    outline: none;
+    border: 1px solid rgb(2, 141, 129); 
+    box-shadow: 0px 0px 3px .5px lightgray;
+    color: rgb(1, 85, 78);
+    transition: 1s;
+}
+.btn-actions:hover{
+    background-color: rgb(2, 141, 129);
+    color: whitesmoke;
+}
+mat-dialog-actions{
+    background-color: rgb(102, 104, 105);
+bottom: 0%;
+}
+
+.actions{
+    border-radius: 0%;
+    padding: 10px;
+    outline: none;
+    border: 0px;
+    width: calc(100% - 80%);
+    border-radius: .3em;
+    transition: 1s;
+}
+.actions:last-child{
+    background-color: rgb(2, 25, 46);
+    color: whitesmoke;
+}
+.actions:hover{
+    background-color: rgb(237, 241, 243);
+    color: rgb(6, 79, 151);
+}
+.actions:first-child:hover{
+    background-color: rgb(124, 3, 3);
+    color: whitesmoke;
+}

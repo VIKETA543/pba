@@ -1,0 +1,55 @@
+
+mat-toolbar{
+    background-color:rgb(5, 46, 87) ;
+    color:white;
+}
+mat-sidenav{
+    margin: 1px;
+    width: calc(15vw);
+   border-right:none ;
+   border-radius: .2em;
+   background-color:rgb(5, 46, 87) ;
+padding: 5px;
+text-align: left;
+}
+mat-sidenav-container{
+    height: calc(100% - 65px);
+}
+router-outlet{
+    width: 100%;
+overflow: hidden;
+
+}
+.content{
+  height: calc(100vh - 98px);
+  margin: 5px;
+  margin-left: 32px; 
+  justify-items: center;
+width: calc(100% - 15vw);
+   font-size: 2rem;
+   color: lightgrey;
+   border-radius: .2em;
+
+}
+mat-icon, span{
+    margin-right: 8px;
+    color: whitesmoke;
+}
+.menu-button{
+    color: white;
+    font-size: 1.5vw;
+}
+#span{
+    max-width: calc(100% - 1%);
+    width: calc(100% - 1%);
+}
+@media  screen and (max-width:800px){
+    mat-sidenav-container{
+        height: calc(100% - 0%);
+       
+    }
+    .content{
+        width: 100%;
+       margin: 0px;
+    }
+}

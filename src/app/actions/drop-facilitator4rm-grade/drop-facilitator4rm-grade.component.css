@@ -1,0 +1,41 @@
+button{
+    width: auto;
+    border-radius: .3em;
+    padding: 10px;
+    border: 0px;
+    outline: none;
+    transition: 1s;
+}
+button:last-child{
+    background-color: rgb(3, 68, 124);
+    color: whitesmoke;
+}
+button:first-child{
+    background-color: rgb(3, 124, 104);
+    color: whitesmoke;
+}
+button:hover{
+    background-color: rgb(237, 241, 243);
+    color: rgb(6, 79, 151);
+}
+button:first-child:hover{
+    background-color: rgb(124, 3, 3);
+    color: whitesmoke;
+}
+mat-dialog-actions{
+    background-color: rgb(151, 151, 151);
+}
+::ng-deep .mat-bottom-sheet-container{
+    border-radius: 0px;
+    padding: 0px;
+min-width: 70% !important;
+
+}
+mat-toolbar{
+    background-color: aliceblue;
+    border-bottom: 1px solid rgb(1, 2, 51);
+}
+mat-form-field{
+    margin: 10px ;
+    width: calc(100% - 10%);
+}

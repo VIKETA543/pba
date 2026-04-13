@@ -1,0 +1,60 @@
+<mat-toolbar>
+  Create Academic Term
+</mat-toolbar>
+<mat-dialog-content>
+  <div>
+    <header>Select option for Trimester section</header>
+    <section>
+      <!-- <mat-checkbox value="" (change)="isSelected($event)">First Term</mat-checkbox> -->
+      <label>First Term</label>
+      <mat-slide-toggle labelPosition="before" aria-label="CURRENT" (change)="isCurrent($event)">Set as
+        current</mat-slide-toggle>
+      <mat-slide-toggle labelPosition="before" aria-label="FIRST TERM" (change)="isSelected($event)">Authorise</mat-slide-toggle>
+    </section>
+    <section>
+      <label>Second Term</label> 
+      <mat-slide-toggle labelPosition="before" aria-label="CURRENT" (change)="isCurrent($event)">Set as
+        current</mat-slide-toggle>
+
+      <mat-slide-toggle labelPosition="before" aria-label="SECOND TERM"
+        (change)="isSelected($event)">Authorise</mat-slide-toggle>
+      <!-- <mat-checkbox value="SECOND TERM" (change)="isSelected($event)">Second Term</mat-checkbox> -->
+    </section>
+    <section>
+      <label>Third Term</label>
+      <mat-slide-toggle labelPosition="before" aria-label="CURRENT" (change)="isCurrent($event)">Set as
+        current</mat-slide-toggle>
+
+      <mat-slide-toggle labelPosition="before" aria-label="THIRD TERM" (change)="isSelected($event)">Authorise</mat-slide-toggle>
+      <!-- <mat-checkbox value="THIRD TERM" (change)="isSelected($event)">Third Term</mat-checkbox> -->
+    </section>
+  </div>
+
+  <div>
+    <header>Select option for semester section</header>
+    <section>
+      <label>First Semester</label>
+      <mat-slide-toggle labelPosition="before" aria-label="CURRENT" (change)="isCurrent($event)">Set as
+        current</mat-slide-toggle>
+
+      <mat-slide-toggle labelPosition="before" aria-label="FIRST SEMESTER"
+        (change)="isSelected($event)">Authorise</mat-slide-toggle>
+      <!-- <mat-checkbox value="FIRST SEMESTER" (change)="isSelected($event)">FIRST SEMESTER</mat-checkbox> -->
+    </section>
+    <section>
+      <label>Second Semester</label>
+      <mat-slide-toggle labelPosition="before" aria-label="CURRENT" (change)="isCurrent($event)">Set as
+        current</mat-slide-toggle>
+      <mat-slide-toggle labelPosition="before" aria-label="SECOND SEMESTER"
+        (change)="isSelected($event)">Authorise</mat-slide-toggle>
+      <!-- <mat-checkbox value="SECOND SEMETER" (change)="isSelected($event)">SECOND SEMESTER</mat-checkbox> -->
+    </section>
+
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button matRipple matTooltip="dismiss" (click)="dismiss()" color="primary">
+    Dismiss
+  </button>
+
+</mat-dialog-actions>

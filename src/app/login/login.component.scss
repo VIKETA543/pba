@@ -1,0 +1,58 @@
+.mat-toolbar {
+    margin:-24 ;
+    width: auto;
+    margin-bottom:10px ;
+
+}
+.title-center{
+    flex:  1 1 auto;
+    text-align: center;
+}
+mat-form-field{
+    padding: 5px;
+}
+.primary{
+    background-color: red;
+}
+button:first-child{
+    border: none;
+    outline: none;
+    border-radius: .3em;
+    background-color: rgb(7, 158, 125);
+    transition: 1s;
+    color: whitesmoke;
+    font-size: 2.0vw;
+    padding: 10px;
+    display: flex;
+    width: calc(100% - 70%);
+    text-align: center;
+
+}
+button:last-child{
+  border: none;
+  outline: none;
+  border-radius: .3em;
+  background-color: rgb(161, 7, 40);
+  transition: 1s;
+  color: whitesmoke;
+  font-size: 2.0vw;
+  padding: 10px;
+  display: flex;
+  width: calc(100% - 70%);
+  text-align: center;
+
+}
+mat-icon{
+    font-size: 2.0vw;
+}
+button:hover{
+    background-color: aliceblue;
+    color: rgb(4, 47, 85);
+}
+mat-toolbar{
+    background-color: rgb(4, 47, 85);
+    color: whitesmoke;
+}
+mat-form-field {
+    display: block;
+}

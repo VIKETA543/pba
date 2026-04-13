@@ -1,0 +1,90 @@
+<mat-toolbar>
+  Assign Departmental Head
+</mat-toolbar>
+<mat-dialog-content>
+  <section>
+    <mat-label>Staff Name</mat-label>
+    <mat-label>{{staff.FullName}}</mat-label>
+    <img  [src]="this.image" id="profilePicture">
+  </section>
+  <section>
+    <mat-label>Staff ID</mat-label>
+    <mat-label >{{staff.StaffID}}</mat-label>
+  </section>
+  <section>
+    <mat-label>Contact</mat-label>
+    <mat-label>{{staff.contactNumber}}</mat-label>
+  </section>
+  <section>
+    <mat-label>Email Address</mat-label>
+    <mat-label>{{staff.email}}</mat-label>
+  </section>
+  <section>
+    <mat-form-field>
+      <mat-label>SELECT DEPARTMENT</mat-label>
+      <mat-select (selectionChange) ="selectDept('{{list.DeptName}}')" [(ngModel)]="selectedDept">
+        @for (list of datalist; track list) {
+          <mat-option value="{{list.DeptId}}">{{list.DeptName}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    @if (selectedDept) {
+      <div id="dept_ID">
+        <mat-label class="deptData" >Department ID</mat-label>
+        <mat-label class="deptData" >{{selectedDept}}</mat-label>
+      </div>
+    }
+  </section>
+  <section>
+    <mat-form-field id="tenure">
+      <mat-label>Tenure in Office</mat-label>
+      <input matInput type="number" placeholder="e.g. 1" [(ngModel)]="tenureInOffice">
+    </mat-form-field>
+    <form  id="spanDate" [formGroup]="spaddateForm">
+      <!-- <mat-hint>Span Dates</mat-hint> -->
+      <div id="dates">
+        <mat-form-field matTooltip="MM/DD/YYYY">
+
+          <mat-label>Select start Date</mat-label>
+          <input matInput type="datetime" [matDatepicker]="startDate" formControlName="startDate" >
+
+          <mat-datepicker-toggle matIconSuffix [for]="startDate"></mat-datepicker-toggle>
+          <mat-datepicker #startDate></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field matTooltip="MM/DD/YYYY">
+
+          <mat-label>Select End Date</mat-label>
+          <input matInput type="datetime" [matDatepicker]="endDate" formControlName="endDate">
+          <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+          <mat-datepicker-toggle matIconSuffix [for]="endDate"></mat-datepicker-toggle>
+          <mat-datepicker #endDate></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </form>
+  </section>
+  <section>
+    <mat-form-field>
+      <mat-label>Describe Duties</mat-label>
+      <textarea matInput matTooltip="Describe into the details, the duties of the Head of Department" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+      cdkAutosizeMaxRows="5" [(ngModel)]="duties"></textarea>
+    </mat-form-field>
+  </section>
+  <section>
+    <mat-checkbox matInput class="status" [(ngModel)]="isNew"
+    (change)="hanldleNewStatus('NEW',$event.checked)">New Position</mat-checkbox>
+
+    <mat-checkbox matInput class="status"  [(ngModel)]="isExtended"
+    (change)="hanldleExtended('EXTENDED PERIOD',$event.checked)" >Extended period to this position</mat-checkbox>
+
+  </section>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button matRipple matTooltip="submit" (click)="dialogRef.close(false)" color="primary">
+    Close
+  </button>
+  <button mat-raised-button matRipple matTooltip="close" color="primary" (click)="submit()">
+    Submit
+  </button>
+</mat-dialog-actions>

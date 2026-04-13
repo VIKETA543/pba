@@ -1,0 +1,77 @@
+<mat-toolbar>
+  <span>
+    Departments
+  </span>
+  <section id="search-container">
+    <input matInput type="text" placeholder="Search" [(ngModel)]="search" matTooltip="Enter Department head Id">
+    <button matButton matTooltip="Search" matRipple (click)="handleSearch()">
+      <mat-icon>search</mat-icon>
+    </button>
+  </section>
+</mat-toolbar>
+<mat-dialog-content>
+  @for (d of data; track d) {
+    <div>
+      <menu class="menu-data">
+        <div class="info-data-object">
+          <span class="deptName">{{d.AC_DEPT_NAME}}</span>
+          <section>
+            <mat-label>Department ID</mat-label>
+            <mat-label>{{d.AC_DEPARTMENT}}</mat-label>
+          </section>
+          <section>
+            <mat-label>Head of Department</mat-label>
+            <mat-label>{{d.DEPTHEADNAME}}</mat-label>
+          </section>
+          <section>
+            <mat-label>Span</mat-label>
+            <mat-label>From: {{d.AC_SPAN_FROM}} - To: {{d.AC_SPAN_TO}}</mat-label>
+          </section>
+          <section>
+            <mat-label>Total Learners</mat-label>
+            <mat-label>{{d.TOTAL_NO_LEARNERS}}</mat-label>
+          </section>
+        </div>
+        <div class="info-data">
+          <p>{{d.OPS}}</p>
+          <section id="imagecontainer">
+            <img  [src]="sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' + d.image)">
+          </section>
+        </div>
+      </menu>
+      <menu>
+   
+        <div class="card flex justify-center gap-4" matTooltip="Rename this Department">
+            <p-button label="Rename" icon="pi pi-pencil" variant="text" [raised]="true" (onClick)="openBottomSheet(d.AC_DEPARTMENT,d.AC_DEPT_NAME)" />
+    
+            <p-button label="Delete" matTooltip="Delete this Department" variant="text" [raised]="true" icon="pi pi-trash" (onClick)="handledel(d.AC_DEPARTMENT,d.AC_DEPT_NAME)" />
+      
+            <p-button label="Details" icon="pi pi-edit" variant="text" [raised]="true" matTooltip="Show records histry for this department"   (onClick)="submit()" />
+      
+            <p-button label="HOD's" icon="pi pi-user" variant="text" [raised]="true" matTooltip="Show records various HOD's"  (onClick)="handlesHodList()" />
+    
+            <p-button label="Edit Operations" icon="pi pi-info" variant="text" [raised]="true"  matTooltip="Change the information on the operations of this department" color="primary" (onClick)="handleOperations(d.AC_DEPARTMENT)" />
+
+            <p-button label="Upload Image" icon="pi pi-camera"  variant="text" [raised]="true" matTooltip="Upload new image for this department" (onClick)="handleImageUpload(d.AC_DEPARTMENT)" />
+     
+            <p-button label="Facilitators" icon="pi pi-users"  variant="text" [raised]="true"  matTooltip="List all the Facilitators in this department" (onClick)="handlesFacilitator(d.AC_DEPARTMENT)" />
+      
+            <p-button label="Grades" icon="pi pi-building-columns" variant="text" [raised]="true"  matTooltip="Display the grades in this department" (onClick)="submit()" />
+        </div>
+      </menu>
+    </div>
+  }
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <section id="footerSection">
+    <mat-label>Total Departments:</mat-label>
+    <mat-label>{{totalDept}}</mat-label>
+  </section>
+  <button mat-raised-button matRipple matTooltip="submit" (click)="dialogRef.close(false)" color="primary">
+    Close
+  </button>
+
+
+</mat-dialog-actions>

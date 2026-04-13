@@ -1,0 +1,33 @@
+<mat-toolbar>
+  <span>
+    New Grade
+  </span>
+
+</mat-toolbar>
+<mat-dialog-content>
+  <div>
+    <mat-label class="header">CREATE A NEW GRADE</mat-label>
+    <section class="details">
+      <mat-label>SERIAL NUMBER</mat-label>
+      @if (serialNumber) {
+        <mat-label id="serial">{{serialNumber}}</mat-label>
+      }
+    </section>
+    <section class="details">
+      <mat-form-field>
+        <mat-label>Enter a Grade Description</mat-label>
+        <input matInput placeholder="E.g. Creche" [(ngModel)]="NewGrade" Tooltip="Enter the name of the new grade">
+      </mat-form-field>
+    </section>
+
+  </div>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button matRipple matTooltip="submit" (click)="dialogRef.close(false)" color="primary">
+    Close
+  </button>
+  <button mat-raised-button matRipple matTooltip="close" color="primary" (click)="submit()">
+    Submit
+  </button>
+</mat-dialog-actions>

@@ -1,0 +1,21 @@
+<mat-toolbar>
+    START REGISTER
+</mat-toolbar>
+
+    <mat-dialog-content>
+
+
+        <mat-form-field>
+            <mat-label>Enter your Staff Number</mat-label>
+            <input matInput matTooltip="Enter your staff number here!" placeholder="e.g BHA000121" [(ngModel)]="staffId">
+        </mat-form-field>
+    </mat-dialog-content>
+        <mat-dialog-actions>
+      <button mat-raised-button matRipple (click)="dialogRef.close(false)" color="primary">
+        Close
+      </button>
+      <button mat-raised-button matRipple color="primary" (click)="submit()">
+        Submit
+      </button>
+    </mat-dialog-actions>
+

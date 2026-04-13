@@ -1,0 +1,15 @@
+<mat-toolbar>
+      {{details.gradeName}}
+</mat-toolbar>
+<mat-dialog-content>
+    <mat-form-field>
+        <mat-label>Enter a new Name</mat-label>
+        <input matInput [(ngModel)]="newName">
+    </mat-form-field>
+</mat-dialog-content>
+   <button mat-raised-button matRipple matTooltip="submit" (click)="submit()" color="primary">
+        Submit
+    </button>
+      <button mat-raised-button matRipple matTooltip="Dismiss" (click)="dismiss()" color="primary">
+        Dismiss
+    </button>

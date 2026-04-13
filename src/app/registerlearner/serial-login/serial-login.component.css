@@ -1,0 +1,41 @@
+button{
+    border: none;
+    outline: none;
+    border-radius: .3em;
+    background-color: rgb(7, 158, 125);
+    transition: 1s;
+    color: whitesmoke;
+    font-size: 2.0vw;
+    padding: 10px;
+    display: flex;
+    width: calc(100% - 70%);
+    text-align: center;
+
+}
+mat-icon{
+    font-size: 2.0vw;
+}
+button:hover{
+    background-color: aliceblue;
+    color: rgb(4, 47, 85);
+}
+mat-form-field{
+    display: block;
+    width:calc(100% - 1%);
+}
+mat-toolbar{
+    background-color: rgb(4, 47, 85);
+    color: whitesmoke;
+}
+section:last-child{
+    border: 1px solid rgb(4, 47, 85);
+    margin-bottom: 10px;
+}
+#beacon{
+    width: calc(100% - 20%);
+    height: 120px;
+}
+mat-dialog-actions{
+    background-color: rgb(4, 47, 85);;;
+}
+

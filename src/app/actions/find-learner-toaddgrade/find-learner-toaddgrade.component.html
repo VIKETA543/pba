@@ -1,0 +1,19 @@
+<mat-toolbar>
+    {{selected.gradeName}} - ({{selected.gradeId}})
+</mat-toolbar>
+<mat-dialog-content>
+    <mat-form-field>
+        <mat-label>Enter learner registration ID</mat-label>
+        <input matInput [(ngModel)]="LearnerID">
+    </mat-form-field>
+   
+</mat-dialog-content>
+  <mat-dialog-actions>
+         <button mat-raised-button matRipple matTooltip="submit" (click)="submit()" color="primary">
+        Submit
+    </button>
+      <button mat-raised-button matRipple matTooltip="Dismiss" (click)="dismiss()" color="primary">
+        Dismiss
+    </button>
+
+    </mat-dialog-actions>

@@ -1,0 +1,59 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row fxLayout="row">
+    <span class="title">UPLOAD PASSPORT PICTURE</span>
+  </mat-toolbar-row>
+
+</mat-toolbar>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="applicationForm">
+    <section>
+      <mat-form-field>
+        <mat-label>Application Number</mat-label>
+        <input matInput type="text" formControlName="applicationNumber" readonly="true" required="">
+        @if (applicationForm.controls.applicationNumber.touched && applicationForm.controls.applicationNumber.invalid) {
+          <mat-error
+            >
+            @if (applicationForm.controls.applicationNumber.errors.required) {
+              <span>This field is
+              mandatory</span>
+            }
+            @if (applicationForm.controls.applicationNumber.errors.pattern) {
+              <span>This field is invalid</span>
+            }
+          </mat-error>
+        }
+      </mat-form-field>
+    </section>
+    <mat-form-field>
+
+      <mat-toolbar>
+        <input matInput [value]="selectedFile ? selectedFileNames : 'Select Image'" readonly=""/>
+      </mat-toolbar>
+
+      <section>
+        @for (prev of preview; track prev) {
+          <img [src]="prev" class="preview">
+        }
+
+      </section>
+      <section>
+        <mat-toolbar>
+          <mat-icon>file_upload</mat-icon>
+          <input  type="file" id="pasportImage" accept="image/*" formControlName="passportImage" (change)="selectImage($event)">
+          <!-- <button *ngIf="selectedFile"  mat-flat-button color="primary" [disabled]="complete"(click)="" id="saveImage">SAVE IMAGE</button> -->
+        </mat-toolbar>
+
+      </section>
+
+    </mat-form-field>
+
+  </form>
+
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-raised-button color="primary" type="submit" (click)="uploadFiles()">
+        <!-- [disabled]="!(applicationForm.valid && applicationForm.dirty) -->
+        <!-- <mat-icon>home</mat-icon> -->
+        CONTINUE</button>
+    <button mat-raised-button color="primary" mat-dialog-close (click)="previous()">PREVIOUS</button>
+</mat-dialog-actions>

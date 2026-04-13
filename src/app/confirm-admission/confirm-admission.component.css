@@ -1,0 +1,35 @@
+table {
+    width: 100%;
+  }
+  button{
+    padding:2px;
+    margin:1px;
+    outline: none;
+    border: 0;
+    width:auto;
+    background-color: transparent;
+    color: rgb(14, 172, 9);
+  }
+  .btn-style{
+    display: flex;
+    /* flex: 1; */
+  }
+  button,span{
+    display: inline-block;
+  }
+  button:first-child{
+    color: rgb(5, 46, 85);
+  }
+
+ button:last-child{
+    color: rgb(124, 5, 5);
+  }
+  mat-toolbar{
+  
+    color: rgb(8, 73, 126);
+    padding: 5px;
+}
+.btnMenu{
+display: block;
+color: rgb(8, 73, 126);
+}

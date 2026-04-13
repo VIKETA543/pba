@@ -1,0 +1,352 @@
+::ng-deep .mat-toolbar {
+    color: aliceblue;
+    background-color: rgb(2, 145, 145);
+    padding: 12px;
+    margin: 0px;
+}
+
+#title {
+    width: 70%;
+}
+
+#header-title {
+    background-color: rgba(0, 247, 255, 0.726);
+    width: 100%;
+    padding: 5px;
+    border-bottom: 1px solid rgb(105, 106, 107);
+    display: flex;
+}
+
+mat-dialog-actions {
+    background-color: rgb(105, 106, 107);
+}
+
+.head-data {
+    border: 1px solid lightblue;
+    box-shadow: 0px 0px 15px 2px rgb(105, 106, 107);
+    margin: 5px;
+    padding: 5px;
+    width: auto;
+    background-color: rgb(2, 28, 51);
+    color: whitesmoke;
+    overflow: hidden;
+    flex: 1;
+    flex-shrink: calc(100% - 20%);
+
+}
+
+.button {
+    border-radius: 0%;
+    border: none;
+    outline: none;
+    padding: 10px;
+    width: calc(100% - 90%);
+    border-radius: .3em;
+    transition: 1s;
+}
+
+.button:last-child {
+    background-color: rgb(1, 49, 30);
+    color: rgb(255, 255, 255);
+}
+
+.button:hover {
+    background-color: rgb(237, 241, 243);
+    color: rgb(6, 79, 151);
+}
+
+.button:first-child:hover {
+    background-color: rgb(124, 3, 3);
+    color: whitesmoke;
+}
+
+#dropMenu {
+    float: right;
+    margin-right: 5px;
+    width: auto;
+    background-color: transparent !important;
+    border: 0px;
+    outline: none;
+}
+
+.register-params {
+    display: block;
+    margin: 0px;
+    padding: 10px;
+    width: auto
+}
+
+.register-heaer {
+    display: block;
+    padding: 10px;
+    width: 15vw;
+    margin: 0px;
+    border-right: 1px solid rgb(123, 143, 136);
+}
+
+.register-learnerid {
+    padding: 10px;
+    width: 10vw;
+    margin: 0px;
+    border-right: 1px solid rgb(123, 143, 136);
+}
+
+.serial {
+    width: 3vw;
+    padding: 10px;
+    background-color: rgb(69, 70, 71);
+    color: whitesmoke
+}
+
+.Total {
+    width: auto;
+    padding: 10px;
+    color: rgb(5, 128, 101);
+    ;
+    border-left: 1px solid rgb(5, 128, 101);
+}
+
+section {
+    border: 1px solid rgb(123, 143, 136);
+    padding: 0px;
+    display: flex;
+    flex: 1;
+    width: 100%;
+    flex-grow: calc(100%);
+}
+
+#container {
+    width: auto;
+    margin: 0px;
+    display: flex;
+    padding: 0px;
+    border-radius: .3em;
+    overflow: hidden;
+    flex: 1;
+    flex-grow: inherit;
+}
+
+::ng-deep .mat-dialog-actions {
+    margin: 0px;
+    padding: 0px;
+}
+
+.btn-menu-item {
+    background-color: transparent;
+    color: rgb(2, 28, 51);
+    width: auto;
+    padding: 10px;
+    outline: none;
+    font-size: 1.5vw;
+    border: 0px;
+
+}
+
+#new-Week-container {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    width: 40%;
+    background-color: whitesmoke;
+    border-radius: .3em;
+    box-shadow: 0px 0px 15px 2px rgb(105, 106, 107);
+    overflow: hidden;
+}
+
+#week {
+    padding: 10px;
+    width: 92%;
+}
+
+header {
+    background-color: rgb(2, 28, 51);
+    color: whitesmoke;
+    padding: 10px;
+}
+
+.btn-new-week {
+    background-color: rgb(2, 28, 51);
+    color: whitesmoke;
+    padding: 5px;
+    left: 40%;
+    outline: none;
+    border: 0px;
+    margin-bottom: 5px;
+    box-shadow: 0px 0px 15px 2px rgb(105, 106, 107);
+    border-radius: .3em;
+    transition: 1s;
+}
+
+.btn-new-week:hover,
+#closeweek:hover {
+    background-color: aliceblue;
+    color: rgb(2, 28, 51);
+    cursor: pointer;
+}
+
+#closeweek {
+    background-color: rgb(156, 24, 1);
+    color: whitesmoke;
+    padding: 5px;
+    left: 40%;
+    outline: none;
+    border: 0px;
+    margin-bottom: 5px;
+    box-shadow: 0px 0px 15px 2px rgb(105, 106, 107);
+    border-radius: .3em;
+    transition: 1s;
+}
+
+#rgdNumber {
+    width: 100%;
+    display: block;
+    padding: 10px;
+    color: rgb(2, 28, 51);
+}
+
+#activity-today {
+    border: 0px;
+    outline: none;
+    background-color: rgb(110, 241, 165);
+    color: rgb(2, 28, 51);
+    padding: 5px;
+    box-shadow: 0px 0px 15px 1px rgb(105, 106, 107);
+    border-radius: .3em;
+    transition: 1s;
+}
+
+#activity-today:hover {
+    background-color: rgb(2, 28, 51);
+    color: rgb(110, 241, 165);
+}
+
+.message {
+    padding: 10px;
+    border: 1px solid rgb(2, 28, 51);
+    box-shadow: 0px 1px 12px rgb(2, 28, 51);
+    margin: 10px;
+    border-radius: .3em;
+    font-size: 1.5vw;
+    overflow: hidden;
+    display: flex;
+}
+
+.message>label {
+    width: 50%;
+    display: block;
+}
+#learnerID {
+    width: 50%;
+    outline: none;
+    border-radius: .3em;
+    border: 1px solid rgb(2, 28, 51);
+    box-shadow: 0px 0px 10px 0px rgb(2, 28, 51);
+    padding: 10px;
+    transition: 1s;
+}
+
+#learnerID:hover {
+    background-color: azure;
+}
+
+.data-card {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    outline: none;
+    bottom: 0%;
+    z-index: 3;
+    background-color: aliceblue;
+
+}
+
+img {
+    width: 10vw;
+}
+
+#header-Info {
+    display: flex;
+    background-color:rgb(2, 28, 51);
+    color: whitesmoke;
+    border: 0;
+    outline: non;
+}
+
+.data-wraper {
+    display: flex;
+}
+
+.serial {
+    border: 1px solid rgb(234, 242, 243);
+    padding: 6px;
+    width: 6%;
+
+}
+
+.term {
+    width: 15%;
+    padding: 5px;
+    border: 1px solid rgb(234, 242, 243);
+}
+
+.year {
+    width: 20%;
+    padding: 5px;
+    border: 1px solid rgb(234, 242, 243);
+}
+
+.week {
+    width: 9%;
+    padding: 5px;
+    border: 1px solid rgb(234, 242, 243);
+}
+.attnId{
+   width: 20%;
+    padding: 5px;
+    border: 1px solid rgb(234, 242, 243);
+}
+
+#main-container {
+    margin: 10px;
+
+    padding: 10px;
+    border-radius: .3em;
+    box-shadow: 0px 0px 10px 0px rgb(2, 28, 51);
+}
+.days{
+    border: 1px solid rgb(0, 148, 158); 
+    width: 5%;
+    padding: 5px;
+}
+.info:nth-child(even){
+    background-color: azure;
+}
+.info:nth-child(odd){
+background-color: aquamarine;
+}
+.h{
+    background-color: rgb(2, 28, 51);
+    color: white;
+    text-align: center;
+}
+.delete{
+    outline: none;
+    border: 0px;
+    padding: 5px;
+    background-color:  rgb(2, 28, 51);
+    color: white;
+    box-shadow: 0px 0px 2px 1px lightgrey;
+    transition: 1s;
+}
+.delete:hover{
+background-color: brown;
+}
+#name-details{
+padding: 10px;
+}
+.btn-actions{
+    background-color: rgb(218, 221, 221);
+    width: 100%;
+    padding: 10px;
+}

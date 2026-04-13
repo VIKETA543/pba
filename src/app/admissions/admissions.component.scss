@@ -1,0 +1,47 @@
+.content{
+border: 1px solid rgb(234, 241, 243);
+overflow: hidden;
+height: calc(100vh - 98px);
+border-radius: .3rem;
+box-shadow: 0px 0px 15px 2px lightgrey;
+}
+mat-toolbar{
+    background-color: rgb(9, 97, 97);
+    color: rgb(255, 255, 255);
+    width: calc(100vw);
+    margin: 0;
+    padding: 10px;
+}
+.btnList{
+    border: none;
+    outline: none;
+    padding: 10px;
+    margin: 5px;
+    border-radius: .3rem;
+    background-color: rgb(4, 88, 88);
+    box-shadow: 0px 0px 15px 2px lightgrey;
+    font-size: 1.5vw;
+    width: calc(100vw - 80vw);
+    cursor: pointer;
+}
+menu{
+    width: calc(100% - 90%);
+}
+.btn-menu-item{
+    display: block;
+    width: 100%;
+    border: 0px;
+    outline: none;
+    cursor: pointer;
+    text-align: left;
+    transition: 1s;
+}
+.btn-menu-item:hover{
+    background-color: rgb(2, 63, 63);
+    color: whitesmoke;
+}
+mat-icon{
+    color: rgb(22, 204, 204);
+    font-size: small;
+}
+

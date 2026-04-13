@@ -1,0 +1,115 @@
+<mat-toolbar>
+  <i class="pi pi-graduation-cap" style="font-size: 2rem"></i>
+  ACADEMICS
+</mat-toolbar>
+<p-toolbar>
+  <ng-template #start>
+    <p-button label="Academic Session" icon="pi pi-flag" (click)="op.toggle($event)" [raised]="false" variant="text"
+      severity="secondary" />
+    <p-divider />
+    <p-button label="Examinations" icon="pi pi-compass" [raised]="false" severity="primary" variant="text" />
+    <p-divider />
+    <p-button label="Lesson Plans" icon="pi pi-book" [raised]="false" severity="success" variant="text" />
+    <p-divider />
+    <p-button label="TLMs" icon="pi pi-receipt" [raised]="false" severity="info" variant="text" />
+    <p-divider />
+    <p-button label="Academic Programmes" icon="pi pi-clock" [raised]="false" severity="warn" variant="text" />
+    <p-divider />
+    <p-button label="Attendance Register" icon="pi pi-wave-pulse" (click)="op1.toggle($event)" [raised]="false"
+      severity="help" variant="text" />
+    <p-divider />
+    <p-button label="Academic Grades " icon="pi pi-clock" (click)="op2.toggle($event)"  [raised]="false"
+      variant="text" severity="contrast" matTooltip="Displays list of for Academic grades activities" />
+    <p-divider />
+    <p-button label="Academic Departments" icon="pi pi-clock" (click)="op2.toggle($event)"[raised]="false"
+      variant="text" severity="danger" />
+  </ng-template>
+  <ng-template #center>
+
+  </ng-template>
+  <ng-template #end>
+
+  </ng-template>
+</p-toolbar>
+
+
+<div class="card flex justify-center">
+  <p-popover #op>
+
+    <p-button label="Create Academic Year" icon="pi pi-calendar" (onClick)="newAcademicSession()" [raised]="false"
+      severity="secondary" variant="text" />
+    <p-divider />
+    <p-button label="Manage Academic Year" icon="pi pi-clock" (onClick)="ManageSession()" [raised]="false"
+      severity="secondary" variant="text" />
+    <p-divider />
+    <p-button label="Academic Term" icon="pi pi-clock" (onClick)="NewTerm()" [raised]="false" severity="secondary"
+      variant="text" />
+    <p-divider />
+    <p-button label="Manage Term" icon="pi pi-clock" (onClick)="ManageTerm()" [raised]="false" severity="secondary"
+      variant="text" />
+    <p-divider />
+    <p-button label="Create Week" icon="pi pi-clock" (onClick)="newWeek()" [raised]="false" severity="secondary"
+      variant="text" />
+    <p-divider />
+    <p-button label="Manage Weeks" icon="pi pi-clock" (onClick)="ManageWeeks()" [raised]="false" severity="secondary"
+      variant="text" />
+  </p-popover>
+</div>
+
+
+
+
+
+
+<div class="card flex justify-center">
+  <p-popover #op1>
+
+  <p-button label=" Open Register" icon="pi pi-clock" (onClick)="openRegister()" [raised]="false" severity="help"
+    variant="text" />
+  <p-divider />
+  <p-button label="Mark Attendance" icon="pi pi-clock" (click)="markRegister()" [raised]="false" severity="help"
+    variant="text" />
+</p-popover>
+</div>
+
+
+
+<div class="card flex justify-center">
+  <p-popover #op2>
+  <p-button label="Create a new Grade" icon="pi pi-clock" (onClick)="launchNewgrade()" [raised]="false" variant="text"
+    severity="contrast" matTooltip="Displays list of for Academic grades activities" />
+  <p-divider />
+  <p-button label="Manage Grades" icon="pi pi-clock" (onClick)="ManageGrades()" [raised]="false" variant="text"
+    severity="contrast" matTooltip="Displays list of for Academic grades activities" />
+  <p-divider />
+  <p-button label="Assign a Facilitator" icon="pi pi-clock" (onClick)="ManageGrades()" [raised]="false" variant="text"
+    severity="contrast" matTooltip="Displays list of for Academic grades activities" />
+  <p-divider />
+  <p-button label="Grades " icon="pi pi-clock" [raised]="false" variant="text" severity="contrast"
+    matTooltip="Displays list of for Academic grades activities" />
+</p-popover>
+</div>
+
+
+
+<div class="card flex justify-center">
+  <p-popover #op3>
+
+  <p-button label="Create Department" icon="pi pi-clock" (onClick)="launchDepartment()" [raised]="false" variant="text"
+    severity="info" />
+  <p-divider />
+  <p-button label="Assign Departmental Head " icon="pi pi-clock" (onClick)="launchDepartmentHead()" [raised]="false"
+    variant="text" severity="info" />
+  <p-divider />
+  <p-button label="Manage Departmental Heads" icon="pi pi-clock" (onClick)="launchDeptHeadManager()" [raised]="false"
+    variant="text" severity="info" />
+  <p-divider />
+  <p-button label="Manage Departments" icon="pi pi-clock" (onClick)="launchDeptManager()" [raised]="false"
+    variant="text" severity="info" />
+  <p-divider />
+  <p-button label="Assign Facilitator" icon="pi pi-clock" (onClick)="launchNewFacitlitator()" [raised]="false"
+    variant="text" severity="info" />
+  <p-divider />
+  <p-button label="Assign Grade" icon="pi pi-building-columns" [raised]="false" variant="text" severity="info" />
+</p-popover>
+</div>

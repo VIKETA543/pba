@@ -1,0 +1,30 @@
+mat-toolbar{
+    background-color: rgb(5, 47, 83);
+    color: whitesmoke;
+
+}
+mat-dialog-actions{
+    background-color: rgb(204, 206, 207);
+}
+mat-form-field{
+    width: calc(100% - 0%);
+    padding: 0%;
+    margin: 0px auto;
+}
+button{
+    padding: 0%;
+    width: calc(100% - 60%);
+    outline: none;
+    border: 0%;
+    padding: 10px;
+    border-radius: .5rem;
+    color: whitesmoke;
+    transition: 1s;
+}
+button:hover{
+background-color: rgb(2, 35, 65);
+color: white;
+}
+mat-dialog-conten{
+   padding: 0%;
+}

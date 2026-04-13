@@ -1,0 +1,79 @@
+<mat-toolbar>
+    NEW DEPARTMENT
+</mat-toolbar>
+<mat-dialog-content>
+    <form [formGroup]="deptForm">
+        <mat-form-field appearance="fill">
+            <mat-label>Department ID <span>Auto Generated</span></mat-label>
+            <input matInput formControlName="departmentID" required="true">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Department Name</mat-label>
+            <input matInput placeholder="e.g Upper Grade" formControlName="departmentName">
+
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Total Learners in this department</mat-label>
+            <input matInput placeholder="e.g 150" formControlName="totalLeaners">
+
+        </mat-form-field>
+        <section>
+            <mat-label id="span-grade">Span</mat-label>
+            <mat-form-field>
+                <mat-label>From Grade</mat-label>
+                <mat-select formControlName="fromGrade">
+                    <mat-option value="PLAY GROUP">PLAY GROUP</mat-option>
+                    <mat-option value="NURSERY ONE">NURSERY ONE</mat-option>
+                    <mat-option value="NURSERY TWO">NURSERY TWO</mat-option>
+                    <mat-option value="K-1">K-1</mat-option>
+                    <mat-option value="K-2">K-2</mat-option>
+                    <mat-option value="GRADE ONE">GRADE ONE</mat-option>
+                    <mat-option value="GRADE TWO">GRADE TWO</mat-option>
+                    <mat-option value="GRADE THREE">GRADE THREE</mat-option>
+                    <mat-option value="GRADE FOUR">GRADE FOUR</mat-option>
+                    <mat-option value="GRADE FIVE">GRADE FIVE</mat-option>
+                    <mat-option value="GRADE SIX">GRADE SIX</mat-option>
+                    <mat-option value="GRADE SEVEN">GRADE SEVEN</mat-option>
+                    <mat-option value="GRADE EIGHT">GRADE EIGHT</mat-option>
+                    <mat-option value="GRADE NONE">GRADE NINE</mat-option>
+                </mat-select>
+
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>To Grade</mat-label>
+                <mat-select formControlName="toGrade">
+                    <mat-option value="PLAY GROUP">PLAY GROUP</mat-option>
+                    <mat-option value="NURSERY ONE">NURSERY ONE</mat-option>
+                    <mat-option value="NURSERY TWO">NURSERY TWO</mat-option>
+                    <mat-option value="K-1">K-1</mat-option>
+                    <mat-option value="K-2">K-2</mat-option>
+                    <mat-option value="GRADE ONE">GRADE ONE</mat-option>
+                    <mat-option value="GRADE TWO">GRADE TWO</mat-option>
+                    <mat-option value="GRADE THREE">GRADE THREE</mat-option>
+                    <mat-option value="GRADE FOUR">GRADE FOUR</mat-option>
+                    <mat-option value="GRADE FIVE">GRADE FIVE</mat-option>
+                    <mat-option value="GRADE SIX">GRADE SIX</mat-option>
+                    <mat-option value="GRADE SEVEN">GRADE SEVEN</mat-option>
+                    <mat-option value="GRADE EIGHT">GRADE EIGHT</mat-option>
+                    <mat-option value="GRADE NONE">GRADE NINE</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </section>
+        <section>
+            <mat-form-field>
+                <mat-label>Decribe the operations of this Department</mat-label>
+                <textarea matInput matTooltip="Describe into the details, the operations of this Department" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+                    cdkAutosizeMaxRows="5" [(ngModel)]="operations"></textarea>
+            </mat-form-field>
+        </section>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-raised-button matRipple (click)="dialogRef.close(false)" color="primary">
+        Close
+    </button>
+    <button mat-raised-button matRipple color="primary" (click)="submit()">
+        Submit
+    </button>
+</mat-dialog-actions>

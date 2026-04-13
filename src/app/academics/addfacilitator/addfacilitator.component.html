@@ -1,0 +1,51 @@
+<mat-toolbar>
+  <span>
+    Add a new Facilitator
+  </span>
+
+</mat-toolbar>
+<mat-dialog-content>
+  <div>
+    <mat-label class="header">STAFF DETAILS</mat-label>
+    <section class="details">
+      <mat-label>Staff Name</mat-label>
+      <mat-label>{{staff.NAME}}</mat-label>
+    </section>
+    <section class="details">
+      <mat-label>Staff Number</mat-label>
+      <mat-label>{{staff.ID}}</mat-label>
+    </section>
+  </div>
+  @if (image) {
+    <div class="info-data">
+      <img [src]="sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' + image)">
+    </div>
+  }
+  <div id="datarwapper">
+    <mat-label class="header">DEPARTMENT</mat-label>
+    <section id="newdepartment">
+      <mat-form-field>
+        <mat-label>Select Grade</mat-label>
+        <mat-select (selectionChange) ="selectDept('{{dep.DEPTN}}')" [(ngModel)]="selectedDepartment">
+          @for (dep of dept; track dep) {
+            <mat-option value="{{dep.DEPTID}}">{{dep.DEPTN}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      @if (selectedDepartment) {
+        <mat-form-field>
+          <mat-label>Department ID</mat-label>
+          <input matInput readonly value="{{selectedDepartment}}">
+        </mat-form-field>
+      }
+    </section>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button matRipple matTooltip="submit" (click)="dialogRef.close(false)" color="primary">
+    Close
+  </button>
+  <button mat-raised-button matRipple matTooltip="close" color="primary" (click)="submit()">
+    Submit
+  </button>
+</mat-dialog-actions>

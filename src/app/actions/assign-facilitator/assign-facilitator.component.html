@@ -1,0 +1,45 @@
+<mat-toolbar>
+     <span>{{gradeDetails.gradeName}}</span>
+    <span>-</span>
+       <span>({{gradeDetails.gradeId}})</span>
+</mat-toolbar>
+
+    <mat-dialog-content>
+        <div>
+            <img  [src]="sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' + image)">
+        </div>
+    <div>
+        <header>INFORMATION</header>
+        <section>
+            <mat-label>Name</mat-label>
+            <mat-label>{{facilitator.FullName}}</mat-label>
+        </section>
+           <section>
+            <mat-label>Staff Number</mat-label>
+            <mat-label>{{facilitator.StaffID}}</mat-label>
+        </section>
+           <section>
+            <mat-label>Dept ID</mat-label>
+            <mat-label>{{department[0].AssignedDepartment}}</mat-label>
+        </section>
+          <section>
+            <mat-label>Dept</mat-label>
+            <mat-label>{{department[0].DeptName}}</mat-label>
+        </section>
+    </div>
+    
+    </mat-dialog-content>
+    <mat-dialog-actions>
+         <button mat-raised-button matRipple matTooltip="submit" (click)="submit()" color="primary">
+        Submit
+    </button>
+      <button mat-raised-button matRipple matTooltip="Dismiss" (click)="dismiss()" color="primary">
+        Dismiss
+    </button>
+
+    </mat-dialog-actions>
+
+
+
+
+

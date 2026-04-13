@@ -1,0 +1,57 @@
+<mat-toolbar>
+    ADMISSION WITHDRAWAL
+</mat-toolbar>
+
+    <mat-dialog-content>
+    <mat-card>
+        <section>
+            <mat-label>Admission Number</mat-label>
+            <mat-label>{{admissionnumber}}</mat-label>
+        </section>
+    <section>
+            <mat-label>Name of Learner</mat-label>
+            <mat-label>{{promptData.SN}} {{promptData.MN}} {{promptData.LN}}</mat-label>
+        </section>
+
+        <section>
+            <mat-label>Grade</mat-label>
+            <mat-label>{{promptData.GRADE}}</mat-label>
+        </section>
+
+        <section>
+            <mat-label>Admission Status</mat-label>
+            <mat-label>{{promptData.STATUS}}</mat-label>
+        </section>
+   </mat-card>
+
+    <form [formGroup]="form">
+   
+        <mat-form-field >
+            <mat-label>Reason for withdrawal</mat-label>
+            <mat-select  formControlName="reasonforwithdrwal">
+                <mat-option value="TRANFER TO ANOTHER SCHOOL">TRANFER TO ANOTHER SCHOOL</mat-option >
+                <mat-option value="RELOCATION">RELOCATION</mat-option >
+                <mat-option value="INADEQUATE CONTROLS">INADEQUATE CONTROLS</mat-option >
+                <mat-option value="FINANCIAL DIFFICULTIES">FINANCIAL DIFFICULTIES</mat-option >
+              </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+        <mat-label>Enter the detail information for Withdrawal the Learner</mat-label>
+        <textarea matInput placeholder="details of Withdrawal" formControlName="details"></textarea>
+       </mat-form-field>
+       <mat-form-field>
+        <mat-label>Guardian Name</mat-label>
+        <input matInput formControlName="guardianName" placeholder="Guardian Name">
+       </mat-form-field>
+       <mat-form-field>
+       <mat-label>Guardian Contact</mat-label>
+       <input matInput formControlName="GuardianContact" placeholder="Guardian Contact">
+      </mat-form-field>
+    </form>
+   <mat-checkbox matInput class="confirm" (change)="confirm('YES')" [(ngModel)]="isconfirm">Confirm this Applicant</mat-checkbox>
+
+</mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-raised-button color="primary" (click)="hangleWithdrawal()">
+          Submit
+        </button>

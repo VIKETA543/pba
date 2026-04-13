@@ -1,0 +1,350 @@
+<!-- <img  [src]="this.passportPicture" id="profilePicture"> -->
+<mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row">
+        <img  [src]="this.passportPicture" id="profilePicture">
+        <span class="title">REVIEW APPLICATION FORM</span>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-dialog-content class="content mat-typography">
+    <form>
+<section>
+    <h3>Applicant Details</h3>
+    <hr>
+    <mat-card class="card">
+        <label>Application Number</label>
+        <label class="data-fiels">{{this.applicationserialNumber}}</label>
+    </mat-card>
+    <mat-card>
+        <label>Application SurName</label>
+        <label class="data-fiels">{{SName}}</label>
+    </mat-card>
+    <mat-card>
+        <label>Application LastName</label>
+        <label class="data-fiels">{{SName}}</label>
+    </mat-card>
+    <mat-card>
+        <label>Nationality</label>
+        <label class="data-fiels">{{appNation}}</label>
+    </mat-card>
+
+    <mat-card>
+        <label>Address</label>
+        <label class="data-fiels">{{appAddress}}</label>
+    </mat-card>
+
+    <mat-card>
+        <label>Gender</label>
+        <label class="data-fiels">{{appGender}}</label>
+    </mat-card>
+
+    <mat-card>
+        <label>Date of Birth</label>
+        <label class="data-fiels">{{appDOB}}</label>
+    </mat-card>
+
+    <mat-card>
+        <label>Age</label>
+        <label class="data-fiels">{{appAge}}</label>
+    </mat-card>
+
+    <mat-card>
+        <label>Male Siblings</label>
+        <label class="data-fiels">{{appMalesiblings}}</label>
+    </mat-card>
+
+    <mat-card>
+        <label>Female Siblings</label>
+        <label class="data-fiels">{{appFemaleSiblings}}</label>
+    </mat-card>
+</section>
+<section>
+    <h3>Applicant's Father Information</h3>
+    <mat-card>
+        <label>Fathers' Name</label>
+        <label class="data-fiels">{{fatheersName}}</label>
+    </mat-card>
+
+    <mat-card>
+        <label>Fathers Occupation</label>
+        <label class="data-fiels">{{fatherOccu}}</label>
+    </mat-card>
+
+    <mat-card>
+        <label>Father' Place of Work</label>
+        <label class="data-fiels">{{fatherPoWork}}</label>
+    </mat-card>
+
+    <mat-card>
+        <label>Fathers Primary Phone number</label>
+        <label class="data-fiels">{{primPhone}}</label>
+    </mat-card>
+
+    <mat-card>
+        <label>Father Second Phone Number</label>
+        <label class="data-fiels">{{secPhone}}</label>
+    </mat-card>
+
+    <mat-card>
+        <label>Fathers Address</label>
+        <label class="data-fiels">{{fathAddress}}</label>
+    </mat-card>
+
+    <mat-card>
+        <label>Fathers Email</label>
+        <label class="data-fiels">{{fathEmail}}</label>
+    </mat-card>
+
+    <mat-card>
+        <label>Relationship</label>
+        <label class="data-fiels">{{fathRelationship}}</label>
+    </mat-card>
+
+    <mat-card>
+        <label>Fathers Nationality</label>
+        <label class="data-fiels">{{fathNationality}}</label>
+    </mat-card>
+
+    <mat-card>
+        <label>Fathers Educaton</label>
+        <label class="data-fiels">{{fatherEduc}}</label>
+    </mat-card>
+
+    <mat-card>
+        <label>Is Applicant father Alive?</label>
+        <label class="data-fiels">{{isFatherAlive}}</label>
+    </mat-card>
+</section>
+<section>
+    <h3>Applicant's Mother Information</h3>
+    <mat-card>
+        <label>Mothers' Name</label>
+        <label class="data-fiels">{{mothName}}</label>
+    </mat-card> <mat-card>
+        <label>Mothers' Occupation</label>
+        <label class="data-fiels">{{mothOccupation}}</label>
+    </mat-card>
+
+    <mat-card>
+        <label >Mother's place of work</label>
+        <label class="data-fiels">{{MothPofWork}}</label>
+    </mat-card>
+
+    <mat-card>
+        <label>Mothers Primary Phone Number</label>
+        <label class="data-fiels">{{mothPriPhone}}</label>
+    </mat-card>
+
+    <mat-card>
+        <label>Mothers Second Phone Number</label>
+        <label class="data-fiels">{{mothSecPhone}}</label>
+    </mat-card>
+
+    <mat-card>
+        <label>Is applicants Mother Alive</label>
+        <label class="data-fiels">{{MothisAlive}}</label>
+    </mat-card>
+
+    <mat-card>
+        <label>Relationship</label>
+        <label class="data-fiels">{{Mothrelationship}}</label>
+    </mat-card>
+
+    <mat-card>
+        <label>Address</label>
+        <label class="data-fiels">{{mothAddress}}</label>
+    </mat-card>
+
+    <mat-card>
+        <label>Mothers Educational Level</label>
+        <label class="data-fiels">{{mothEducation}}</label>
+    </mat-card>
+    <mat-card>
+        <label>Mother's Email Address</label>
+        <label class="data-fiels">{{mothEmailAdress}}</label>
+    </mat-card>
+    <mat-card>
+        <label>Mothers Nationality</label>
+        <label class="data-fiels">{{mothNationality}}</label>
+    </mat-card>
+    </section>
+    <section>
+        <h3>Applicant's Health Details</h3>
+    <mat-card>
+        <label>Is Applicant in Good State of health</label>
+        <label class="data-fiels">{{hasGoogHealth}}</label>
+    </mat-card>
+    <mat-card>
+        <label>Description of Health Problem</label>
+        <label class="data-fiels">{{descofHealth}}</label>
+    </mat-card>
+    <mat-card>
+        <label>Applicant has normal Eye</label>
+        <label class="data-fiels">{{hasNormalEye}}</label>
+    </mat-card>
+    <mat-card>
+        <label>Description of Eye Problem</label>
+        <label class="data-fiels">{{EyeProblem}}</label>
+    </mat-card>
+    <mat-card>
+        <label>Applicant has good hearing</label>
+        <label class="data-fiels">{{hasNormalHearing}}</label>
+    </mat-card>
+    <mat-card>
+        <label>Description of Ear problem</label>
+        <label class="data-fiels">{{hearingProblem}}</label>
+    </mat-card>
+    <mat-card>
+        <label>Any food Allergies</label>
+        <label class="data-fiels">{{foodAllergy}}</label>
+    </mat-card>
+    </section>
+    <section>
+        <h3>Applicant's Attitude</h3>
+    <mat-card>
+        <label>Is Applicant cooperative</label>
+        <label class="data-fiels">{{isadjustable}}</label>
+    </mat-card>
+    <mat-card>
+        <label>What is applicant Attitude?</label>
+        <label class="data-fiels">{{applicantAttide}}</label>
+    </mat-card>
+    <mat-card>
+        <label>Is the applicant fully Immunized?</label>
+        <label class="data-fiels">{{isImmuzed}}</label>
+    </mat-card>
+    <mat-card>
+        <label>Has the applicant been traumatized before?</label>
+        <label>{{traumaRelated}}</label>
+    </mat-card>
+    </section>
+    <section>
+    <mat-card>
+
+        <label>Are parents still Marrying</label>
+        <label>{{ptMarriageStatus}}</label>
+    </mat-card>
+    </section>
+    <section>
+        <h3>Payment of fee and Educational Commitments</h3>
+    <mat-card>
+        <label>Who pays school fee</label>
+        <label>{{whopCommitment}}</label>
+    </mat-card>
+    <mat-card>
+        <label>Title of Payee</label>
+        <label>{{Title}}</label>
+    </mat-card>
+    <mat-card>
+        <label>Name of Payee</label>
+        <label>{{namePayee}}</label>
+    </mat-card>
+    <mat-card>
+        <label>Digital Address of Payee</label>
+        <label>{{digiAddressPayee}}</label>
+    </mat-card>
+    <mat-card>
+        <label>Address of Payee</label>
+        <label>{{PayeeAdd}}</label>
+    </mat-card>
+    <mat-card>
+        <label>Email Addressof Payee</label>
+        <label>{{emailPayee}}</label>
+    </mat-card>
+    <mat-card>
+        <label>Phone Number of Payee</label>
+        <label>{{PhoneofPayee}}</label>
+    </mat-card>
+    <mat-card>
+        <label>Name of Institution</label>
+        <label>{{nameofInst}}</label>
+    </mat-card>
+    <mat-card>
+        <label>Postal Address of Institution</label>
+        <label>{{postalAddrInst}}</label>
+    </mat-card>
+    <mat-card>
+        <label>Email Address of Institution</label>
+        <label>{{emailInst}}</label>
+    </mat-card>
+    <mat-card>
+        <label>Phone Number of Institution</label>
+        <label>{{PhoneNumbInst}}</label>
+    </mat-card>
+    <mat-card>
+        <label>Digital Address of Institution</label>
+        <label>{{digitalAddressofInst}}</label>
+    </mat-card>
+    </section>
+    <section>
+        <h3>Parent/Guardian Conscent</h3>
+    <mat-card>
+        <label>Applicant can use play equipments</label>
+        <label>{{PlayEquip}}</label>
+    </mat-card>
+    <mat-card>
+        <label>Applicant can participate in school Activities</label>
+        <label>{{schoolActivites}}</label>
+    </mat-card>
+    <mat-card>
+        <label>Applicant cant be evaluated</label>
+        <label>{{evaluationAllowed}}</label>
+    </mat-card>
+    <mat-card>
+        <label>Applicant can receive Emergency Care</label>
+        <label>{{emergMedicalCare}}</label>
+    </mat-card>
+    <mat-card>
+        <label>Emergency Contact 1</label>
+        <label>{{EmergContact1}}</label>
+    </mat-card>
+    <mat-card>
+        <label>Emergency Contact 2</label>
+        <label>{{EmergContact2}}</label>
+    </mat-card>
+    <mat-card>
+        <label>Emergency contact 3</label>
+        <label>{{EmergContact3}}</label>
+    </mat-card>
+    <mat-card>
+        <label>Family Doctors's Contact 1</label>
+        <label>{{famDocContact1}}</label>
+    </mat-card>
+    <mat-card>
+        <label>Family Doctors' Contact 2</label>
+        <label>{{famDocContact2}}</label>
+    </mat-card>
+    <mat-card>
+        <label>Family Doctors' Contact 3</label>
+        <label>{{famDocContact3}}</label>
+    </mat-card>
+    <mat-card>
+        <label>In case of Emergency, your school doctor can be called</label>
+        <label>{{SchoolDoc}}</label>
+    </mat-card>
+    <mat-card>
+        <label>You can call Ambulance Service</label>
+        <label>{{AmbService}}</label>
+    </mat-card>
+    <mat-card>
+        <label>You can send my ward to hospital</label>
+        <label>{{sendHospital}}</label>
+    </mat-card>
+    <mat-card>
+        <label>I agree to pay medical Expenses</label>
+        <label>{{payMedExpense}}</label>
+    </mat-card>
+    <mat-card>
+        <label>Parent/Guardian Declaration</label>
+        <label>{{declara}}</label>
+    </mat-card>
+</section>
+</form>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+    <button mat-raised-button color="primary" type="submit" (click)="handleSubmit()"
+    >
+    <!-- [disabled]="!(applicationForm.valid && applicationForm.dirty) -->
+        <!-- <mat-icon>home</mat-icon> -->
+        CONFIRM APPLICATION</button>
+        <!-- <button mat-raised-button color="primary" (click)="previous()">PREVIOUS</button> -->
+ </mat-dialog-actions>

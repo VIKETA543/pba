@@ -1,0 +1,29 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row fxLayout="row">
+    <span class="title">UPLOAD PASSPORT PICTURE</span>
+  </mat-toolbar-row>
+
+</mat-toolbar>
+<mat-dialog-content class="mat-typography">
+
+  <mat-form-field>
+    <input id="selectedfile" matInput [value]="selectedFile ? selectedFileNames : 'Select Image'" readonly=""/>
+    @if (selectedFile) {
+      <section>
+        @for (prev of preview; track prev) {
+          <img [src]="prev" class="preview">
+        }
+      </section>
+    }
+    <section>
+      @if (selectedFile) {
+        <button  mat-flat-button color="primary" [disabled]="complete"(click)="uploadFiles()" id="saveImage">
+          <mat-icon> navigation</mat-icon>
+        </button>
+      }
+    </section>
+  </mat-form-field>
+  <mat-icon>add_a_photo</mat-icon>
+  <input  type="file" id="pasportImage" accept="image/*" (change)="selectImage($event)">
+
+</mat-dialog-content>

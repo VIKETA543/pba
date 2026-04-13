@@ -1,0 +1,254 @@
+<mat-toolbar>
+  <span id="header"> ADMISSION REGISTER</span>
+  <section id="search-form-field">
+    <mat-form-field>
+      <mat-label>
+        Enter Admission Number
+      </mat-label>
+      <input matInput [(ngModel)]="findByAdm_No">
+
+    </mat-form-field>
+    <mat-dialog-actions align="center">
+      <button mat-raised-button type="submit" id="add-reg" matRipple (click)="searchRegistry()">
+        <mat-icon>search</mat-icon>
+        Search
+      </button>
+    </mat-dialog-actions>
+  </section>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav" position="end" opened="false">
+    <mat-toolbar id="mattoolbar-2">
+      Register Guardian Information
+    </mat-toolbar>
+
+    <mat-dialog-content>
+      <form [formGroup]="AddRegForm">
+        <mat-form-field>
+          <mat-label>Admission Number</mat-label>
+          <input matInput formControlName="addmissionNumber" value="{{admNumber}}" readonly="">
+        </mat-form-field>
+        <mat-label id="guardian-h-s">Guadian Information</mat-label>
+
+        <mat-form-field>
+          <mat-label>Name of Guardian</mat-label>
+          <input matInput formControlName="Guardian">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Guadian Address</mat-label>
+          <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+          cdkAutosizeMaxRows="5" formControlName="GuardianAddress"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Guardian Phone Number</mat-label>
+          <input matInput formControlName="PhoneNumber">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Last School your ward Attended</mat-label>
+          <input matInput formControlName="LastSchool">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Date of Last Attendance</mat-label>
+          <input matInput type="datetime" [matDatepicker]="dateoflastAttendance"
+            formControlName="LastAttendanceDate">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="dateoflastAttendance"></mat-datepicker-toggle>
+            <mat-datepicker #dateoflastAttendance></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>The causes of leaving the school</mat-label>
+            <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" formControlName="causeofLeaving"></textarea>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Additional Information</mat-label>
+            <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" formControlName="remarks"></textarea>
+          </mat-form-field>
+        </form>
+        <mat-dialog-actions align="center">
+          <button mat-raised-button type="submit" id="add-reg" matRipple (click)="addRegistry()">Add
+          Registry</button>
+        </mat-dialog-actions>
+
+      </mat-dialog-content>
+
+
+    </mat-sidenav>
+
+    <mat-sidenav-content class="content">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="No.">
+          <th mat-header-cell *matHeaderCellDef> No.</th>
+          <td mat-cell *matCellDef="let element   let i = index;"> {{i+1}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Admission Number">
+          <th mat-header-cell *matHeaderCellDef> Admission Number</th>
+          <td mat-cell *matCellDef="let element"> {{element.AdmissionNumber}} </td>
+        </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="Surname">
+          <th mat-header-cell *matHeaderCellDef>Surname </th>
+          <td mat-cell *matCellDef="let element"> {{element.Surname}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="Middle Name">
+          <th mat-header-cell *matHeaderCellDef> Middle Name </th>
+          <td mat-cell *matCellDef="let data"> {{data.Middlename}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="Last Name">
+          <th mat-header-cell *matHeaderCellDef>Last Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.Lastname}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Admission Date">
+          <th mat-header-cell *matHeaderCellDef>Admission Date </th>
+          <td mat-cell *matCellDef="let element"> {{element.Admisiondate}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Grade">
+          <th mat-header-cell *matHeaderCellDef>Grade </th>
+          <td mat-cell *matCellDef="let element"> {{element.ClassAssigned}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Status">
+          <th mat-header-cell *matHeaderCellDef>Status </th>
+          <td mat-cell *matCellDef="let element"> {{element.LearnerStatus}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Actions">
+          <th mat-header-cell *matHeaderCellDef>Actions</th>
+          <!-- <td mat-cell *matCellDef="let element"> {{element.action}} </td> -->
+
+          <td mat-cell *matCellDef="let row" class="btn-style">
+            <button mat-raised-button color="warn" matRipple (click)="sidenav.toggle()"
+              (click)="viewDetails(row.AdmissionNumber)">
+              <mat-icon class="icon-delete">person_add</mat-icon>
+
+            </button>
+            <button mat-raised-button color="warn" matRipple (click)="sidenavDetails.toggle()"
+              (click)="showRegDetails(row.AdmissionNumber)">
+              @if (!sidenavDetails.opened) {
+                <mat-icon class="icon-view">
+                  visibility
+                </mat-icon>
+              }
+              @if (sidenavDetails.opened) {
+                <mat-icon class="icon-view">
+                  visibility_off
+                </mat-icon>
+              }
+
+            </button>
+            <!--
+            <button mat-raised-button color="warn" matRipple (click)="handleWithdrawLearner(row.appNumber)"
+              [matMenuTriggerFor]="printMenu">
+              <mat-icon>print</mat-icon>
+
+              <mat-menu #printMenu="matMenu" yPosition="below">
+                <button class="btnMenu" mat-menu-item>
+                  <mat-icon>print</mat-icon>
+                  <span> Summary</span>
+                </button>
+                <button class="btnMenu" mat-menu-item>
+                  <mat-icon>print</mat-icon>
+                  <span>Print Form</span>
+                </button>
+              </mat-menu>
+
+            </button> -->
+          </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      </table>
+    </mat-sidenav-content>
+
+    <mat-sidenav #sidenavDetails="matSidenav" id="sidenavDetails" position="start" mode="over">
+      <mat-toolbar id="mattoolbar-2">
+        <span> Register Information</span>
+        <button mat-raised-button type="submit" id="add-reg" matRipple (click)="addRegistry()">
+        Print</button>
+      </mat-toolbar>
+      @if (Registry) {
+        <section class="content">
+          <mat-form-field>
+            <mat-label >SurName</mat-label>
+            <input matInput value="{{Registry.applicantSurname}}" readonly="true">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label >Middle Name</mat-label>
+            <input matInput value="{{Registry.applicantMiddlename}}" readonly="true">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label >Last Name</mat-label>
+            <input matInput value="{{Registry.applicantLastname}}" readonly="true">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label >Date of Birth</mat-label>
+            <input matInput value="{{Registry.applicantDateofBirth}}" readonly="true">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label >Admission Number</mat-label>
+            <input matInput value="{{Registry.AdmissionNumber}}" readonly="true">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label >Admission Date</mat-label>
+            <input matInput value="{{Registry.AdmissionDate}}" readonly="true">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label >Admission Status</mat-label>
+            <input matInput value="{{Registry.Confirmed}}" readonly="true">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label >Name of Previous School</mat-label>
+            <input matInput value="{{Registry.LastSchool}}" readonly="true">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label >Guardians' Name</mat-label>
+            <input matInput value="{{Registry.GuardianName}}" readonly="true">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label >Guadian's Address</mat-label>
+            <input matInput value="{{Registry.GuardianAddress}}" readonly="true">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label >Guardian Phone Number</mat-label>
+            <input matInput value="{{Registry.GuardianPhone}}" readonly="true">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label >Last attendace of previous school</mat-label>
+            <input matInput value="{{Registry.LastAttendanceDate}}" readonly="true">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label >Cuases of leaving previous school</mat-label>
+            <input matInput value="{{Registry.couseofLeavingtheschool}}" readonly="true">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label >Additional Information</mat-label>
+            <input matInput value="{{Registry.AdditionalInformation}}" readonly="true">
+          </mat-form-field>
+        </section>
+      }
+    </mat-sidenav>
+
+  </mat-sidenav-container>
+    <mat-dialog-actions>
+        <button mat-button matRipple (click)="dialogRef.close(false)" color="primary" class="btn-close">
+            Close
+        </button>
+        <!-- <button  mat-button matRipple color="primary" (click)="submit()">
+            Submit
+        </button> -->
+    </mat-dialog-actions>
+  <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+  showFirstLastButtons
+  aria-label="Select page of periodic elements">
+</mat-paginator> -->

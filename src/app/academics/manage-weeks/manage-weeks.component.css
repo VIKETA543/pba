@@ -1,0 +1,68 @@
+mat-toolbar{
+    background-color: rgb(3, 39, 92);
+    color:white
+}
+mat-dialog-actions{
+    background-color: rgb(102, 105, 105);
+}
+section{
+    display: flex;
+}
+
+section{
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+}
+#wk-header{
+background-color:  rgb(5, 110, 110);
+padding: 0px;
+width: 100%;
+}
+#wk-header>label{
+    color: white;
+    display: flex;
+}
+section>label:first-child{
+width: 10%;
+font-size: 1.5vw;
+font-weight: bolder;
+}
+.data-record{
+width: 30%;
+font-size: clamp(1vw,1.5em,2em);
+font-weight: bold;
+padding: 10px;
+}
+section:nth-child(even){
+    background-color: rgb(247, 250, 250);
+}
+section:nth-child(odd){
+    background-color: rgb(183, 184, 185);
+}
+#main-container{
+    box-shadow: 1px 0px 15px 1px grey;
+    border-radius: .3em;
+}
+label{
+    padding: 10px;
+    color: rgb(39, 39, 39);
+}
+div{
+    overflow: hidden;
+    margin: 1px auto;
+}
+.del{
+    border: 0;
+    outline: none;
+    background-color: transparent;
+    color: red;
+transition: 1s;
+    box-shadow: 0px 0px 5px 2px lightgray;
+}
+.del:hover{
+    background-color: aquamarine;
+    color: rgb(1, 41, 75);
+    cursor: pointer;
+}
+

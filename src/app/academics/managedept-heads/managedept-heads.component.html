@@ -1,0 +1,109 @@
+<mat-toolbar>
+  <span>
+    Head of Departments
+  </span>
+  <section id="search-container">
+    <input matInput type="text" placeholder="Search" [(ngModel)]="search" matTooltip="Enter Department head Id">
+    <button matButton matTooltip="Search" matRipple (click)="handleSearch()">
+      <mat-icon>search</mat-icon>
+    </button>
+  </section>
+</mat-toolbar>
+<mat-dialog-content>
+  @for (d of data; track d) {
+    <menu>
+      <div class="textData">
+        <section>
+          <mat-label>Name</mat-label>
+          <mat-label>{{d.FullName}}</mat-label>
+        </section>
+        <section>
+          <mat-label>Staff Number</mat-label>
+          <mat-label>{{d.StaffId}}</mat-label>
+        </section>
+        <section>
+          <mat-label>Department ID</mat-label>
+          <mat-label>{{d.AssignedDepartment}}</mat-label>
+        </section>
+        <section>
+          <mat-label>Department</mat-label>
+          <mat-label>{{d.DeptName}}</mat-label>
+        </section>
+        <section>
+          <mat-label>Tenure in office</mat-label>
+          <mat-label>{{d.Tenure}}</mat-label>
+        </section>
+        <section>
+          <mat-label>Tenure Status</mat-label>
+          <mat-label>{{d.TN_STATUS}}</mat-label>
+        </section>
+        <section>
+          <mat-label>Period between </mat-label>
+          <mat-label>{{d.SpanFromDate}} - {{d.SpanToDate}}</mat-label>
+        </section>
+        <section>
+          <mat-label>Duties</mat-label>
+          <mat-label>{{d.Resposibilities}}</mat-label>
+        </section>
+        <section>
+          <mat-label>Status</mat-label>
+          <mat-label>{{d.Status}}</mat-label>
+        </section>
+        <section>
+          <mat-label>Assigned By</mat-label>
+          <mat-label>{{d.AssignedBy}}</mat-label>
+        </section>
+        <section>
+          <mat-label>Authorised</mat-label>
+          @if (d.Authorised===0) {
+            <mat-label class="auth-label"><span class="authData">{{notAuthorised}}</span>
+            @if (d.Authorised===0) {
+              <button mat-icon-button class="btn-auth" [disabled]="d.Authorised===1"
+              (click)="handleAccessControl(d.StaffId,d.AssignedDepartment,true)">Allow Access</button>
+            }
+          </mat-label>
+        }
+        @if (d.Authorised===1) {
+          <mat-label class="auth-label"><span class="authData">{{authorised}}</span>
+          @if (d.Authorised===1) {
+            <button mat-icon-button class="btn-auth" [disabled]="d.Authorised===0"
+            (click)="handleAccessControl(d.StaffId,d.AssignedDepartment,false)">Revoke Access</button>
+          }
+        </mat-label>
+      }
+    </section>
+    <section>
+      <mat-label>Authorised By</mat-label>
+      <mat-label>{{d.AuthorisedBy}}</mat-label>
+    </section>
+    <section>
+      <mat-label>Set Position type</mat-label>
+      <mat-label>
+        <mat-checkbox matInput class="confirm"
+        (change)="setPosition('Acting',true,d.StaffId,d.AssignedDepartment,d.Authorised)" [(ngModel)]="actingPosition">Acting</mat-checkbox>
+        <mat-checkbox matInput class="confirm"
+        (change)="setPosition('Substantive',true,d.StaffId,d.AssignedDepartment,d.Authorised)" [(ngModel)]="substantivePosition">Substantive</mat-checkbox>
+        @if (selectedPosition) {
+          <button mat-raised-button matRipple matTooltip="close" color="primary" (click)="handlePosition()">
+            Submit
+          </button>
+        }
+      </mat-label>
+    </section>
+  </div>
+  <div class="imageData">
+    <img [src]="d.Photo">
+  </div>
+</menu>
+}
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-raised-button matRipple matTooltip="submit" (click)="dialogRef.close(false)" color="primary">
+    Close
+  </button>
+  <button mat-raised-button matRipple matTooltip="close" color="primary" (click)="submit()">
+    Submit
+  </button>
+</mat-dialog-actions>

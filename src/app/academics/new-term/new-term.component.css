@@ -1,0 +1,51 @@
+mat-toolbar{
+    background-color: rgb(3, 119, 113);
+    color: whitesmoke;
+}
+div{
+    border: 1px solid rgb(3, 119, 113);;
+    border-radius: .3em;
+    box-shadow: 0px 0px 15px 2px grey;
+    overflow: hidden;
+    margin: 10px;
+    
+}
+header{
+    padding: 10px;
+    border-bottom: 1px solid rgb(3, 119, 113);;
+}
+mat-slide-toggle{
+width: 50%;
+margin: 5PX;
+}
+mat-dialog-actions{
+    background-color: rgb(151, 151, 151);
+}
+button{
+    width: auto;
+    border-radius: .3em;
+    padding: 10px;
+    border: 0px;
+    outline: none;
+    transition: 1s;
+    background-color: rgb(3, 124, 104);
+    color: whitesmoke;
+}
+button:hover{
+    background-color: rgb(237, 241, 243);
+    color: rgb(6, 79, 151);
+}
+section{
+    display: flex;
+    overflow: hidden;
+}
+label{
+    width: 50%;
+    margin-left: 10px;
+}
+section:nth-child(even){
+    background-color: aquamarine;
+}
+section:nth-child(odd){
+    background-color: azure;
+}

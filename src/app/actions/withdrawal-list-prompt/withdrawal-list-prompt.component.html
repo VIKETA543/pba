@@ -1,0 +1,19 @@
+<div class="form-container">
+    <mat-label id="header">Request Admision Details</mat-label>
+    <mat-dialog-content>
+      <form [formGroup]="form">
+        <mat-form-field appearance="fill">
+          <mat-label>Admision Number</mat-label>
+          <input matInput placeholder="Enter Admission Number" formControlName="AdmisionNumber" />
+        </mat-form-field>      
+      </form>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-raised-button matRipple (click)="dialogRef.close(false)" color="primary">
+        Close
+      </button>
+      <button mat-raised-button matRipple color="primary" (click)="submit()">
+        Submit
+      </button>
+    </mat-dialog-actions>
+  </div>

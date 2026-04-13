@@ -1,0 +1,53 @@
+<main>
+  <mat-toolbar>
+    @if (sidenav.mode==='over') {
+      <button mat-icon-button (click)="sidenav.toggle()">
+        @if (!sidenav.opened) {
+          <mat-icon>
+            menu
+          </mat-icon>
+        }
+        @if (sidenav.opened) {
+          <mat-icon>
+            close
+          </mat-icon>
+        }
+      </button>
+    }
+    <span id="span">
+      ADMIN SYSTEM
+    </span>
+
+    @if (image) {
+      <img  [src]="this.image" id="profilePicture" alt="Photo">
+    }
+    <button mat-icon-button>
+      <mat-icon>arrow</mat-icon>
+    </button>
+
+  </mat-toolbar>
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav="matSidenav">
+      <button routerLink='app-account-mode' mat-button class="menu-button">
+        <mat-icon>account_balance_wallet</mat-icon>
+        <span>Account</span>
+      </button>
+      <button routerLink='app-admissions' mat-button class="menu-button">
+        <mat-icon>person</mat-icon>
+        <span>Admissions</span>
+      </button>
+      <button mat-button routerLink='app-examinations'class="menu-button">
+        <mat-icon>hourglass_empty</mat-icon>
+        <span>Examinations</span>
+      </button>
+      <button routerLink='app-academicdashboard'mat-button class="menu-button">
+        <mat-icon>rowing</mat-icon>
+        <span>Academics</span>
+      </button>
+    </mat-sidenav>
+    <mat-sidenav-content class="content">
+      <router-outlet ></router-outlet>
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</main>

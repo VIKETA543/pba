@@ -1,0 +1,72 @@
+mat-label{
+    display: block;
+    max-width: 100%;   
+}
+mat-card{
+    padding: 10px;
+    margin: 10px;
+}
+mat-label:nth-child(odd){
+
+color: rgb(2, 62, 114);
+    padding: 10px;
+  
+}
+mat-label:nth-child(even){
+
+    color: rgb(2, 114, 67);
+        padding: 10px;
+ 
+    }
+section{
+    margin: 0px;
+    max-width: 100%;
+    padding: 0;
+    display: flex;
+  flex: 1;
+  border-bottom:  1px solid rgb(2, 62, 114);
+
+    /* border: 1px solid rgb(2, 62, 114); */
+}
+section>mat-label{
+    width: calc(100% - 50%);
+}
+mat-form-field,mat-select,input{
+
+    width: 100%;
+    margin-top: 10px;
+}
+
+mat-toolbar{
+    background-color: rgb(229, 231, 233);
+    color: rgb(3, 55, 122);
+    border-bottom: 1px solid rgb(2, 114, 67);;
+}
+mat-dialog-actions{
+    background-color: rgb(229, 231, 233);
+    color: rgb(3, 55, 122);
+}
+button{
+    outline: none;
+    border: 0;
+    box-shadow: 0px 0px 10px 2px gray;
+    margin: 1px;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: .2em;
+    transition: 1s;
+  }
+
+  button:first-child{
+    background-color: rgb(143, 2, 2);
+    color: whitesmoke;
+  }
+  button:last-child{
+    background-color: rgb(87, 2, 143);
+    color: whitesmoke;
+  }
+  button:first-child:hover,  button:last-child:hover{
+    background-color: whitesmoke;
+    border:1px soldi grey;
+    color:gray
+}

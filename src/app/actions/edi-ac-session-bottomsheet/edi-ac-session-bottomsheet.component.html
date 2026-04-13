@@ -1,0 +1,60 @@
+<mat-toolbar>
+  Edit Academic Session
+</mat-toolbar>
+<mat-dialog-content>
+  <div id="content-wrapper">
+    <section >
+      <div>
+        <mat-label>Session</mat-label>
+        <mat-label>{{qryResult.ac_session}}</mat-label>
+      </div>
+      <div>
+        <mat-label>Description</mat-label>
+        <mat-label>{{qryResult.Description}}</mat-label>
+      </div>
+      <div>
+        <mat-label>Academic year begins</mat-label>
+        <mat-label>{{qryResult.SessionStartDate}}</mat-label>
+      </div>
+      <div>
+        <mat-label>Academic year ends</mat-label>
+        <mat-label>{{qryResult.SessionEndate}}</mat-label>
+      </div>
+      <div class="btn-wrapper">
+        <button class="btnEdit" matTooltip="Display edit dialog" (click)="isEditable(true)">Edit Details</button>
+      </div>
+    </section>
+    @if (editSelected) {
+      <section>
+        <mat-card class="info">
+          <p>Register new session</p>
+          <mat-form-field>
+            <mat-label>Enter Academic Session</mat-label>
+            <input matInput [(ngModel)]="newSession" placeholder="e.g. 2024-2025">
+          </mat-form-field>
+          <button class="btnEdit" matTooltip="Display edit dialog" (click)="changeSession(qryResult.ac_session)">Change academic Session period</button>
+        </mat-card>
+        <mat-card>
+          <p class="info">Select new Dates</p>
+          <mat-form-field>
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+              <input matStartDate placeholder="Startdate" [(ngModel)]="StartDate">
+              <input matEndDate placeholder="End date" [(ngModel)]="EndDate">
+            </mat-date-range-input>
+            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+          <button class="btnEdit" matTooltip="Display edit dialog" (click)="changeDates(qryResult.ac_session)">Change Date</button>
+        </mat-card>
+      </section>
+    }
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button matRipple matTooltip="dismiss" (click)="dismiss()" color="primary">
+    Dismiss
+  </button>
+
+</mat-dialog-actions>

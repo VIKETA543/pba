@@ -1,0 +1,39 @@
+<mat-toolbar>
+  Weeks
+</mat-toolbar>
+<mat-dialog-content>
+  <div id="main-container">
+    <section id="wk-header">
+      <label class="data-record">No</label>
+      <label class="data-record">RGD. No.</label>
+      <label class="data-record">Week </label>
+      <label class="data-record">Action </label>
+    </section>
+    @if (loadedweeks) {
+      <div>
+        @for (w of loadedweeks; track w) {
+          <section>
+            <label>{{w.SN}}</label>
+            <label class="data-record">{{w.WeekID}}</label>
+            <label class="data-record">{{w.WeekDescription}}</label>
+                 <div class="card flex justify-center">
+            <button pButton matRipple  matTooltip="Delete Item" severity="danger" (click)="del(w.SN,w.WeekDescription)">
+                <i class="pi pi-trash" pButtonIcon></i>
+                <span pButtonLabel>Delete</span>
+            </button>
+        </div>
+      
+          </section>
+        }
+      </div>
+    }
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button matRipple matTooltip="submit" (click)="addWeek()" color="primary">
+    Add a Week
+  </button>
+  <button mat-raised-button matRipple matTooltip="submit" (click)="dialogRef.close(false)" color="primary">
+    Close
+  </button>
+</mat-dialog-actions>

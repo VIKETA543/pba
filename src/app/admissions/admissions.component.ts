@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MatCommonModule } from '@angular/material/core';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SignupComponent } from '../signup/signup.component';

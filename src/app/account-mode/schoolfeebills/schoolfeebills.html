@@ -1,0 +1,216 @@
+<div class="academic-data">
+    <div class="card flex justify-center">
+
+        <p-select [options]="departmentData" severity="danger" [(ngModel)]="selectedDepartemnt"
+            optionLabel="selectedDepartemnt.DeptName" (onChange)="getSelecteDepartment($event)" [filter]="true"
+            filterBy="selectedDepartemnt.DeptName" [showClear]="true" placeholder="Select a Department"
+            class="w-full md:w-56">
+            <ng-template #selectedItem let-departmentData>
+                <div class="flex items-center gap-2">
+                    <!-- <img src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png" [class]="'flag flag-' + selectedCountry.code.toLowerCase()" style="width: 18px" /> -->
+                    <div>{{ departmentData.DeptName }}</div>
+                </div>
+            </ng-template>
+            <ng-template let-departmentData #item>
+                <div class="flex items-center gap-2">
+
+                    <div>{{ departmentData.DeptName }}</div>
+                </div>
+            </ng-template>
+        </p-select>
+    </div>
+    <p-divider />
+    <div class="card flex justify-center">
+        <p-select [options]="gradesData" [(ngModel)]="selectedGrades" optionLabel="gradesData.GradeDescription"
+            (onChange)="getSelecteGrades($event)" [filter]="true" filterBy="gradesData.GradeDescription"
+            [showClear]="true" placeholder="Select a Grade" class="w-full md:w-56">
+            <ng-template #selectedItem let-gradesData>
+                <div class="flex items-center gap-2">
+                    <div>{{ gradesData.GradeDescription }}</div>
+                </div>
+            </ng-template>
+            <ng-template let-gradesData #item>
+                <div class="flex items-center gap-2">
+                    <div>{{ gradesData.GradeDescription }}</div>
+                </div>
+            </ng-template>
+        </p-select>
+    </div>
+    <p-divider />
+
+    <div class="card flex justify-center">
+        <p-select [options]="academicTerm" [(ngModel)]="selectedTerm" optionLabel="academicTerm.TermlyObject"
+            (onChange)="getSelecteGrades($event)" [filter]="true" filterBy="academicTerm.TermlyObject"
+            [showClear]="true" placeholder="Select a Term" class="w-full md:w-56">
+            <ng-template #selectedItem let-academicTerm>
+                <div class="flex items-center gap-2">
+
+                    <div>{{ academicTerm.TermlyObject }}</div>
+                </div>
+            </ng-template>
+            <ng-template let-academicTerm #item>
+                <div class="flex items-center gap-2">
+                    <div>{{ academicTerm.TermlyObject }}</div>
+                </div>
+            </ng-template>
+        </p-select>
+    </div>
+    <p-divider />
+    <div class="card flex justify-center">
+        <p-select [options]="academicyear" [(ngModel)]="selectedAcademicyear" optionLabel="academicyear.ac_session"
+            (onChange)="getSelecteGrades($event)" [filter]="true" filterBy="academicyear.ac_session" [showClear]="true"
+            placeholder="Select academic year" class="w-full md:w-56">
+            <ng-template #selectedItem let-academicyear>
+                <div class="flex items-center gap-2">
+                    <div>{{ academicyear.ac_session }}</div>
+                </div>
+            </ng-template>
+            <ng-template let-academicyear #item>
+                <div class="flex items-center gap-2">
+
+                    <div>{{ academicyear.ac_session }}</div>
+                </div>
+            </ng-template>
+        </p-select>
+    </div>
+</div>
+<div class="card flex justify-center bill-id-h">
+
+    <label class="bill-id">Bill Number</label>
+    <p-divider layout="vertical" />
+    <label class="bill-id">{{billID}}</label>
+
+</div>
+<p-divider></p-divider>
+<div class="card flex flex-wrap gap-4 bill-in-data">
+    <div class="flex-wrap  gap-4 toggle-sw-1">
+        <label class="mb-2 block font-bold" for="minmax-buttons">Current Bill</label>
+        <p-inputnumber class="data-input" [(ngModel)]="CurrentBill" mode="decimal" [showButtons]="true"
+            inputId="minmax-buttons" [min]="0" [max]="100" placeholder="e.g 0.00" />
+    </div>
+    <p-divider layout="vertical" />
+    <div class="card flex justify-center gap-4 toggle-sw">
+        Set as current bill
+        <p-toggleswitch [(ngModel)]="isCurrent" (onChange)="setCurrentBill($event)">
+            <ng-template #handle let-isCurrent="isCurrent">
+                <i [ngClass]="['!text-xs', 'pi', isCurrent ? 'pi-check' : 'pi-times']"></i>
+            </ng-template>
+        </p-toggleswitch>
+        
+    </div>
+         <p-button label="Submit" severity="success" (onClick)="submitBiil()" />
+</div>
+
+<div class="card">
+    <p-table #dt1 [value]="billHistory" dataKey="id" [rows]="10" [rowsPerPageOptions]="[10, 25, 50]"
+        [loading]="loading()" [paginator]="true"
+        [globalFilterFields]="['billNumber', 'ac_session', 'TermlyObject', 'currentBill','dateposted','DeptName','GradeDescription']"
+        stripedRows="true">
+        
+         <ng-template #caption>
+                    <div class="card flex flex-wrap gap-4 justify-between">
+                        <p-button label="Clear" [outlined]="true" icon="pi pi-filter-slash" (click)="clear(dt1)" />
+                        <p-iconfield iconPosition="left" class="ml-auto">
+                            <p-inputicon>
+                                <i class="pi pi-search"></i>
+                            </p-inputicon>
+                            <input pInputText type="text"   (input)="dt1.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
+                        </p-iconfield>
+                    </div>
+                </ng-template>
+        <ng-template #header>
+            <tr>
+                <th style="min-width:15rem">
+                    <div class="flex items-center justify-between">
+                        Serial
+                    </div>
+                </th>
+                <th style="min-width:15rem">
+                    <div class="flex items-center justify-between">
+                        Bill Number
+                    </div>
+                </th>
+                <th style="min-width:15rem">
+                    <div class="flex items-center justify-between">
+                        Academic Year
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                    <div class="flex items-center justify-between">
+                        Term
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                    <div class="flex items-center justify-between">
+                        Department
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                    <div class="flex items-center justify-between">
+                        Grade
+                    </div>
+                </th>
+                <th>Current Bill</th>
+                <th style="min-width:10rem">
+                    <div class="flex items-center justify-between">
+                        Active Bill
+                    </div>
+                </th>
+                <th>Date</th>
+                <th style="width: 3rem">
+                    <div class="flex items-center justify-between">
+                        Actions
+                    </div>
+                </th>
+
+            </tr>
+        </ng-template>
+        <ng-template #body let-billHistory>
+            <tr>
+                <td>
+                    {{ billHistory.sn }}
+                </td>
+                <td>
+                    <div class="flex items-center gap-2">
+
+                        <span>{{billHistory.billNumber }}</span>
+                    </div>
+                </td>
+                <td>
+                    <div class="flex items-center gap-2">
+                        <span>{{ billHistory.ac_session }}</span>
+                    </div>
+                </td>
+                <td>billHistory.TermlyObject</td>
+                <td>
+                    billHistory.DeptName
+                </td>
+                <td class="text-center">
+                    billHistory.GradeDescription
+                </td>
+                <td>
+                    {{ billHistory.currentBill | currency: 'Ghø' : 'symbol' }}
+                </td>
+                <td>
+                    {{ billHistory.dateposted | date: 'MM/dd/yyyy' }}
+                </td>
+                <td>
+                    <div class="card flex justify-center">
+                        <p-toggleswitch [(ngModel)]="billHistory.isCurrentbill" (onChange)="setasCurrentBill($event)" />
+                    </div>
+
+                </td>
+                <td></td>
+            </tr>
+        </ng-template>
+        <ng-template #emptymessage>
+            <tr>
+                <td colspan="7">No customers found.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+<div class="card">
+    <p-toast />
+</div>

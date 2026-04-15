@@ -17,6 +17,8 @@ import { ReviewApplicantionComponent } from './registerlearner/review-applicanti
 import { ReviewAdmissionComponent } from './confirm-admission/review-admission/review-admission.component';
 import { ConfirmAdmissionComponent } from './confirm-admission/confirm-admission.component';
 import { AcademicdashboardComponent } from './academics/academicdashboard/academicdashboard.component';
+import { Learneraccount } from './account-mode/learneraccount/learneraccount';
+import { Schoolfeebills } from './account-mode/schoolfeebills/schoolfeebills';
 
 
 export const routes: Routes = [
@@ -26,9 +28,14 @@ export const routes: Routes = [
     },
     { path: 'app-login', component: LoginComponent },
     { path: 'app-forgotPassword', component: ForgotpassordComponent },
-    {   path: 'app-admin-dashboard', component: AdminDashboardComponent,
-        children: [
-            { path: 'app-account-mode', component: AccountModeComponent },
+    {
+        path: 'app-admin-dashboard', component: AdminDashboardComponent, children: [
+            {
+                path: 'app-account-mode', component: AccountModeComponent, children: [
+                    { path: 'learneraccount', component: Learneraccount },
+                    {path:'schoolfeebills',component:Schoolfeebills}
+                ]
+            },
             { path: 'app-admissions', component: AdmissionsComponent },
             { path: 'app-examinations', component: ExaminationsComponent },
             { path: 'app-academicdashboard', component: AcademicdashboardComponent },

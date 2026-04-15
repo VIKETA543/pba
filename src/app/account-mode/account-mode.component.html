@@ -1,1 +1,60 @@
-<p>account-mode works!</p>
+<div class="card">
+   <p-toolbar>
+      <ng-template #start>
+         <p-button label="Payment" [raised]="true" severity="success" (click)="Payments()" />
+         <p-divider />
+         <p-button label="Biils" [raised]="true" severity="info" (click)="op.toggle($event)" />
+      </ng-template>
+      <ng-template #center>
+
+      </ng-template>
+      <ng-template #end>
+
+      </ng-template>
+   </p-toolbar>
+</div>
+
+<div class="card flex justify-center">
+    <p-popover #op>
+        <p-button label="Spacial Levy" [raised]="false" variant="text" severity="success" (onClick)="specialLevy()" />
+        <p-button label="School Fee" [raised]="false" variant="text" severity="info" (click)="schoolFee()" />
+        <p-button label="Canteen" [raised]="false" variant="text" severity="secondary" (click)="canteenFee()" />
+        <p-button label="Buss Fee" [raised]="false" variant="text" severity="primary" (click)="bussFee()" />
+        <p-button label="PTA Dues" [raised]="false" variant="text" severity="help" (click)="ptaDues()" />
+        <p-button label="Uniforms" [raised]="false" variant="text" severity="success" (onClick)="uniForms()" />
+</p-popover>
+
+
+
+
+
+<div class="card flex justify-center school-fee-container">
+   <p-dialog header="Open Account" [modal]="true" [(visible)]="isLearnerAccountvisible" [style]="{ width: '30rem' }">
+      <span class="p-text-secondary block mb-8">Create School fee Account</span>
+      <p-divider />
+      <div class="flex items-center gap-4 mb-4">
+         <label for="learenrId" class="font-semibold w-24">Entered Registered Number</label>
+         <input pInputText id="learenrId" class="flex-auto" autocomplete="off" [(ngModel)]="learnerID" />
+      </div>
+      <div class="flex justify-end gap-2">
+         <p-divider />
+         <p-button label="Cancel" severity="secondary" (click)="isLearnerAccountvisible.set(false)" />
+         <p-button label="Submit" (click)="getLearnerDetails()" />
+      </div>
+   </p-dialog>
+</div>
+
+
+
+
+
+<div class="card">
+   <p-toast />
+</div>
+
+<div id="routercontainer">
+   <router-outlet></router-outlet>
+</div>
+<p-toast />
+<!-- 
+    -->

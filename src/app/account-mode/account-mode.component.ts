@@ -35,7 +35,7 @@ import { PopoverModule } from 'primeng/popover';
 
 export class AccountModeComponent {
 uniForms() {
-throw new Error('Method not implemented.');
+  this.routerLink.navigate(['uniformbill'], { relativeTo: this.route });
 }
 ptaDues() {
     this.routerLink.navigate(['ptadues-billing'], { relativeTo: this.route });

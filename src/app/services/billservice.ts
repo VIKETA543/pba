@@ -125,4 +125,37 @@ sepciallevyCurrentBills=()=>{
     submitspeciallevy=(data:any)=>{
 return this.httpClient.post(this.url + "/billsquote/submitspeciallevy", data, { headers: new HttpHeaders().set('contentType', "application/json") })
   }
+
+
+
+  createNew_uniform=(data:any)=>{
+    return this.httpClient.post(this.url + "/billsquote/newuniform", data, { headers: new HttpHeaders().set('contentType', "application/json") })
+  }
+
+  loaduniforms=()=>{
+    return this.httpClient.get(this.url + "/billsquote/loaduniforms", { headers: new HttpHeaders().set('contentType', "application/json") })
+  }
+  
+
+  
+    submitUniformBill=(data:any)=>{
+return this.httpClient.post(this.url + "/billsquote/submituniformbill", data, { headers: new HttpHeaders().set('contentType', "application/json") })
+  }
+
+ uniformsHistory=()=>{
+return this.httpClient.get(this.url + "/billsquote/uniformsHistory", { headers: new HttpHeaders().set('contentType', "application/json") })
+  }
+  
+  
+ uniformscurrentbill=()=>{
+return this.httpClient.get(this.url + "/billsquote/uniformscurrentbill", { headers: new HttpHeaders().set('contentType', "application/json") })
+  }
+  
+
+ dropuniformBill=(data:any)=>{
+return this.httpClient.post(this.url + "/billsquote/dropuniformBill", data,{ headers: new HttpHeaders().set('contentType', "application/json") })
+  }
+  
+
+  
 }

@@ -56,3 +56,11 @@ export interface Destination{
     destdate:string
 
 }
+
+export interface Uniforms{
+    destId:string,
+    destname:string,
+    destdetails:string,
+    destdate:string
+
+}

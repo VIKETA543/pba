@@ -12,9 +12,7 @@ background-color: rgb(4, 47, 88);
 .bill-id-h{
     display: flex;
 margin: 10px auto;
-max-width: calc(100% - 60%);
-min-width: calc(100% - 80%);
-width: calc(100% - 60%);
+width: calc(100% - 40%);
 border-radius: .3em;
 /* box-shadow: 0px 0px 5px 2px lightgrey; */
 /* padding: 10px; */
@@ -23,9 +21,10 @@ border-radius: .3em;
 .bill-id{
     display: flex;
 margin: 10px auto;
-width: calc(100% - 50%);
+width: calc(100% - 70%);
 border-radius: .3em;
 padding: 10px;
+text-align: center;
 background-color: rgb(4, 47, 88);
 }
 .bill-in-data{
@@ -76,7 +75,10 @@ margin: 20px;
 display: flex;
     label{
         margin-right: 10px;
-        color: rgb(4, 47, 88);;
+        color: rgb(4, 47, 88);
+            max-width: calc(100% - 10%);
+min-width: calc(100% - 80%);
+width: calc(100% - 20%);
     }
     
  .data-input {
@@ -88,16 +90,17 @@ display: flex;
     width: 40%;
 }
 .toggle-sw-1{
-      width: 50%;  
+      width: 30%;  
 
 }
 
-
+.buss-input,textarea{
+    width: 100%;
+}
 tr{
    font-size: clamp(.5vw,1vw,1.8vw);   
 }
 .h-d{
-    border:1px solid blueviolet;
-    display: flex;
-    flex: auto;
+       font-size: clamp(.5vw,1.0vw,1.8vw);
+ 
 }

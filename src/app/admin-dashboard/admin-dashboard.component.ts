@@ -59,12 +59,12 @@ export class AdminDashboardComponent implements OnInit {
   }
   ngOnInit(): void {
     
-    if (typeof localStorage !== undefined) {
-      this.data=localStorage.getItem('userData');
-      this.image=localStorage.getItem("Photo")
+    // if (typeof localStorage !== undefined) {
+    //   this.data=localStorage.getItem('userData');
+    //   this.image=localStorage.getItem("Photo")
 
-      // rest of the code ...
-    }
+    //   // rest of the code ...
+    // }
     this.userdata.userdata=JSON.parse(this.data)
   }
 }

@@ -33,3 +33,26 @@ export interface Bills{
     GradeID:string, 
     GradeDescription:string
 }
+
+export interface Canteen{
+    sn:string,
+    billNumber:string,
+    sessionID:string,
+    ac_session:string,
+    Tid:string,
+    TermlyObject:string,
+    currentBill:number,
+    dateposted:string,
+    isCurrentbill:boolean,
+    Department:string,
+    DeptName:string,
+    GradeID:string, 
+    GradeDescription:string
+}
+export interface Destination{
+    destId:string,
+    destname:string,
+    destdetails:string,
+    destdate:string
+
+}

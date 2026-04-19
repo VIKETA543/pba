@@ -1,7 +1,7 @@
 
 <div class="card flex justify-center bill-id-h1">
     <label>
-         TUITION FEE STRUCTURE MODULE
+        SPECIAL STRUCTURE MODULE
     </label>
    
 </div>
@@ -100,8 +100,17 @@
             inputId="minmax-buttons" [min]="0" [max]="100" placeholder="e.g 0.00" />
     </div>
     <p-divider layout="vertical" />
-    <div class="card flex justify-center gap-4 toggle-sw">
-        Set as current bill
+    <div class="card flex justify-center">
+         <label class="mb-2 block font-bold" for="minmax-buttons">Details</label>
+            <textarea rows="2" cols="50" pTextarea [(ngModel)]="levydetails"></textarea>
+        </div>
+   
+</div>
+
+<p-toolbar>
+    <ng-template #start>
+    <div class="card">
+Current bill
         <p-toggleswitch [(ngModel)]="isCurrentBill" (onChange)="setCurrentBill($event)">
             <ng-template #handle let-isCurrentBill="isCurrent">
                 <i [ngClass]="['!text-xs', 'pi', isCurrentBill ? 'pi-check' : 'pi-times']"></i>
@@ -109,8 +118,17 @@
         </p-toggleswitch>
 
     </div>
-    <p-button label="Submit" severity="success" (onClick)="submitBiil()" />
-</div>
+</ng-template>
+  <ng-template #end>
+ <div class="card flex justify-center gap-4 toggle-sw">
+ <p-button label="Submit" severity="success" (onClick)="submitspeciallevy()" />
+ </div>
+ </ng-template>
+</p-toolbar>
+
+
+
+
 
 <div class="card">
     <p-table #dt1 [value]="billHistory" dataKey="id" [rows]="10" [rowsPerPageOptions]="[10, 25, 50]"
@@ -124,8 +142,8 @@
                 <p-button label="Clear" [outlined]="true" icon="pi pi-filter-slash" (click)="clear(dt1)" />
                 
                <div class="card flex flex-wrap gap-4 justify-between">
-                        <p-button label="Current Bill" icon="pi pi-crown" class="mr-2" text severity="secondary" (onClick)="getCurrentBills()"/>
-                        <p-button  label="All bulls" icon="pi pi-history" class="mr-2" text severity="info" (onClick)="getBillhistory()" />
+                        <p-button label="Current Bill" icon="pi pi-crown" class="mr-2" text severity="secondary" (onClick)="sepciallevyCurrentBills()"/>
+                        <p-button  label="All bills" icon="pi pi-history" class="mr-2" text severity="info" (onClick)="speciallevyhistory()" />
             </div>
              </ng-template>
               <ng-template #end>
@@ -141,7 +159,7 @@
         </ng-template>
         <ng-template #header>
             <tr>
-                <th style="min-width:15rem">
+                <th style="min-width:5rem">
                     <div class="flex items-center justify-between">
                         Serial
                     </div>
@@ -178,6 +196,7 @@
                     </div>
                 </th>
                 <th>Date</th>
+                <th>Details</th>
                 <th style="width: 3rem">
                     <div class="flex items-center justify-between">
                         Actions
@@ -194,7 +213,7 @@
                 <td>
                     <div class="flex items-center gap-2">
 
-                        <span>{{billHistory.billNumber }}</span>
+                        <span>{{billHistory.lavynumber }}</span>
                     </div>
                 </td>
                 <td>
@@ -222,9 +241,10 @@
                     {{ billHistory.dateposted | date: 'MM/dd/yyyy' }}
 
                 </td>
+                <td>{{billHistory.levydetails}}</td>
                 <td>
                     <div class="card flex justify-center">
-                        <p-button label="Drop" icon="pi pi-trash" severity="danger" (onClick)="dropBill(billHistory)" />
+                        <p-button label="Drop" icon="pi pi-trash" severity="danger" (onClick)="dropsepciallevy(billHistory)" />
                     </div>
                 </td>
             </tr>

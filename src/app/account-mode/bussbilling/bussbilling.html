@@ -1,9 +1,8 @@
-
 <div class="card flex justify-center bill-id-h1">
     <label>
-         TUITION FEE STRUCTURE MODULE
+        BUS FEE STRUCTURE MODULE
     </label>
-   
+    <p-button label="Create Desitnation" severity="help" (onClick)="createDesination()" />
 </div>
 <div class="card flex justify-center bill-id-h">
 
@@ -13,6 +12,36 @@
 
 </div>
 
+
+@if(isNewdesitnation()){
+<div class="card flex justify-center">
+
+    <p-dialog header="NEW BUS DESTINATION" [modal]="true" [(visible)]="isNewdesitnation" [style]="{ width: '25rem' }">
+        <span class="p-text-secondary block mb-8 h-d">Update your information.</span>
+        <p-divider></p-divider>
+
+        <div class="flex items-center gap-4 mb-4 ">
+            <label class="h-d gap-4 mb-4">Serial:  </label>
+            <label class="h-d gap-4 mb-4 id">{{destinationID}}</label>
+        </div>
+
+        <div class="flex items-center gap-4 mb-4 ">
+            <label for="username" class="font-semibold w-24 h-d">Destination</label>
+            <input pInputText id="username" class="flex-auto buss-input" [(ngModel)]="newDestination"
+                autocomplete="off" />
+        </div>
+        <p-divider></p-divider>
+        <div class="flex items-center gap-4 mb-4">
+            <label for="username" class="font-semibold w-24 tems-center gap-4 h-d">Details</label>
+            <textarea rows="5" cols="30" pTextarea [(ngModel)]="desitnationDetails"></textarea>
+        </div>
+        <p-divider></p-divider>
+        <div class="flex items-center gap-4 mb-4 ">
+            <p-button label="Submit" severity="help" (onClick)="submitDestination()" />
+        </div>
+    </p-dialog>
+</div>
+}
 
 <div class="academic-data">
 
@@ -94,6 +123,22 @@
 
 <p-divider></p-divider>
 <div class="card flex flex-wrap gap-4 bill-in-data">
+
+    <p-select [options]="destinations" [(ngModel)]="selectedDestination" optionLabel="destnname"
+        (onChange)="selectDestination($event)" [filter]="true" filterBy="destnname" [showClear]="true"
+        placeholder="Select Buss Destination" class="w-full md:w-56">
+        <ng-template #selectedItem let-destinations>
+            <div class="flex items-center gap-2">
+                <div>{{ destinations.destnname }}</div>
+            </div>
+        </ng-template>
+        <ng-template let-destinations #item>
+            <div class="flex items-center gap-2">
+                <div>{{ destinations.destnname }}</div>
+            </div>
+        </ng-template>
+    </p-select>
+
     <div class="flex-wrap  gap-4 toggle-sw-1">
         <label class="mb-2 block font-bold" for="minmax-buttons">Current Bill</label>
         <p-inputnumber class="data-input" [(ngModel)]="CurrentBill" mode="decimal" [showButtons]="true"
@@ -109,7 +154,7 @@
         </p-toggleswitch>
 
     </div>
-    <p-button label="Submit" severity="success" (onClick)="submitBiil()" />
+    <p-button label="Submit" severity="success" (onClick)="submitBussBiil()" />
 </div>
 
 <div class="card">
@@ -119,25 +164,27 @@
         stripedRows="true">
 
         <ng-template #caption>
-       <p-toolbar>
-             <ng-template #start>
-                <p-button label="Clear" [outlined]="true" icon="pi pi-filter-slash" (click)="clear(dt1)" />
-                
-               <div class="card flex flex-wrap gap-4 justify-between">
-                        <p-button label="Current Bill" icon="pi pi-crown" class="mr-2" text severity="secondary" (onClick)="getCurrentBills()"/>
-                        <p-button  label="All bulls" icon="pi pi-history" class="mr-2" text severity="info" (onClick)="getBillhistory()" />
-            </div>
-             </ng-template>
-              <ng-template #end>
-                <p-iconfield iconPosition="left" class="ml-auto">
-                    <p-inputicon>
-                        <i class="pi pi-search"></i>
-                    </p-inputicon>
-                    <input pInputText type="text" (input)="dt1.filterGlobal($event.target.value, 'contains')"
-                        placeholder="Search keyword" />
-                </p-iconfield>
+            <p-toolbar>
+                <ng-template #start>
+                    <p-button label="Clear" [outlined]="true" icon="pi pi-filter-slash" (click)="clear(dt1)" />
+
+                    <div class="card flex flex-wrap gap-4 justify-between">
+                        <p-button label="Current Bill" icon="pi pi-crown" class="mr-2" text severity="secondary"
+                            (onClick)="getBussCurrentBills()" />
+                        <p-button label="All bills" icon="pi pi-history" class="mr-2" text severity="info"
+                            (onClick)="getBussBillhistory()" />
+                    </div>
                 </ng-template>
-           </p-toolbar>
+                <ng-template #end>
+                    <p-iconfield iconPosition="left" class="ml-auto">
+                        <p-inputicon>
+                            <i class="pi pi-search"></i>
+                        </p-inputicon>
+                        <input pInputText type="text" (input)="dt1.filterGlobal($event.target.value, 'contains')"
+                            placeholder="Search keyword" />
+                    </p-iconfield>
+                </ng-template>
+            </p-toolbar>
         </ng-template>
         <ng-template #header>
             <tr>
@@ -194,7 +241,7 @@
                 <td>
                     <div class="flex items-center gap-2">
 
-                        <span>{{billHistory.billNumber }}</span>
+                        <span>{{billHistory.bussbillNumber }}</span>
                     </div>
                 </td>
                 <td>
@@ -224,7 +271,8 @@
                 </td>
                 <td>
                     <div class="card flex justify-center">
-                        <p-button label="Drop" icon="pi pi-trash" severity="danger" (onClick)="dropBill(billHistory)" />
+                        <p-button label="Drop" icon="pi pi-trash" severity="danger"
+                            (onClick)="dropBussBill(billHistory)" />
                     </div>
                 </td>
             </tr>

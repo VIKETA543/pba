@@ -38,13 +38,13 @@ uniForms() {
 throw new Error('Method not implemented.');
 }
 ptaDues() {
-throw new Error('Method not implemented.');
+    this.routerLink.navigate(['ptadues-billing'], { relativeTo: this.route });
 }
 bussFee() {
-throw new Error('Method not implemented.');
+    this.routerLink.navigate(['bussbilling'], { relativeTo: this.route });
 }
 canteenFee() {
-throw new Error('Method not implemented.');
+    this.routerLink.navigate(['canteenbill'], { relativeTo: this.route });
 }
 schoolFee() {
 this.isSchoolfeeTpggle.set(true)
@@ -52,7 +52,7 @@ this.isSchoolfeeTpggle.set(true)
     this.routerLink.navigate(['schoolfeebills'], { relativeTo: this.route });
 }
 specialLevy() {
-throw new Error('Method not implemented.');
+    this.routerLink.navigate(['speciallevy-billing'], { relativeTo: this.route });
 }
      private messageService = inject(MessageService);
      message:any

@@ -19,6 +19,10 @@ import { ConfirmAdmissionComponent } from './confirm-admission/confirm-admission
 import { AcademicdashboardComponent } from './academics/academicdashboard/academicdashboard.component';
 import { Learneraccount } from './account-mode/learneraccount/learneraccount';
 import { Schoolfeebills } from './account-mode/schoolfeebills/schoolfeebills';
+import { Canteenbill } from './account-mode/canteenbill/canteenbill';
+import { Bussbilling } from './account-mode/bussbilling/bussbilling';
+import { PtaduesBilling } from './account-mode/ptadues-billing/ptadues-billing';
+import { SpeciallevyBilling } from './account-mode/speciallevy-billing/speciallevy-billing';
 
 
 export const routes: Routes = [
@@ -33,7 +37,11 @@ export const routes: Routes = [
             {
                 path: 'app-account-mode', component: AccountModeComponent, children: [
                     { path: 'learneraccount', component: Learneraccount },
-                    {path:'schoolfeebills',component:Schoolfeebills}
+                    {path:'schoolfeebills',component:Schoolfeebills},
+                    {path:'canteenbill',component:Canteenbill},
+                    {path:'bussbilling',component:Bussbilling},
+                    {path:'ptadues-billing',component:PtaduesBilling},
+                    {path:'speciallevy-billing',component:SpeciallevyBilling}
                 ]
             },
             { path: 'app-admissions', component: AdmissionsComponent },

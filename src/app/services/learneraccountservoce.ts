@@ -37,10 +37,6 @@ learnerData:[]|undefined
       return  this.httpClient.get(this.url + "/leaneraccount/academicYear", { headers: new HttpHeaders().set('contentType', "application/json") })
     }
 
-   getBillhistory(){
-      return  this.httpClient.get(this.url + "/leaneraccount/loadbillhistory", { headers: new HttpHeaders().set('contentType', "application/json") })
-    }
-    
   }
 
 

@@ -1,7 +1,7 @@
 
 <div class="card flex justify-center bill-id-h1">
     <label>
-         TUITION FEE STRUCTURE MODULE
+         CANTEEN FEE STRUCTURE MODULE
     </label>
    
 </div>
@@ -109,7 +109,7 @@
         </p-toggleswitch>
 
     </div>
-    <p-button label="Submit" severity="success" (onClick)="submitBiil()" />
+    <p-button label="Submit" severity="success" (onClick)="submitCanteenBiil()" />
 </div>
 
 <div class="card">
@@ -124,8 +124,8 @@
                 <p-button label="Clear" [outlined]="true" icon="pi pi-filter-slash" (click)="clear(dt1)" />
                 
                <div class="card flex flex-wrap gap-4 justify-between">
-                        <p-button label="Current Bill" icon="pi pi-crown" class="mr-2" text severity="secondary" (onClick)="getCurrentBills()"/>
-                        <p-button  label="All bulls" icon="pi pi-history" class="mr-2" text severity="info" (onClick)="getBillhistory()" />
+                        <p-button label="Current Bill" icon="pi pi-crown" class="mr-2" text severity="secondary" (onClick)="getCanteenCurrentBills()"/>
+                        <p-button  label="All bulls" icon="pi pi-history" class="mr-2" text severity="info" (onClick)="getCanteenBillhistory()" />
             </div>
              </ng-template>
               <ng-template #end>
@@ -224,7 +224,7 @@
                 </td>
                 <td>
                     <div class="card flex justify-center">
-                        <p-button label="Drop" icon="pi pi-trash" severity="danger" (onClick)="dropBill(billHistory)" />
+                        <p-button label="Drop" icon="pi pi-trash" severity="danger" (onClick)="dropCanteenBill(billHistory)" />
                     </div>
                 </td>
             </tr>

@@ -26,6 +26,7 @@ import { SpeciallevyBilling } from './account-mode/speciallevy-billing/specialle
 import { Uniformbill } from './account-mode/uniformbill/uniformbill';
 import { PrepareSchoolfee } from './account-mode/prepare-schoolfee/prepare-schoolfee';
 import { CateenFeeStructure } from './account-mode/cateen-fee-structure/cateen-fee-structure';
+import { BusBillSchedule } from './account-mode/bus-bill-schedule/bus-bill-schedule';
 
 
 export const routes: Routes = [
@@ -42,11 +43,11 @@ export const routes: Routes = [
                     {
                         path: 'learneraccount', component: Learneraccount, children:
                             [
-                                  {path: 'prepare-schoolfee',component:PrepareSchoolfee},
-                                  {path:'cateen-fee-structure',component:CateenFeeStructure},
+                                { path: 'prepare-schoolfee', component: PrepareSchoolfee },
+                                { path: 'cateen-fee-structure', component: CateenFeeStructure },
+                                { path: 'bus-bill-schedule', component: BusBillSchedule }
 
 
-                                
                             ]
                     },
 

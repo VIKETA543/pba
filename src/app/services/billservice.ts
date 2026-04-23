@@ -219,4 +219,33 @@ return this.httpClient.post(this.url + "/billsquote/dropLearnerbill",data,{ head
 termBegins=(data:any)=>{
   return this.httpClient.post(this.url + "/billsquote/loadDaysinTerm",data,{ headers: new HttpHeaders().set('contentType', "application/json") })
 }
+
+
+
+// working on bus routes
+
+load_Current_Bus_bill_schedule=(data:any)=>{
+
+  return this.httpClient.post(this.url + "/billsquote/load_Current_Bus_bill_schedule",data,{ headers: new HttpHeaders().set('contentType', "application/json") })
+}
+Load_bus_fee_arears=(data:any)=>{
+
+return this.httpClient.post(this.url + "/billsquote/Load_bus_fee_arears",data,{ headers: new HttpHeaders().set('contentType', "application/json") })
+}
+
+
+
+submit_current_fee_schedule=(data:any)=>{
+
+return this.httpClient.post(this.url + "/billsquote/submit_current_fee_schedule",data,{ headers: new HttpHeaders().set('contentType', "application/json") })
+}
+
+load_bus_fee_history_schedule=(data:any)=>{
+return this.httpClient.post(this.url + "/billsquote/load_bus_fee_history_schedule",data,{ headers: new HttpHeaders().set('contentType', "application/json") })
+}
+
+drop_bus_fee_schedule=(data:any)=>{
+return this.httpClient.post(this.url + "/billsquote/drop_bus_fee_schedule",data,{ headers: new HttpHeaders().set('contentType', "application/json") })
+}
+
 }

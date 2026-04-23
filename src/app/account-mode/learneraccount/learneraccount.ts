@@ -90,7 +90,8 @@ this.loadAcademicDetails()
     throw new Error('Method not implemented.');
   }
   bussFee() {
-    throw new Error('Method not implemented.');
+    this.router.navigate(['bus-bill-schedule'], { relativeTo: this.route });
+
   }
   canteenFee() {
     this.router.navigate(['cateen-fee-structure'], { relativeTo: this.route });

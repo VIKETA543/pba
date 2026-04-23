@@ -24,6 +24,8 @@ import { Bussbilling } from './account-mode/bussbilling/bussbilling';
 import { PtaduesBilling } from './account-mode/ptadues-billing/ptadues-billing';
 import { SpeciallevyBilling } from './account-mode/speciallevy-billing/speciallevy-billing';
 import { Uniformbill } from './account-mode/uniformbill/uniformbill';
+import { PrepareSchoolfee } from './account-mode/prepare-schoolfee/prepare-schoolfee';
+import { CateenFeeStructure } from './account-mode/cateen-fee-structure/cateen-fee-structure';
 
 
 export const routes: Routes = [
@@ -37,13 +39,24 @@ export const routes: Routes = [
         path: 'app-admin-dashboard', component: AdminDashboardComponent, children: [
             {
                 path: 'app-account-mode', component: AccountModeComponent, children: [
-                    { path: 'learneraccount', component: Learneraccount },
-                    {path:'schoolfeebills',component:Schoolfeebills},
-                    {path:'canteenbill',component:Canteenbill},
-                    {path:'bussbilling',component:Bussbilling},
-                    {path:'ptadues-billing',component:PtaduesBilling},
-                    {path:'speciallevy-billing',component:SpeciallevyBilling},
-                    {path: 'uniformbill',component:Uniformbill}
+                    {
+                        path: 'learneraccount', component: Learneraccount, children:
+                            [
+                                  {path: 'prepare-schoolfee',component:PrepareSchoolfee},
+                                  {path:'cateen-fee-structure',component:CateenFeeStructure},
+
+
+                                
+                            ]
+                    },
+
+                    { path: 'schoolfeebills', component: Schoolfeebills },
+                    { path: 'canteenbill', component: Canteenbill },
+                    { path: 'bussbilling', component: Bussbilling },
+                    { path: 'ptadues-billing', component: PtaduesBilling },
+                    { path: 'speciallevy-billing', component: SpeciallevyBilling },
+                    { path: 'uniformbill', component: Uniformbill },
+
                 ]
             },
             { path: 'app-admissions', component: AdmissionsComponent },

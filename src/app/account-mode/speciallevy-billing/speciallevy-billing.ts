@@ -96,7 +96,7 @@ dropsepciallevy(_t163: any) {
 let data={
   billID:_t163.lavynumber
 }
-console.log(data)
+
 this.billservice.dropsepciallevy(data).subscribe((response:any)=>{
  if(response?.message){
     this.message=response?.message

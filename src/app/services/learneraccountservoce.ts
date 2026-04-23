@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Accountinterface } from '../interfaces/accountinterface';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,7 @@ export class LearneraccountServcie {
   constructor(private httpClient: HttpClient) {
 
   }
-learnerData:[]|undefined
+ learnerData:Accountinterface[]=[]
     getLeaner(data:any){
       return  this.httpClient.post(this.url + "/leaneraccount/findlearner", data, { headers: new HttpHeaders().set('contentType', "application/json") })
     }

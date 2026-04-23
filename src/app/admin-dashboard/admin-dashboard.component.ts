@@ -65,6 +65,6 @@ export class AdminDashboardComponent implements OnInit {
 
     //   // rest of the code ...
     // }
-    this.userdata.userdata=JSON.parse(this.data)
+    // this.userdata.userdata=JSON.parse(this.data)
   }
 }

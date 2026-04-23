@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { LearneraccountServcie } from '../../services/learneraccountservoce';
 import { FormsModule } from '@angular/forms';
-import { RouterOutlet, RouterLinkWithHref } from '@angular/router';
+import { RouterOutlet, RouterLinkWithHref,Router, ActivatedRoute  } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { DividerModule } from 'primeng/divider';
@@ -12,6 +12,7 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { DomSanitizer } from '@angular/platform-browser';
 import { PopoverModule } from 'primeng/popover';
 import { MessageService } from 'primeng/api';
+import { Learnerservice } from '../../services/learnerservice';
 
 
 
@@ -26,25 +27,37 @@ import { MessageService } from 'primeng/api';
     DialogModule,
     InputTextModule,
     MessageModule,
-    ToastModule,],
+    ToastModule, RouterOutlet],
   templateUrl: './learneraccount.html',
   styleUrl: './learneraccount.css',
   providers: [MessageService]
 })
 export class Learneraccount implements OnInit {
+
        private messageService = inject(MessageService);
   learnerData: any
   academicData: any
   message:any
+ 
   schoolFee() {
-    throw new Error('Method not implemented.');
-  }
-  constructor(private learnceracservcie: LearneraccountServcie, public sanitizer: DomSanitizer) {
-    this.learnerData = this.learnceracservcie.learnerData
+    this.router.navigate(['prepare-schoolfee'], { relativeTo: this.route });
 
   }
+  constructor(private learnceracservcie: LearneraccountServcie, private learnerservice:Learnerservice, public sanitizer: DomSanitizer,private router:Router,private route: ActivatedRoute) {
+    this.learnerData = this.learnceracservcie.learnerData
+  
+      this.learnerservice.setAdmissionNumber(this.learnerData[0].AdmissionNumber)
+       this.learnerservice.setCurrentGrade(this.learnerData[0].SerialNumber)
+
+       this.learnerservice.setAcademicYear
+       
+
+  
+  }
 ngOnInit(): void {
-  this.loadAcademicDetails()
+this.loadAcademicDetails()
+ 
+     
 }
   loadAcademicDetails = () => {
     return this.learnceracservcie.loadAcademicDetails().subscribe((response: any) => {
@@ -55,7 +68,11 @@ ngOnInit(): void {
         if (response?.data) {
 
           this.academicData = response?.data
-                    console.log(this.academicData)
+         
+    this.learnerservice.setCurrentTerm(this.academicData[0].OpenedTerm)
+    this.learnerservice.setAcademicYear(this.academicData[0].AcademicYear)
+               console.log('the data '+ this.academicData)
+
         } else {
   this.message=response?.message
               this.messageService.add({ severity: 'info', summary: 'Messgae', detail: this.message });
@@ -76,6 +93,6 @@ ngOnInit(): void {
     throw new Error('Method not implemented.');
   }
   canteenFee() {
-    throw new Error('Method not implemented.');
+    this.router.navigate(['cateen-fee-structure'], { relativeTo: this.route });
   }
 }

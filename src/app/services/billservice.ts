@@ -11,6 +11,12 @@ export class Billservice {
       
     }
 
+
+
+
+
+
+
    getBillhistory(){
       return  this.httpClient.get(this.url + "/billsquote/loadbillhistory", { headers: new HttpHeaders().set('contentType', "application/json") })
     }
@@ -157,5 +163,60 @@ return this.httpClient.post(this.url + "/billsquote/dropuniformBill", data,{ hea
   }
   
 
-  
+  // Preparation of learner bills for distribution
+loadTermDetail=()=>{
+  return this.httpClient.get(this.url + "/billsquote/termdetails",{ headers: new HttpHeaders().set('contentType', "application/json") })
+}
+
+loadCurrentFee=(data:any)=>{
+  return this.httpClient.post(this.url + "/billsquote/loadCurrentFee",data,{ headers: new HttpHeaders().set('contentType', "application/json") })
+}
+getFeeinArrears=(data:any)=>{
+return this.httpClient.post(this.url + "/billsquote/loadarrear",data,{ headers: new HttpHeaders().set('contentType', "application/json") })
+}
+
+
+
+submitCurrentBill=(data:any)=>{
+return this.httpClient.post(this.url + "/billsquote/submitcurrentbill",data,{ headers: new HttpHeaders().set('contentType', "application/json") })
+}
+
+leanerFeeHistory=(data:any)=>{
+return this.httpClient.post(this.url + "/billsquote/leanerFeeHistory",data,{ headers: new HttpHeaders().set('contentType', "application/json") })
+}
+
+dropLearnerbill=(data:any)=>{
+return this.httpClient.post(this.url + "/billsquote/dropLearnerbill",data,{ headers: new HttpHeaders().set('contentType', "application/json") })
+}
+
+
+// Preparation of canteen bill 
+
+
+loadCurrentCanteenbill_schedule=(data:any)=>{
+
+  return this.httpClient.post(this.url + "/billsquote/loadCurrentCanteenbill_schedule",data,{ headers: new HttpHeaders().set('contentType', "application/json") })
+}
+Loadcateen_fee_arears=(data:any)=>{
+
+return this.httpClient.post(this.url + "/billsquote/loadarrear",data,{ headers: new HttpHeaders().set('contentType', "application/json") })
+}
+
+
+
+submitcurrentCanteenfee_schedule=(data:any)=>{
+
+return this.httpClient.post(this.url + "/billsquote/submitcurrentCanteenfee_schedule",data,{ headers: new HttpHeaders().set('contentType', "application/json") })
+}
+
+loadcanteenfeehistory_schedule=(data:any)=>{
+return this.httpClient.post(this.url + "/billsquote/loadcanteenfeehistory_schedule",data,{ headers: new HttpHeaders().set('contentType', "application/json") })
+}
+
+dropcanteefee_schedule=(data:any)=>{
+return this.httpClient.post(this.url + "/billsquote/dropLearnerbill",data,{ headers: new HttpHeaders().set('contentType', "application/json") })
+}
+termBegins=(data:any)=>{
+  return this.httpClient.post(this.url + "/billsquote/loadDaysinTerm",data,{ headers: new HttpHeaders().set('contentType', "application/json") })
+}
 }

@@ -1,4 +1,12 @@
 export interface Accountinterface {
+    AdmissionNumber:string,
+IndexNumber:string,
+applicantSurname:string,
+applicantMiddlename:string,
+applicantLastname:string,
+Image:string,
+SerialNumber:string,
+GradeDescription:string,
 }
 export interface Department{
     DeptId:string,

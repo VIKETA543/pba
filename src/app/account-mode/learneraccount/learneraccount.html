@@ -3,27 +3,28 @@
         @if(learnerData){
         <label class="learner-name">{{learnerData[0].applicantSurname}} {{learnerData[0].applicantMiddlename}}
             {{learnerData[0].applicantLastname}}</label>
-        }
+       <label class="learner-name">{{learnerData[0].AdmissionNumber}}</label>
         <ng-template #start>
 
         </ng-template>
         <ng-template #center>
     <div class="card  flex-col gap-4  justify-center ">
-         <label class="header-lbl">{{this.learnerData[0].GradeDescription}}</label> 
-    <label class="header-lbl">{{this.academicData[0].TermlyObject}}</label>
-     <label class="header-lbl">{{academicData[0].WeekDescription}}</label>
+         <label class="header-lbl">{{this.learnerData[0].GradeDescription ??undefined}}</label> 
+    <label class="header-lbl">{{this.academicData[0].TermlyObject  ??undefined}}</label>
+     <label class="header-lbl">{{academicData[0].WeekDescription  ??undefined}}</label>
     
-      <label class="header-lbl">{{academicData[0].ac_session}} YEAR</label>
+      <label class="header-lbl">{{academicData[0].ac_session  ??undefined}} YEAR</label>
 
       </div>
         </ng-template>
+    }
         <ng-template #end>
-            @if(learnerData.Image){
+            <!-- @if(learnerData.Image!==undefined){
             <div class="Image-container ballot-items">
 
-                <img [src]="sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' +learnerData[0].Image )">
+                <img [src]="sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' +learnerData[0].Image  )">
             </div>
-            }
+            } -->
               <p-button label="Biils" [raised]="false" variant="text" severity="info" (click)="op.toggle($event)" />
               <p-divider/>
             <p-button (click)="op1.toggle($event)" icon="pi pi-ellipsis-v" label="Payments" variant="text" />
@@ -57,4 +58,8 @@
         <p-button label="PTA Dues" [raised]="false" variant="text" severity="help" (click)="ptaDues()" />
         <p-button label="Uniforms" [raised]="false" variant="text" severity="success" (onClick)="uniForms()" />
 </p-popover>
+
+</div>
+<div id="routercontainer">
+   <router-outlet></router-outlet>
 </div>

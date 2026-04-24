@@ -248,4 +248,32 @@ drop_bus_fee_schedule=(data:any)=>{
 return this.httpClient.post(this.url + "/billsquote/drop_bus_fee_schedule",data,{ headers: new HttpHeaders().set('contentType', "application/json") })
 }
 
+
+
+
+
+   load_current_PTA_Due(data:any){
+      return  this.httpClient.post(this.url + "/billsquote/load_current_PTA_Due", data,{ headers: new HttpHeaders().set('contentType', "application/json") })
+    }
+
+
+Load_PTA_Arrears=(data:any)=>{
+     return  this.httpClient.post(this.url + "/billsquote/Load_PTA_Arrears",data, { headers: new HttpHeaders().set('contentType', "application/json") })
+}
+
+  submit_PTA_Bill=(data:any)=>{
+    return this.httpClient.post(this.url + "/billsquote/submit_PTA_Bill", data, { headers: new HttpHeaders().set('contentType', "application/json") })
+  }
+
+
+    Load_PTA_Dues_History=(data:any)=>{
+return this.httpClient.post(this.url + "/billsquote/Load_PTA_Dues_History", data, { headers: new HttpHeaders().set('contentType', "application/json") })
+  }
+
+  
+    Drop_PTA_Due=(data:any)=>{
+return this.httpClient.post(this.url + "/billsquote/Drop_PTA_Due", data, { headers: new HttpHeaders().set('contentType', "application/json") })
+  }
+
+
 }

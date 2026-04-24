@@ -1,7 +1,7 @@
+/// <reference types="jasmine" />
 import { TestBed } from '@angular/core/testing';
 
 import { Learnerservice } from './learnerservice';
-
 describe('Learnerservice', () => {
   let service: Learnerservice;
 

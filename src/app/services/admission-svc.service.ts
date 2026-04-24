@@ -3,8 +3,7 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ApplicationserviceService } from './applicationservice.service';
 import { AdmissionData,AdmissionRegData, detailWithdrawnData, withdrawnPartialData } from '../interfaces/admission-data';
 import { SnackbarService } from './snackbar.service';
-import { response } from 'express';
-import { Console } from 'console';
+
 
 
 @Injectable({

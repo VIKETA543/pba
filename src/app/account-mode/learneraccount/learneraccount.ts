@@ -87,7 +87,7 @@ this.loadAcademicDetails()
     throw new Error('Method not implemented.');
   }
   ptaDues() {
-    throw new Error('Method not implemented.');
+   this.router.navigate(['pta-payment-schedule'], { relativeTo: this.route });
   }
   bussFee() {
     this.router.navigate(['bus-bill-schedule'], { relativeTo: this.route });

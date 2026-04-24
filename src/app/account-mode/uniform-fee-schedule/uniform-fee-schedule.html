@@ -1,0 +1,142 @@
+<div class="card flex justify-center main">
+    <p-panel header="Uniforms Bill setup">
+
+        <ng-template #header>
+            <span>{{billID}}</span>
+        </ng-template>
+         
+        <div class="header-f">
+            <div class="header-data">
+                <label>Academic Year:</label>
+                <label>{{currentTermDetails[0].ac_session}}</label>
+            </div>
+            <div class="header-data">
+                <label>Academic Term:</label>
+                <label>{{currentTermDetails[0].TermlyObject}}</label>
+            </div>
+            <div class="header-data">
+                <label>Department: </label>
+                <label>{{currentTermDetails[0].DeptName}}</label>
+            </div>
+        </div>
+        <p-divider></p-divider>
+            <p-fluid class="card flex flex-wrap gap-4 w-full">
+          <p-select [options]="uniforms" [(ngModel)]="selectedUniform" optionLabel="uniformname"
+        (onChange)="selectUniform($event)" [filter]="true" filterBy="uniformname" [showClear]="true"
+        placeholder="Select a Uniform" class="w-full md:w-56">
+        <ng-template #selectedItem let-uniforms>
+            <div class="flex items-center gap-2">
+                <div>{{ uniforms.uniformname }}</div>
+            </div>
+        </ng-template>
+        <ng-template let-uniforms #item>
+            <div class="flex items-center gap-2">
+                <div>{{ uniforms.uniformname }}</div>
+            </div>
+        </ng-template>
+    </p-select>
+</p-fluid>
+
+        <p-divider></p-divider>
+        <div class="f-a">
+            <div class="header-data-1">
+
+                <p-fluid class="card flex flex-wrap gap-4">
+                    <div class="flex-auto data-input">
+                        <label class="mb-2 font-bold flex" for="integeronly">Current Price</label>
+                        <p-inputnumber inputId="integeronly" readonly="false" [(ngModel)]="currentSchoolFee"
+                            inputId="minmaxfraction" mode="decimal" [minFractionDigits]="2" [maxFractionDigits]="5" />
+                    </div>
+                </p-fluid>
+                
+            </div>
+             <div class="header-data-1">
+             <p-fluid class="card flex flex-wrap gap-4">
+                    <div class="flex-auto data-input">
+                        <label class="mb-2 font-bold flex" for="integeronly">Arrears</label>
+                        <p-inputnumber inputId="integeronly" readonly="false" [(ngModel)]="arrears"
+                            inputId="minmaxfraction" mode="decimal" [minFractionDigits]="2" [maxFractionDigits]="5" />
+                    </div>
+                </p-fluid>
+                </div>
+                     <div class="header-data-1">
+             <p-fluid class="card flex flex-wrap gap-4">
+                    <div class="flex-auto data-input">
+                        <label class="mb-2 font-bold block" for="integeronly">Amount Due</label>
+                        <p-inputnumber inputId="integeronly" readonly="false" [(ngModel)]="amountDue"
+                            inputId="minmaxfraction" mode="decimal" [minFractionDigits]="2" [maxFractionDigits]="5" />
+                    </div>
+                </p-fluid>
+                </div>
+                
+         
+        </div>
+        <p-divider></p-divider>
+          <div class="card flex flex-wrap gap-4 w-full justify-content: flex-end ">
+            <span>Set as current due</span>      
+            <p-toggleswitch [(ngModel)]="isCurrentBill" (onChange)="setCurrent($event)" />
+        
+            <p-button label="Submit" variant="text" raised="true" severity="info"  (onClick)="submit_uniform_Bill()"/>
+        </div>
+    </p-panel>
+
+</div>
+<div class="card">
+            <div class="mb-4 flex gap-1">
+                <p-button type="button" icon="pi pi-chevron-left" (click)="prev()" [disabled]="isFirstPage()" text />
+                <p-button type="button" icon="pi pi-refresh" (click)="reset()" text />
+                <p-button type="button" icon="pi pi-chevron-right" (click)="next()" [disabled]="isLastPage()" text />
+            </div>
+            <p-table
+                [value]="LearnerbillHistory"
+                [paginator]="true"
+                [rows]="rows"
+                [showCurrentPageReport]="true"
+                [first]="first"
+                [tableStyle]="{ 'min-width': '50rem' }"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                (onPage)="pageChange($event)"
+                [rowsPerPageOptions]="[10, 25, 50]"
+            >
+        
+                <ng-template #header>
+                    <tr>
+                        <th style="width:5%">Sn</th>
+                        <th style="width:25%">Bill Number</th>
+                        <th style="width:25%">Uniform Type</th>
+                        <th style="width:25%">Arrears</th>
+                        <th style="width:25%">Current Bill</th>
+                        <th style="width:25%">Total Bill</th>
+                        <th style="width:25%">Date Posted</th>
+                        <th style="width:25%">Status</th>
+                        <th style="width:25%">Action</th>
+                    </tr>
+                </ng-template>
+                <ng-template #body let-LearnerbillHistory let-i="rowIndex">
+                    <tr>
+                        <td>{{i+1}}</td>
+                        <td>{{ LearnerbillHistory.billNumber }}</td>
+                        <td>{{LearnerbillHistory.uniformname}}</td>
+                        <td>{{ LearnerbillHistory.arrears }}</td>
+                        <td>{{ LearnerbillHistory.currentBill }}</td>
+                        <td>{{ LearnerbillHistory.totalBill }}</td>
+                        <td>{{ LearnerbillHistory.dateposted }}</td>
+                        <td>
+                             <p-toggleswitch [(ngModel)]="LearnerbillHistory.isCurrentbill" (onChange)="setCurrent($event)" disabled="!LearnerbillHistory.isCurrentbill" />
+
+                        </td>
+                        <td>
+                            <p-button icon="pi pi-trash" variant="text" severity="danger" (onClick)="Drop_uniform_Due(LearnerbillHistory)"/>
+                                
+                            </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+
+
+<div class="card">
+    <p-toast />
+</div>
+
+

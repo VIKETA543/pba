@@ -28,6 +28,7 @@ import { PrepareSchoolfee } from './account-mode/prepare-schoolfee/prepare-schoo
 import { CateenFeeStructure } from './account-mode/cateen-fee-structure/cateen-fee-structure';
 import { BusBillSchedule } from './account-mode/bus-bill-schedule/bus-bill-schedule';
 import { PtaPaymentSchedule } from './account-mode/pta-payment-schedule/pta-payment-schedule';
+import { UniformFeeSchedule } from './account-mode/uniform-fee-schedule/uniform-fee-schedule';
 
 
 export const routes: Routes = [
@@ -48,6 +49,7 @@ export const routes: Routes = [
                                 { path: 'cateen-fee-structure', component: CateenFeeStructure },
                                 { path: 'bus-bill-schedule', component: BusBillSchedule },
                                 { path: 'pta-payment-schedule', component: PtaPaymentSchedule },
+                                {path:'uniform-fee-schedule',component:UniformFeeSchedule}
 
                             ]
                     },

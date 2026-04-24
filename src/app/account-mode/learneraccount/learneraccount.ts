@@ -84,7 +84,7 @@ this.loadAcademicDetails()
     throw new Error('Method not implemented.');
   }
   uniForms() {
-    throw new Error('Method not implemented.');
+     this.router.navigate(['uniform-fee-schedule'], { relativeTo: this.route });
   }
   ptaDues() {
    this.router.navigate(['pta-payment-schedule'], { relativeTo: this.route });

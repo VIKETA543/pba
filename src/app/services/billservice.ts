@@ -276,4 +276,31 @@ return this.httpClient.post(this.url + "/billsquote/Drop_PTA_Due", data, { heade
   }
 
 
+
+
+  
+
+   load_current_uniform_bill(data:any){
+      return  this.httpClient.post(this.url + "/billsquote/load_current_uniform_bill", data,{ headers: new HttpHeaders().set('contentType', "application/json") })
+    }
+
+
+Load_uniform_Arrears=(data:any)=>{
+     return  this.httpClient.post(this.url + "/billsquote/Load_uniform_Arrears",data, { headers: new HttpHeaders().set('contentType', "application/json") })
+}
+
+  submit_uniform_Bill=(data:any)=>{
+    return this.httpClient.post(this.url + "/billsquote/submit_uniform_Bill", data, { headers: new HttpHeaders().set('contentType', "application/json") })
+  }
+
+
+    Load_uniform_Dues_History=(data:any)=>{
+return this.httpClient.post(this.url + "/billsquote/Load_uniform_Dues_History", data, { headers: new HttpHeaders().set('contentType', "application/json") })
+  }
+
+  
+    Drop_uniform_Due=(data:any)=>{
+return this.httpClient.post(this.url + "/billsquote/Drop_uniform_Due", data, { headers: new HttpHeaders().set('contentType', "application/json") })
+  }
+
 }

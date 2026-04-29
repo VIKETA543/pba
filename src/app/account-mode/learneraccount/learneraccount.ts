@@ -33,6 +33,7 @@ import { Learnerservice } from '../../services/learnerservice';
   providers: [MessageService]
 })
 export class Learneraccount implements OnInit {
+// 
 
        private messageService = inject(MessageService);
   learnerData: any
@@ -45,16 +46,21 @@ export class Learneraccount implements OnInit {
   }
   constructor(private learnceracservcie: LearneraccountServcie, private learnerservice:Learnerservice, public sanitizer: DomSanitizer,private router:Router,private route: ActivatedRoute) {
     this.learnerData = this.learnceracservcie.learnerData
-  
-      this.learnerservice.setAdmissionNumber(this.learnerData[0].AdmissionNumber)
+
+    if(this.learnerData[0].AdmissionNumber===undefined){
+
+    }else{
+       this.learnerservice.setAdmissionNumber(this.learnerData[0].AdmissionNumber)
+    }
+  if(this.learnerData[0].SerialNumber===undefined){
+  }else{
        this.learnerservice.setCurrentGrade(this.learnerData[0].SerialNumber)
-
-       this.learnerservice.setAcademicYear
-       
-
-  
+  }
+    
+   
   }
 ngOnInit(): void {
+  console.log('this admission data',this.learnerData)
 this.loadAcademicDetails()
  
      
@@ -70,8 +76,8 @@ this.loadAcademicDetails()
           this.academicData = response?.data
          
     this.learnerservice.setCurrentTerm(this.academicData[0].OpenedTerm)
-    this.learnerservice.setAcademicYear(this.academicData[0].AcademicYear)
-               console.log('the data '+ this.academicData)
+    this.learnerservice.setAcademicYear(this.academicData[0].sessionID)
+               console.log('The year: ',this.academicData[0].sessionID)  
 
         } else {
   this.message=response?.message
@@ -81,7 +87,7 @@ this.loadAcademicDetails()
     })
   }
   specialLevy() {
-    throw new Error('Method not implemented.');
+    this.router.navigate(['sepecial-levy-schedule'], { relativeTo: this.route });
   }
   uniForms() {
      this.router.navigate(['uniform-fee-schedule'], { relativeTo: this.route });
@@ -96,4 +102,8 @@ this.loadAcademicDetails()
   canteenFee() {
     this.router.navigate(['cateen-fee-structure'], { relativeTo: this.route });
   }
+  generateBill() {
+
+    this.router.navigate(['generate-termly-bill'], { relativeTo: this.route });
+}
 }

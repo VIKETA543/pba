@@ -303,4 +303,59 @@ return this.httpClient.post(this.url + "/billsquote/Load_uniform_Dues_History", 
 return this.httpClient.post(this.url + "/billsquote/Drop_uniform_Due", data, { headers: new HttpHeaders().set('contentType', "application/json") })
   }
 
+
+
+
+  // special levy routes
+  // ========================================================================================================================================================================
+  // ========================================================================================================================================================================
+  // ........................................................................................................................................................................
+
+  
+   load_current_special_levy(data:any){
+      return  this.httpClient.post(this.url + "/billsquote/load_current_special_levy", data,{ headers: new HttpHeaders().set('contentType', "application/json") })
+    }
+
+
+Load_special_levy_Arrears=(data:any)=>{
+     return  this.httpClient.post(this.url + "/billsquote/Load_special_levy_Arrears",data, { headers: new HttpHeaders().set('contentType', "application/json") })
+}
+
+  submit_special_levy=(data:any)=>{
+    return this.httpClient.post(this.url + "/billsquote/submit_special_levy", data, { headers: new HttpHeaders().set('contentType', "application/json") })
+  }
+
+
+    Load_special_levy_History=(data:any)=>{
+return this.httpClient.post(this.url + "/billsquote/Load_special_levy_History", data, { headers: new HttpHeaders().set('contentType', "application/json") })
+  }
+
+  
+    Drop_special_levy=(data:any)=>{
+return this.httpClient.post(this.url + "/billsquote/Drop_special_levy", data, { headers: new HttpHeaders().set('contentType', "application/json") })
+  }
+
+  // generating bill details
+  generatebill=(data:any)=>{
+    return this.httpClient.post(this.url + "/billsquote/generatebill", data, { headers: new HttpHeaders().set('contentType', "application/json") })
+  }
+  loadPtaDues=(data:any)=>{
+    return this.httpClient.post(this.url + "/billsquote/loadPtaDues", data, { headers: new HttpHeaders().set('contentType', "application/json") })
+  }
+
+ specialLevy=(data:any)=>{
+    return this.httpClient.post(this.url + "/billsquote/specialLevy", data, { headers: new HttpHeaders().set('contentType', "application/json") })
+  }
+
+  uniformcost=(data:any)=>{
+ return this.httpClient.post(this.url + "/billsquote/uniformcost", data, { headers: new HttpHeaders().set('contentType', "application/json") })
+  }
+
+   busfee=(data:any)=>{
+ return this.httpClient.post(this.url + "/billsquote/busfee", data, { headers: new HttpHeaders().set('contentType', "application/json") })
+  }
+  
+  Canteen=(data:any)=>{
+     return this.httpClient.post(this.url + "/billsquote/Canteen", data, { headers: new HttpHeaders().set('contentType', "application/json") })
+  }
 }

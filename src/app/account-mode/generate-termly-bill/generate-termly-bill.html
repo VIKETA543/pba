@@ -1,0 +1,139 @@
+<div class="card flex justify-center ">
+    <p-panel>
+
+        <span>TERMLY BILL</span>
+        <div class="header-st-l">
+            <div>
+                <header>DESCRIPTION</header>
+            </div>
+            <div>
+                <header>ARREARS</header>
+            </div>
+            <div>
+                <header>CURRENT BILL</header>
+            </div>
+            <div>
+                <header>TOTAL</header>
+            </div>
+        </div>
+        <div class="header-st-l">
+            <div>
+                <header>TUITION FEE</header>
+            </div>
+            <div>
+                <span>{{feeInfo[0].arrears}}</span>
+            </div>
+            <div>
+                <header>{{feeInfo[0].currentBill}}</header>
+            </div>
+            <div>
+                <header>{{feeInfo[0].totalBill}}</header>
+            </div>
+        </div>
+        <div class="header-st-l">
+            <div>
+                <header>P.T.A</header>
+            </div>
+            <div>
+                <span>{{ptadueInfo[0].arrears}}</span>
+            </div>
+            <div>
+                <header>{{ptadueInfo[0].currentBill}}</header>
+            </div>
+            <div>
+                <header>{{ptadueInfo[0].totalBill}}</header>
+            </div>
+        </div>
+
+        <div class="header-st-l">
+            <div>
+                <header>Special Levy</header>
+            </div>
+            <div>
+                <span>{{speciallevyInfo[0].arrears}}</span>
+            </div>
+            <div>
+                <header>{{speciallevyInfo[0].currentBill}}</header>
+            </div>
+            <div>
+                <header>{{speciallevyInfo[0].totalBill}}</header>
+            </div>
+        </div>
+
+
+        <div class="header-st-l">
+            <div>
+                <header>Uniform</header>
+            </div>
+            @for (item of uniformInfo; track $index) {
+            <div>
+                <span>{{item.arrears}}</span>
+            </div>
+            <div>
+                <header>{{item.currentBill}}</header>
+            </div>
+            <div>
+                <header>{{item.totalBill}}</header>
+            </div>
+            }
+        </div>
+
+        <div class="header-st-l">
+            <div>
+                <header>Bus Fee</header>
+            </div>
+
+            @for (item of busInfo; track $index) {
+            <div>
+                <span>{{item.arrears}}</span>
+            </div>
+            <div>
+                <header>{{item.currentBill}}</header>
+            </div>
+            <div>
+                <header>{{item.totalBill}}</header>
+            </div>
+            }
+
+
+        </div>
+
+        <div class="inner-l">
+            <div>
+                <header>Canteen Fee</header>
+            </div>
+
+            <div class="i-n-h">
+                <div class="h">
+                    <label>Total days</label>
+                    <label>Daily Amount</label>
+                    <label>Arrears</label>
+                    <label>Total</label>
+                </div>
+                <div class="h">
+                    @for (item of canteenInfo; track $index) {
+
+                    <div class="i-n-h">
+                        <div>
+                            <span>{{item.number_of_days}}</span>
+                        </div>
+                        <div>
+                            <span>{{item.arrears}}</span>
+                        </div>
+
+                        <div>
+                            <header>{{item.dailyBill}}</header>
+                        </div>
+
+                    </div>
+
+                    <div>
+                        <header>{{item.TotalCanteenFee}}</header>
+                    </div>
+                    }
+                </div>
+
+            </div>
+        </div>
+    </p-panel>
+</div>

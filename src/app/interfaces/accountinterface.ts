@@ -72,3 +72,24 @@ export interface Uniforms{
     destdate:string
 
 }
+export interface Fee{
+    currentBill: number, arrears: number, totalBill: number 
+}
+export interface PTA{
+    currentBill: number, arrears: number, totalBill: number 
+}
+export interface Speciallevy{
+    currentBill: number, arrears: number, totalBill: number 
+}
+export interface PTA{
+    currentBill: number, arrears: number, totalBill: number 
+}
+export interface UniformInt{
+    currentBill: number, arrears: number, totalBill: number 
+}
+export interface Bus{
+    currentBill: number, arrears: number, totalBill: number 
+}
+export interface Canteen{
+    dailyBill: number,number_of_days:number, arrears: number, TotalCanteenFee: number 
+}

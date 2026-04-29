@@ -34,6 +34,7 @@ getAcademicYear=()=>{
   return this.curentYear
 }
 setAcademicYear=(year:any)=>{
+  console.log('year',year)
   return this.curentYear=year;
 }
   url = environment.apiUrl;

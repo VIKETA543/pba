@@ -29,6 +29,8 @@ import { CateenFeeStructure } from './account-mode/cateen-fee-structure/cateen-f
 import { BusBillSchedule } from './account-mode/bus-bill-schedule/bus-bill-schedule';
 import { PtaPaymentSchedule } from './account-mode/pta-payment-schedule/pta-payment-schedule';
 import { UniformFeeSchedule } from './account-mode/uniform-fee-schedule/uniform-fee-schedule';
+import { SepecialLevySchedule } from './account-mode/sepecial-levy-schedule/sepecial-levy-schedule';
+import { GenerateTermlyBill } from './account-mode/generate-termly-bill/generate-termly-bill';
 
 
 export const routes: Routes = [
@@ -49,7 +51,9 @@ export const routes: Routes = [
                                 { path: 'cateen-fee-structure', component: CateenFeeStructure },
                                 { path: 'bus-bill-schedule', component: BusBillSchedule },
                                 { path: 'pta-payment-schedule', component: PtaPaymentSchedule },
-                                {path:'uniform-fee-schedule',component:UniformFeeSchedule}
+                                {path:'uniform-fee-schedule',component:UniformFeeSchedule},
+                                {path:'sepecial-levy-schedule',component:SepecialLevySchedule},
+                                {path:'generate-termly-bill',component:GenerateTermlyBill}
 
                             ]
                     },

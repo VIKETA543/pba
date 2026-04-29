@@ -27,6 +27,8 @@
             } -->
               <p-button label="Biils" [raised]="false" variant="text" severity="info" (click)="op.toggle($event)" />
               <p-divider/>
+                <p-button label="Generate Bill" [raised]="false" variant="text" severity="help" (click)="generateBill()" />
+                <p-divider></p-divider>
             <p-button (click)="op1.toggle($event)" icon="pi pi-ellipsis-v" label="Payments" variant="text" />
         </ng-template>
         
@@ -34,7 +36,7 @@
 </div>
 <div class="card flex justify-center">
     <p-popover #op>
-        <p-button label="Spacial Levy" [raised]="false" variant="text" severity="success" (onClick)="specialLevy()" />
+        <!-- <p-button label="Spacial Levy" [raised]="false" variant="text" severity="success" (onClick)="specialLevy()" /> -->
         <p-divider layout="horizontal"/>
         <p-button label="School Fee" [raised]="false" variant="text" severity="info" (click)="schoolFee()" />
         <p-divider layout="horizontal"/>

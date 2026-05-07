@@ -12,7 +12,7 @@ import { TableModule } from 'primeng/table';
 @Component({
   standalone: true,
   selector: 'generate-termly-bill',
-  imports: [PanelModule,TableModule],
+  imports: [PanelModule, TableModule],
   templateUrl: './generate-termly-bill.html',
   styleUrl: './generate-termly-bill.css',
 })
@@ -24,33 +24,21 @@ export class GenerateTermlyBill implements OnInit {
   message: any
   billID: any
   currentTermDetails: BillsInterface[] = []
-  feeInfo:Fee[]=[]
-  ptadueInfo:PTA[]=[]
-  speciallevyInfo:Speciallevy[]=[]
-  uniformInfo:UniformInt[]=[]
-  busInfo:Bus[]=[];
-  canteenInfo:Canteen[]=[]
+  feeInfo: Fee[] = []
+  ptadueInfo: PTA[] = []
+  speciallevyInfo: Speciallevy[] = []
+  uniformInfo: UniformInt[] = []
+  busInfo: Bus[] = [];
+  canteenInfo: Canteen[] = []
   private messageService = inject(MessageService);
-  
+
   constructor(private billservcie: Billservice, private learnerservcie: Learnerservice) { }
   ngOnInit(): void {
-    if (this.learnerservcie.getCurrentGrade()===undefined) {
-    } else {
-      this.CurrentGrade = this.learnerservcie.getCurrentGrade()
 
-    }
-    if (this.learnerservcie.getAdmisssionNumber()===undefined) {
-    } else {
-      this.AdmissionNumber = this.learnerservcie.getAdmisssionNumber()
-    }
-    if (!this.learnerservcie.getCurrentTerm()===undefined) {
-    } else {
-      this.currentTerm = this.learnerservcie.getCurrentTerm()
-    }
-    if (this.learnerservcie.getAcademicYear()===undefined) {
-    } else {
-      this.academicYear = this.learnerservcie.getAcademicYear()
-    }
+    this.CurrentGrade = this.learnerservcie.learnerData[0].SerialNumber
+    this.AdmissionNumber = this.learnerservcie.learnerData[0].AdmissionNumber
+    this.currentTerm = this.learnerservcie.learenracademicData[0].OpenedTerm
+    this.academicYear = this.learnerservcie.learenracademicData[0].sessionID,
 
     this.termdetails();
     this.loadSchoolFee();
@@ -94,21 +82,21 @@ export class GenerateTermlyBill implements OnInit {
       term: this.currentTerm,
       academicYear: this.academicYear
     }
-    this.billservcie.generatebill(data).subscribe((response:any)=>{
-      if(response?.message){
-        this.message=response?.message
-      }else{
-        if(response?.data){
-          this.feeInfo=response?.data
-        }else{
-          this.message='Unknown error has occured'
+    this.billservcie.generatebill(data).subscribe((response: any) => {
+      if (response?.message) {
+        this.message = response?.message
+      } else {
+        if (response?.data) {
+          this.feeInfo = response?.data
+        } else {
+          this.message = 'Unknown error has occured'
         }
       }
     })
   }
 
 
- 
+
   loadPtaDues = () => {
     let data = {
       grade: this.CurrentGrade,
@@ -116,20 +104,20 @@ export class GenerateTermlyBill implements OnInit {
       term: this.currentTerm,
       academicYear: this.academicYear
     }
-    this.billservcie.loadPtaDues(data).subscribe((response:any)=>{
-      if(response?.message){
-        this.message=response?.message
-      }else{
-        if(response?.data){
-          this.ptadueInfo=response?.data
-        }else{
-          this.message='Unknown error has occured'
+    this.billservcie.loadPtaDues(data).subscribe((response: any) => {
+      if (response?.message) {
+        this.message = response?.message
+      } else {
+        if (response?.data) {
+          this.ptadueInfo = response?.data
+        } else {
+          this.message = 'Unknown error has occured'
         }
       }
     })
-  } 
+  }
 
-   
+
   specialLevy = () => {
     let data = {
       grade: this.CurrentGrade,
@@ -139,21 +127,21 @@ export class GenerateTermlyBill implements OnInit {
     }
 
 
-    this.billservcie.specialLevy(data).subscribe((response:any)=>{
-      if(response?.message){
-        this.message=response?.message
-      }else{
-        if(response?.data){
-          this.speciallevyInfo=response?.data
-        }else{
-          this.message='Unknown error has occured'
+    this.billservcie.specialLevy(data).subscribe((response: any) => {
+      if (response?.message) {
+        this.message = response?.message
+      } else {
+        if (response?.data) {
+          this.speciallevyInfo = response?.data
+        } else {
+          this.message = 'Unknown error has occured'
         }
       }
     })
   }
 
 
-  
+
   uniformcost = () => {
     let data = {
       grade: this.CurrentGrade,
@@ -163,21 +151,21 @@ export class GenerateTermlyBill implements OnInit {
     }
 
 
-    this.billservcie.uniformcost(data).subscribe((response:any)=>{
-      if(response?.message){
-        this.message=response?.message
-      }else{
-        if(response?.data){
-          this.uniformInfo=response?.data
-        }else{
-          this.message='Unknown error has occured'
+    this.billservcie.uniformcost(data).subscribe((response: any) => {
+      if (response?.message) {
+        this.message = response?.message
+      } else {
+        if (response?.data) {
+          this.uniformInfo = response?.data
+        } else {
+          this.message = 'Unknown error has occured'
         }
       }
     })
   }
 
 
-   busfee = () => {
+  busfee = () => {
     let data = {
       grade: this.CurrentGrade,
       AdmissionNumber: this.AdmissionNumber,
@@ -186,20 +174,20 @@ export class GenerateTermlyBill implements OnInit {
     }
 
 
-    this.billservcie.busfee(data).subscribe((response:any)=>{
-      if(response?.message){
-        this.message=response?.message
-      }else{
-        if(response?.data){
-          this.busInfo=response?.data
-        }else{
-          this.message='Unknown error has occured'
+    this.billservcie.busfee(data).subscribe((response: any) => {
+      if (response?.message) {
+        this.message = response?.message
+      } else {
+        if (response?.data) {
+          this.busInfo = response?.data
+        } else {
+          this.message = 'Unknown error has occured'
         }
       }
     })
   }
 
-    Canteen = () => {
+  Canteen = () => {
     let data = {
       grade: this.CurrentGrade,
       AdmissionNumber: this.AdmissionNumber,
@@ -208,14 +196,14 @@ export class GenerateTermlyBill implements OnInit {
     }
 
 
-    this.billservcie.Canteen(data).subscribe((response:any)=>{
-      if(response?.message){
-        this.message=response?.message
-      }else{
-        if(response?.data){
-          this.canteenInfo=response?.data
-        }else{
-          this.message='Unknown error has occured'
+    this.billservcie.Canteen(data).subscribe((response: any) => {
+      if (response?.message) {
+        this.message = response?.message
+      } else {
+        if (response?.data) {
+          this.canteenInfo = response?.data
+        } else {
+          this.message = 'Unknown error has occured'
         }
       }
     })

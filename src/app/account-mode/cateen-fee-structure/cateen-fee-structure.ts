@@ -15,6 +15,8 @@ import { Billservice } from '../../services/billservice';
 import { Learnerservice } from '../../services/learnerservice';
 import { MessageService } from 'primeng/api';
 import { BillsInterface, CanteenBillHistory } from '../../interfaces/bills-interface';
+import { Academics } from '../../interfaces/academicInterface';
+import { Accountinterface } from '../../interfaces/accountinterface';
 
 @Component({
   standalone: true,
@@ -54,7 +56,11 @@ export class CateenFeeStructure {
   selectedYear:any
   setCurrentBill: boolean = false
   daysInterm:number=0
+    learnerData:Accountinterface[]|any
+    academicData:Academics[]|any
   constructor(private billService: Billservice, private learnerservcie: Learnerservice) {
+       this.learnerData = this.learnerservcie.learnerData
+      this.academicData=this.learnerservcie.learenracademicData
   }
 
   statuses = signal<any[]>([]);
@@ -65,10 +71,10 @@ export class CateenFeeStructure {
   LearnerbillHistory: CanteenBillHistory[] = [];
   ngOnInit(): void {
 
-    this.CurrentGrade = this.learnerservcie.getCurrentGrade()
-    this.AdmissionNumber = this.learnerservcie.getAdmisssionNumber()
-    this.currentTerm = this.learnerservcie.getCurrentTerm()
-    this.academicYear = this.learnerservcie.getAcademicYear()
+       this.CurrentGrade = this.learnerData[0].SerialNumber,
+    this.AdmissionNumber = this.learnerData[0].AdmissionNumber,
+    this.currentTerm = this.academicData[0].OpenedTerm,
+    this.academicYear = this.academicData[0].sessionID
 
 
 

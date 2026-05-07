@@ -12,6 +12,8 @@ import { MessageModule } from 'primeng/message';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { PopoverModule } from 'primeng/popover';
+import { Accountinterface } from '../interfaces/accountinterface';
+import { Learnerservice } from '../services/learnerservice';
 
 @Component({
   standalone:true,
@@ -56,14 +58,14 @@ specialLevy() {
 }
      private messageService = inject(MessageService);
      message:any
-  constructor(private routerLink:Router,private route: ActivatedRoute,private accountservice:LearneraccountServcie){}
+  constructor(private routerLink:Router,private route: ActivatedRoute,private accountservice:LearneraccountServcie,private learnerservice:Learnerservice){}
 getLearnerDetails() {
   let data={
     learnerID:this.learnerID
   }
   return this.accountservice.getLeaner(data).subscribe((response:any)=>{
     if(response?.data){
-      this.accountservice.learnerData=response?.data
+      this.learnerservice.learnerData=response?.data
       this.routerLink.navigate(['learneraccount'], { relativeTo: this.route });
       this.isLearnerAccountvisible.set(false)
     }else{

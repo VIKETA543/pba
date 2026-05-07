@@ -1,0 +1,203 @@
+<div class="card flex flex-wrap gap-4 justify-between summaries-container">
+    <div class="card flex flex-wrap gap-4 justify-between summaries">
+        <label>AMOUNT BILLED: </label>
+        <label>{{totalBill | currency: 'Ghø' : 'symbol'}}</label>
+    </div>
+    <div class="card flex flex-wrap gap-4 justify-between summaries">
+        <label>AMOUNT PAID: </label>
+        <label>{{totalPaid | currency: 'Ghø' : 'symbol'}}</label>
+    </div>
+    <div class="card flex flex-wrap gap-4 justify-between summaries">
+        <label>BALANCE: </label>
+        <label>{{sumBalance | currency: 'Ghø' : 'symbol'}}</label>
+    </div>
+</div>
+<div class="card flex justify-center  summaries-container">
+    <p-button label="Initiate Payment" icon="" severity="success" (onClick)="payFee()" />
+</div>
+@if(isPaying()){
+<div class="card flex justify-center">
+
+    <p-dialog header="PAYMENT" [modal]="true" [(visible)]="isPaying" [style]="{ width: '30rem' }">
+  <div class="card flex flex-wrap gap-4 justify-between summaries">
+            <label>PAYMENT ID: </label>
+            <label>{{PaymentNumber}}</label>
+        </div>
+        <p-divider/>
+        <div class="card flex flex-wrap gap-4 justify-between summaries">
+            <label>CURRENT BILL: </label>
+            <label>{{totalBill | currency: 'Ghø' : 'symbol'}}</label>
+        </div>
+   <p-divider/>
+        <div class="card flex flex-wrap gap-4 justify-between summaries">
+            <label>SUM PAID: </label>
+            <label>{{totalPaid | currency: 'Ghø' : 'symbol'}}</label>
+        </div>
+        <p-divider/>
+        <div class="card flex flex-wrap gap-4 justify-between summaries">
+            <label>SUM BALANCE: </label>
+            <label>{{sumBalance | currency: 'Ghø' : 'symbol'}}</label>
+        </div>
+        <div class="flex items-center gap-4 mb-4">
+            <label class="mb-2 font-bold block" for="minmaxfraction">Enter Amount to Pay</label>
+            <p-inputnumber [(ngModel)]="amountToPay" inputId="minmaxfraction" mode="decimal" [minFractionDigits]="2"
+                [maxFractionDigits]="5" (onInput)="calculatePayment()" />
+        </div>
+
+        <p-divider />
+        <div class="flex items-center gap-4 mb-4">
+            <label class="mb-2 font-bold block" for="minmaxfraction">Current Balance</label>
+            <p-inputnumber [(ngModel)]="newBalance" readonly="true" inputId="minmaxfraction" mode="decimal"
+                [minFractionDigits]="2" [maxFractionDigits]="5" />
+        </div>
+        <p-divider />
+        <div class="flex justify-end gap-2">
+            <p-button label="Submit Payment" (click)="submiPayment()" />
+        </div>
+    </p-dialog>
+</div>
+}
+@if(accountHistory){
+<div class="card">
+    <p-table #dt1 [value]="accountHistory" dataKey="id" [rows]="10" [rowsPerPageOptions]="[10, 25, 50]"
+        [loading]="loading()" [paginator]="true"
+        [globalFilterFields]="['billNumber', 'ac_session', 'TermlyObject', 'currentBill','dateposted','DeptName','GradeDescription']"
+        stripedRows="true">
+
+        <ng-template #caption>
+            <p-toolbar>
+                <ng-template #start>
+                    <p-button label="Clear" [outlined]="true" icon="pi pi-filter-slash" (click)="clear(dt1)" />
+
+                    <div class="card flex flex-wrap gap-4 justify-between">
+                    </div>
+                </ng-template>
+                <ng-template #end>
+                    <p-iconfield iconPosition="left" class="ml-auto">
+                        <p-inputicon>
+                            <i class="pi pi-search"></i>
+                        </p-inputicon>
+                        <input pInputText type="text" (input)="dt1.filterGlobal($event.target.value, 'contains')"
+                            placeholder="Search keyword" />
+                    </p-iconfield>
+                </ng-template>
+            </p-toolbar>
+        </ng-template>
+        <ng-template #header>
+
+
+
+            <tr>
+                <th style="max-width:5rem">
+                    <div class="flex items-center justify-between">
+                        Serial
+                    </div>
+                </th>
+                <th style="max-width:10rem">
+                    <div class="flex items-center justify-between">
+                        Bill Number
+                    </div>
+                </th>
+                <th style="max-width:10rem">
+                    <div class="flex items-center justify-between">
+                        Payment Number
+                    </div>
+                </th>
+
+                <th style="max-width:15rem">
+                    <div class="flex items-center justify-between">
+                        Academic Year
+                    </div>
+                </th>
+                <th style="max-width:10rem">
+                    <div class="flex items-center justify-between">
+                        Term
+                    </div>
+                </th>
+                <th style="max-width:10rem">
+                    <div class="flex items-center justify-between">
+                        Amount Paid
+                    </div>
+                </th>
+                <th style="max-width:8rem">
+                    <div class="flex items-center justify-between">
+                        Balace
+                    </div>
+                </th>
+
+                <th style="max-width:2rem">
+                    <div class="flex items-center justify-between">
+                        Active Bill
+                    </div>
+                </th>
+                <th>Date</th>
+                   <th style="width: 3rem">
+                    <div class="flex items-center justify-between">
+                        Actions
+                    </div>
+                </th>
+                
+             
+
+            </tr>
+        </ng-template>
+
+        <ng-template #body let-accountHistory let-i="rowIndex">
+            <tr>
+                <td>
+                    {{ i+1 }}
+                </td>
+                <td>
+                    <div class="flex items-center gap-2">
+
+                        <span>{{accountHistory.billNumber }}</span>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="flex items-center gap-2">
+
+                        <span>{{accountHistory.PaymentNumber }}</span>
+                    </div>
+                </td>
+                <td>
+                    <div class="flex items-center gap-2">
+                        <span>{{ accountHistory.ac_session }}</span>
+                    </div>
+                </td>
+                <td>{{accountHistory.TermlyObject}}</td>
+                <td>
+                    {{accountHistory.amountpaid | currency: 'Ghø' : 'symbol'}}
+                </td>
+                <td class="text-center">
+                    {{accountHistory.currentBalance | currency: 'Ghø' : 'symbol'}}
+                </td>
+
+                <td class="text-center">
+                    <div class="card flex justify-center">
+                        <p-toggleswitch [(ngModel)]="accountHistory.isCurrentbillStatus" />
+                    </div>
+
+                </td>
+                 <td>
+                    {{ accountHistory.dateposted | date: 'MM/dd/yyyy' }}
+
+                </td>
+                <td>
+                    <div class="card flex justify-center">
+                        <p-button label="Drop" icon="pi pi-trash" severity="danger"
+                            (onClick)="dropCanteenBill(accountHistory)" />
+                    </div>
+                </td>
+               
+            </tr>
+        </ng-template>
+        <ng-template #emptymessage>
+            <tr>
+                <td colspan="7"> <p-message severity="error">{{message}}</p-message> </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+}
+<p-toast />

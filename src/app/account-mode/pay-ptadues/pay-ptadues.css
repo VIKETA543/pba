@@ -1,0 +1,25 @@
+th,td{
+    font-size: clamp(0.7vw,1.0vw,1.8vw);
+}
+.summaries{
+      font-size: clamp(1vw,1.3vw,1.8vw);
+      padding:10px;
+      margin: 10px;
+      border-radius: .3em;
+      border: 1px solid rgb(245, 245, 245);
+    
+      label:last-child{
+        color: green;
+      }
+      label{
+          color: rgb(3, 43, 102);
+      }
+}
+.summaries-container{
+    display: flex;
+}
+::ng-deep .p-inputnumber{
+
+        width: 100%;
+    
+}

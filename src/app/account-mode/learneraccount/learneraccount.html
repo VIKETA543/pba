@@ -1,23 +1,33 @@
 <div class="card">
     <p-toolbar>
-        @if(learnerData){
+   
+        @if(learnerData[0].applicantMiddlename){
         <label class="learner-name">{{learnerData[0].applicantSurname}} {{learnerData[0].applicantMiddlename}}
             {{learnerData[0].applicantLastname}}</label>
+        }
+        @if(learnerData[0].AdmissionNumber){
        <label class="learner-name">{{learnerData[0].AdmissionNumber}}</label>
+        }
         <ng-template #start>
 
         </ng-template>
         <ng-template #center>
     <div class="card  flex-col gap-4  justify-center ">
-         <label class="header-lbl">{{this.learnerData[0].GradeDescription ??undefined}}</label> 
-    <label class="header-lbl">{{this.academicData[0].TermlyObject  ??undefined}}</label>
-     <label class="header-lbl">{{academicData[0].WeekDescription  ??undefined}}</label>
-    
-      <label class="header-lbl">{{academicData[0].ac_session  ??undefined}} YEAR</label>
-
+        @if (this.learnerData[0].GradeDescription) {
+         <label class="header-lbl">{{learnerData[0].GradeDescription}}</label>
+        } 
+        @if(academicData[0].TermlyObject){
+    <label class="header-lbl">{{academicData[0].TermlyObject}}</label>
+        }
+        @if(academicData[0].WeekDescription){
+     <label class="header-lbl">{{academicData[0].WeekDescription }}</label>
+        }
+        @if(academicData[0].ac_session){
+      <label class="header-lbl">{{academicData[0].ac_session}} YEAR</label>
+        }
       </div>
         </ng-template>
-    }
+    
         <ng-template #end>
             <!-- @if(learnerData.Image!==undefined){
             <div class="Image-container ballot-items">
@@ -25,7 +35,7 @@
                 <img [src]="sanitizer.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' +learnerData[0].Image  )">
             </div>
             } -->
-              <p-button label="Biils" [raised]="false" variant="text" severity="info" (click)="op.toggle($event)" />
+              <p-button label="Bills" [raised]="false" variant="text" severity="info" (click)="op.toggle($event)" />
               <p-divider/>
                 <p-button label="Generate Bill" [raised]="false" variant="text" severity="help" (click)="generateBill()" />
                 <p-divider></p-divider>
@@ -54,7 +64,7 @@
 <div class="card flex justify-center">
     <p-popover #op1>
         <p-button label="Spacial Levy" [raised]="false" variant="text" severity="success" (onClick)="specialLevy()" />
-        <p-button label="School Fee" [raised]="false" variant="text" severity="info" (click)="schoolFee()" />
+        <p-button label="School Fee" [raised]="false" variant="text" severity="info" (click)="PaySchoolFee()" />
         <p-button label="Canteen" [raised]="false" variant="text" severity="secondary" (click)="canteenFee()" />
         <p-button label="Buss Fee" [raised]="false" variant="text" severity="primary" (click)="bussFee()" />
         <p-button label="PTA Dues" [raised]="false" variant="text" severity="help" (click)="ptaDues()" />

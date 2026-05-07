@@ -31,6 +31,12 @@ import { PtaPaymentSchedule } from './account-mode/pta-payment-schedule/pta-paym
 import { UniformFeeSchedule } from './account-mode/uniform-fee-schedule/uniform-fee-schedule';
 import { SepecialLevySchedule } from './account-mode/sepecial-levy-schedule/sepecial-levy-schedule';
 import { GenerateTermlyBill } from './account-mode/generate-termly-bill/generate-termly-bill';
+import { PaySchoolfee } from './account-mode/pay-schoolfee/pay-schoolfee';
+import { PayCanteenfee } from './account-mode/pay-canteenfee/pay-canteenfee';
+import { PaySpeciallevy } from './account-mode/pay-speciallevy/pay-speciallevy';
+import { PayBusfee } from './account-mode/pay-busfee/pay-busfee';
+import { PayPTADues } from './account-mode/pay-ptadues/pay-ptadues';
+import { PayUniforms } from './account-mode/pay-uniforms/pay-uniforms';
 
 
 export const routes: Routes = [
@@ -51,9 +57,15 @@ export const routes: Routes = [
                                 { path: 'cateen-fee-structure', component: CateenFeeStructure },
                                 { path: 'bus-bill-schedule', component: BusBillSchedule },
                                 { path: 'pta-payment-schedule', component: PtaPaymentSchedule },
-                                {path:'uniform-fee-schedule',component:UniformFeeSchedule},
-                                {path:'sepecial-levy-schedule',component:SepecialLevySchedule},
-                                {path:'generate-termly-bill',component:GenerateTermlyBill}
+                                { path: 'uniform-fee-schedule', component: UniformFeeSchedule },
+                                { path: 'sepecial-levy-schedule', component: SepecialLevySchedule },
+                                { path: 'generate-termly-bill', component: GenerateTermlyBill },
+                                { path: 'pay-schoolfee', component: PaySchoolfee },
+                                { path: 'pay-canteenfee', component: PayCanteenfee },
+                                { path: 'pay-speciallevy', component: PaySpeciallevy },
+                                { path: 'pay-busfee', component: PayBusfee },
+                                { path: 'pay-ptadues', component: PayPTADues },
+                                 { path: 'pay-uniforms', component: PayUniforms },
 
                             ]
                     },

@@ -15,7 +15,8 @@ import { Billservice } from '../../services/billservice';
 import { Learnerservice } from '../../services/learnerservice';
 import { MessageService } from 'primeng/api';
 import { BillsInterface, CanteenBillHistory, LearenrBillHistory } from '../../interfaces/bills-interface';
-import { Uniforms } from '../../interfaces/accountinterface';
+import { Accountinterface, Uniforms } from '../../interfaces/accountinterface';
+import { Academics } from '../../interfaces/academics';
 
 @Component({
   selector: 'uniform-fee-schedule',
@@ -53,7 +54,11 @@ this.isCurrentBill=$event.checked
   message: any
   academicYear:any
   isCurrentBill:boolean=false
+    learnerData:Accountinterface[]|any
+  academicData:Academics[]|any
   constructor(private billService: Billservice, private learnerservcie: Learnerservice) {
+          this.learnerData = this.learnerservcie.learnerData
+      this.academicData=this.learnerservcie.learenracademicData
   }
 
     statuses = signal<any[]>([]);
@@ -64,10 +69,10 @@ this.isCurrentBill=$event.checked
     LearnerbillHistory:LearenrBillHistory[]=[];
   ngOnInit(): void {
    
-    this.CurrentGrade = this.learnerservcie.getCurrentGrade()
-    this.AdmissionNumber = this.learnerservcie.getAdmisssionNumber()
-    this.currentTerm = this.learnerservcie.getCurrentTerm()
-    this.academicYear=this.learnerservcie.getAcademicYear()
+       this.CurrentGrade = this.learnerData[0].SerialNumber,
+    this.AdmissionNumber = this.learnerData[0].AdmissionNumber,
+    this.currentTerm = this.academicData[0].OpenedTerm,
+    this.academicYear = this.academicData[0].sessionID
 
     this.termdetails();
 

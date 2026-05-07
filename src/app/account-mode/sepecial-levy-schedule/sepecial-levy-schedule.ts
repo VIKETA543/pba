@@ -16,6 +16,8 @@ import { Component, signal, inject } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { BillsInterface, LearenrBillHistory } from '../../interfaces/bills-interface';
 import { Billservice } from '../../services/billservice';
+import { Academics } from '../../interfaces/academicInterface';
+import { Accountinterface } from '../../interfaces/accountinterface';
 
 
 @Component({
@@ -54,7 +56,11 @@ export class SepecialLevySchedule {
   message: any
   academicYear: any
   isCurrentBill: boolean = false
+    learnerData: Accountinterface[] | any
+      academicData:Academics[]|any
   constructor(private billService: Billservice, private learnerservcie: Learnerservice) {
+        this.learnerData = this.learnerservcie.learnerData
+      this.academicData=this.learnerservcie.learenracademicData
   }
 
   statuses = signal<any[]>([]);
@@ -65,10 +71,10 @@ export class SepecialLevySchedule {
   LearnerbillHistory: LearenrBillHistory[] = [];
   ngOnInit(): void {
 
-    this.CurrentGrade = this.learnerservcie.getCurrentGrade()
-    this.AdmissionNumber = this.learnerservcie.getAdmisssionNumber()
-    this.currentTerm = this.learnerservcie.getCurrentTerm()
-    this.academicYear = this.learnerservcie.getAcademicYear()
+     this.CurrentGrade = this.learnerData[0].SerialNumber,
+    this.AdmissionNumber = this.learnerData[0].AdmissionNumber,
+    this.currentTerm = this.academicData[0].OpenedTerm,
+    this.academicYear = this.academicData[0].sessionID
 
     this.termdetails();
     this.load_current_special_levy()

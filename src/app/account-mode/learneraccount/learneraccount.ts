@@ -13,6 +13,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { PopoverModule } from 'primeng/popover';
 import { MessageService } from 'primeng/api';
 import { Learnerservice } from '../../services/learnerservice';
+import { Accountinterface } from '../../interfaces/accountinterface';
+import { Academics } from '../../interfaces/academicInterface';
 
 
 
@@ -36,8 +38,8 @@ export class Learneraccount implements OnInit {
 // 
 
        private messageService = inject(MessageService);
-  learnerData: any
-  academicData: any
+  learnerData: Accountinterface[]=[]
+  academicData: Academics[]=[]
   message:any
  
   schoolFee() {
@@ -45,25 +47,10 @@ export class Learneraccount implements OnInit {
 
   }
   constructor(private learnceracservcie: LearneraccountServcie, private learnerservice:Learnerservice, public sanitizer: DomSanitizer,private router:Router,private route: ActivatedRoute) {
-    this.learnerData = this.learnceracservcie.learnerData
-
-    if(this.learnerData[0].AdmissionNumber===undefined){
-
-    }else{
-       this.learnerservice.setAdmissionNumber(this.learnerData[0].AdmissionNumber)
-    }
-  if(this.learnerData[0].SerialNumber===undefined){
-  }else{
-       this.learnerservice.setCurrentGrade(this.learnerData[0].SerialNumber)
-  }
-    
-   
+    this.learnerData = this.learnerservice.learnerData
   }
 ngOnInit(): void {
-  console.log('this admission data',this.learnerData)
-this.loadAcademicDetails()
- 
-     
+this.loadAcademicDetails() 
 }
   loadAcademicDetails = () => {
     return this.learnceracservcie.loadAcademicDetails().subscribe((response: any) => {
@@ -72,12 +59,8 @@ this.loadAcademicDetails()
               this.messageService.add({ severity: 'info', summary: 'Messgae', detail: this.message });
       } else {
         if (response?.data) {
-
+          this.learnerservice.learenracademicData= response?.data
           this.academicData = response?.data
-         
-    this.learnerservice.setCurrentTerm(this.academicData[0].OpenedTerm)
-    this.learnerservice.setAcademicYear(this.academicData[0].sessionID)
-               console.log('The year: ',this.academicData[0].sessionID)  
 
         } else {
   this.message=response?.message
@@ -87,23 +70,26 @@ this.loadAcademicDetails()
     })
   }
   specialLevy() {
-    this.router.navigate(['sepecial-levy-schedule'], { relativeTo: this.route });
+    this.router.navigate(['pay-speciallevy'], { relativeTo: this.route });
   }
   uniForms() {
-     this.router.navigate(['uniform-fee-schedule'], { relativeTo: this.route });
+     this.router.navigate(['pay-uniforms'], { relativeTo: this.route });
   }
   ptaDues() {
-   this.router.navigate(['pta-payment-schedule'], { relativeTo: this.route });
+   this.router.navigate(['pay-ptadues'], { relativeTo: this.route });
   }
   bussFee() {
-    this.router.navigate(['bus-bill-schedule'], { relativeTo: this.route });
+    this.router.navigate(['pay-busfee'], { relativeTo: this.route });
 
   }
   canteenFee() {
-    this.router.navigate(['cateen-fee-structure'], { relativeTo: this.route });
+    this.router.navigate(['pay-canteenfee'], { relativeTo: this.route });
   }
   generateBill() {
 
     this.router.navigate(['generate-termly-bill'], { relativeTo: this.route });
+}
+PaySchoolFee=()=>{
+   this.router.navigate(['pay-schoolfee'], { relativeTo: this.route });
 }
 }

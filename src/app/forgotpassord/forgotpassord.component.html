@@ -1,21 +1,26 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row fxLayout="row">
+<mat-toolbar color="primary" class="dialog-header">
+  <mat-toolbar-row>
+     <div class="flex-auto">
+        <p-avatar shape="circle" class="mr-2" size="xlarge" mb-4 image="assets/img/divine.png" />
+      </div>
     <span class="title-center">Forgot Password</span>
   </mat-toolbar-row>
 </mat-toolbar>
-<mat-dialog-content class="mat-typography">
-  <form [formGroup]="forgotPasswordForm">
-    <div fxFlex fxLayout="column">
-      <mat-form-field appearance="fill" fxFlex>
-        <mat-label>Email</mat-label>
-        <input matInput formControlName="email" required>
+
+<mat-dialog-content class="dialog-body mat-typography">
+  <form [formGroup]="forgotPasswordForm" class="form-container">
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email Address</mat-label>
+        <input matInput formControlName="email" type="email" placeholder="e.g. name@example.com" required>
+        
         @if (forgotPasswordForm.controls.email.touched && forgotPasswordForm.controls.email.invalid) {
           <mat-error>
             @if (forgotPasswordForm.controls.email.errors.required) {
-              <span >This field is mandatory</span>
+              <span>This field is mandatory</span>
             }
             @if (forgotPasswordForm.controls.email.errors.pattern) {
-              <span >This field is invalid</span>
+              <span>Please enter a valid email address</span>
             }
           </mat-error>
         }
@@ -24,8 +29,10 @@
   </form>
 </mat-dialog-content>
 
-<mat-dialog-actions align="center">
-  <button mat-raised-button color="primary" type="submit" (click)="handleSubmit()"
-  [disabled]="!(forgotPasswordForm.valid && forgotPasswordForm.dirty)">Send Password</button>
-  <button mat-raised-button color="primary" mat-dialog-close>Close</button>
+<mat-dialog-actions align="center" class="dialog-actions">
+  <button mat-flat-button color="primary" type="submit" (click)="handleSubmit()"
+          [disabled]="!(forgotPasswordForm.valid && forgotPasswordForm.dirty)">
+    Send Password
+  </button>
+  <button mat-stroke-button mat-dialog-close>Close</button>
 </mat-dialog-actions>

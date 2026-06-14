@@ -1,5 +1,9 @@
 <mat-toolbar color="primary">
+ 
   <mat-toolbar-row fxLayout="row">
+       <div class="flex-auto">
+        <p-avatar shape="circle" class="mr-2"  mb-4 size="xlarge" image="assets/img/divine.png" />
+      </div>
     <span class="title-center">Signup</span>
 
   </mat-toolbar-row>
@@ -7,7 +11,7 @@
 <mat-dialog-content class="mat-typography">
   <form [formGroup]="signupForm">
     <div >
-      <mat-form-field appearance="fill" fxFlex>
+      <mat-form-field fxFlex>
         <mat-label>Name</mat-label>
         <input matInput formControlName="name" required>
         @if (signupForm.controls.name.touched && signupForm.controls.name.invalid) {
@@ -22,7 +26,7 @@
         }
       </mat-form-field>
 
-      <mat-form-field appearance="fill" fxFlex>
+      <mat-form-field  fxFlex>
         <mat-label>Email Address</mat-label>
         <input matInput formControlName="email" required>
         @if (signupForm.controls.email.touched && signupForm.controls.email.invalid) {
@@ -38,7 +42,7 @@
       </mat-form-field>
 
 
-      <mat-form-field appearance="fill" fxFlex>
+      <mat-form-field  fxFlex>
         <mat-label>Contact Number</mat-label>
         <input matInput formControlName="contactNumber" required>
         @if (signupForm.controls.contactNumber.touched && signupForm.controls.contactNumber.invalid) {
@@ -53,7 +57,7 @@
         }
       </mat-form-field>
 
-      <mat-form-field appearance="fill" fxFlex>
+      <mat-form-field  fxFlex>
         <mat-label>Password</mat-label>
         <input matInput formControlName="password" type="password" required>
         @if (signupForm.controls.password.touched && signupForm.controls.password.invalid) {
@@ -67,7 +71,7 @@
           </mat-error>
         }
       </mat-form-field>
-      <mat-form-field appearance="fill" fxFlex>
+      <mat-form-field fxFlex>
         <mat-label>Enter your staff ID</mat-label>
         <input matInput formControlName="staffID" type="password" required>
         @if (signupForm.controls.staffID.touched && signupForm.controls.staffID.invalid) {
@@ -84,6 +88,9 @@
 
     </div>
   </form>
+<label class="auth-redirect">
+    Already have account? <span class="signin-link" (click)="goToLogin()">Signin</span>
+</label>
 
 </mat-dialog-content>
 <mat-dialog-actions align="center">
@@ -91,5 +98,5 @@
     [disabled]="!(signupForm.valid && signupForm.dirty)">
     <!-- <mat-icon>home</mat-icon> -->
   Submit</button>
-  <button mat-raised-button color="primary" mat-dialog-close>Close</button>
+  <button mat-raised-button color="primary" mat-dialog-close (click)="closeDialog()">Close</button>
 </mat-dialog-actions>

@@ -65,3 +65,20 @@ export interface detailWithdrawnData {
       AUTH_BY: string,
       AUTH_MES: string
 }
+export interface PinAcademicyear{
+      sessionID:string,
+      academicyear:string,
+      yearId:string
+}
+export interface FormGrades{
+      SerialNumber:string,
+      GradeDescription:string
+}
+export interface SERIALNUMBERS{
+      SerialNumber:string,
+      SerialPin:string,
+      academicyear:string,
+      dateGenerated:Date;
+      yearId:string
+      auth:boolean
+}

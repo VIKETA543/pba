@@ -37,6 +37,11 @@ import { PaySpeciallevy } from './account-mode/pay-speciallevy/pay-speciallevy';
 import { PayBusfee } from './account-mode/pay-busfee/pay-busfee';
 import { PayPTADues } from './account-mode/pay-ptadues/pay-ptadues';
 import { PayUniforms } from './account-mode/pay-uniforms/pay-uniforms';
+import { SerialNumbers } from './admissions/serial-numbers/serial-numbers';
+import { FormsManager } from './admissions/forms-manager/forms-manager';
+import { SellForms } from './admissions/sell-forms/sell-forms';
+import { GeneratePins } from './admissions/generate-pins/generate-pins';
+import { FormsSalesReport } from './admissions/forms-sales-report/forms-sales-report';
 
 
 export const routes: Routes = [
@@ -65,7 +70,7 @@ export const routes: Routes = [
                                 { path: 'pay-speciallevy', component: PaySpeciallevy },
                                 { path: 'pay-busfee', component: PayBusfee },
                                 { path: 'pay-ptadues', component: PayPTADues },
-                                 { path: 'pay-uniforms', component: PayUniforms },
+                                { path: 'pay-uniforms', component: PayUniforms },
 
                             ]
                     },
@@ -76,10 +81,25 @@ export const routes: Routes = [
                     { path: 'ptadues-billing', component: PtaduesBilling },
                     { path: 'speciallevy-billing', component: SpeciallevyBilling },
                     { path: 'uniformbill', component: Uniformbill },
+                    { path: 'forms-manager', component: FormsManager },
+                    { path: 'sell-forms', component: SellForms }
 
                 ]
             },
-            { path: 'app-admissions', component: AdmissionsComponent },
+            {
+                path: 'app-admissions', component: AdmissionsComponent,
+                children: [
+                    {
+                        path: 'serial-numbers', component: SerialNumbers, children: [
+                            { path: 'forms-manager', component: FormsManager },
+                            { path: 'sell-forms', component: SellForms },
+                            { path: 'generate-pins', component: GeneratePins },
+                            { path: 'forms-sales-report', component: FormsSalesReport },
+                        ]
+                    },
+
+                ]
+            },
             { path: 'app-examinations', component: ExaminationsComponent },
             { path: 'app-academicdashboard', component: AcademicdashboardComponent },
 

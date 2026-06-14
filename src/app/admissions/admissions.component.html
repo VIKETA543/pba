@@ -21,17 +21,32 @@
 
       </ng-template>
       <ng-template #end>
-
+        <!-- <p-button label="Generate Pins" [raised]="true" severity="contrast" (onClick)="op1.toggle($event)" /> -->
+         <p-button label="Pin Manager" [raised]="true" severity="contrast" routerLink="serial-numbers" />
       </ng-template>
     </p-toolbar>
   </div>
+
+
+
+
   <div class="card">
     <p-popover #op>
-      <p-button label="Process Withdrawal" [raised]="false" severity="primary" variant="text" (click)="handlesWithdrawals()" />
-       <p-divider />
-      <p-button label="Authourise Withdrawal" [raised]="false" severity="primary" variant="text"  (click)="handlesWithdrawnList()" />
-       <p-divider />
-      <p-button label="Withdrawn Learners" [raised]="false" severity="primary" variant="text" (click)="handlesListofWithdrawals()" />
+      <p-button label="Process Withdrawal" [raised]="false" severity="primary" variant="text"
+        (click)="handlesWithdrawals()" />
+      <p-divider />
+      <p-button label="Authourise Withdrawal" [raised]="false" severity="primary" variant="text"
+        (click)="handlesWithdrawnList()" />
+      <p-divider />
+      <p-button label="Withdrawn Learners" [raised]="false" severity="primary" variant="text"
+        (click)="handlesListofWithdrawals()" />
+
     </p-popover>
   </div>
+
+  <!-- <p-popover #op1>
+    <p-button label="Generate Pins" [raised]="true" severity="contrast" routerLink="serial-numbers" />
+  </p-popover> -->
+
+  <router-outlet></router-outlet>
 </main>

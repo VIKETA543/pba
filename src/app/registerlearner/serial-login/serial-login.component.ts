@@ -87,8 +87,10 @@ export class SerialLoginComponent implements OnInit {
       this.datapasserservice.loadpaymentDetails();
       this.datapasserservice.loadPrentconsent();
       this.datapasserservice.loadImage()
+      console.log('The application status',this.applicationstatus)
       if(this.applicationstatus==="PROCESSING"){
       switch (this.progressData) {
+
         case "ApplicantPassportComponent":  
           this.dialog.open(ApplicantPassportComponent, diadlogConfig);
           break;
@@ -135,11 +137,15 @@ export class SerialLoginComponent implements OnInit {
           break
       }
     }else{
+      if(this.applicationstatus==="SOLD"){
+          this.dialog.open(ApplicantPassportComponent, diadlogConfig);
+      }else{
             setTimeout((event:Event)=>{
               this.dialog.open(ProcesspdfReportComponent,diadlogConfig)
             },1000)
 
     }
+  }
       this.snackBarservice.openSnackBar(this.responseMessage, '')
     }, ((error) => {
       this.ngxService.stop();

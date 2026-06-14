@@ -1,4 +1,4 @@
-<main class="main">
+<!-- <main class="main">
     <div class="content">
       <nav class="navigation-items">
         <menu>
@@ -28,16 +28,52 @@
       </menu>
      
     </nav>
-      <hr/>
-  
-      <div class="carousel-container">
-        <img src=""  alt="no carousel">
-      </div>
-      
-    </div>
-  </main>
-  
- 
-  
 
-  
+     -->
+
+
+<div class="card">
+  <p-toolbar class="toolbar">
+    <ng-template #start>
+      <div class="flex-auto">
+        <p-avatar shape="circle" class="mr-2" size="xlarge" image="assets/img/divine.png" />
+      </div>
+      <div class="flex-auto">
+        <header card flex flex-wrap justify-center items-end gap-4>DIVINE CHILD ACADEMY</header>
+        <label>Osoro Mma</label>
+      </div>
+    </ng-template>
+    <ng-template #center>
+
+    </ng-template>
+    <ng-template #end>
+      <p-button icon="pi pi-user-plus" label="Signup" class="mr-2" raised="true" severity="contrast" (click)="signupAction()" />
+      <p-button icon="pi pi-sign-in" class="mr-2" label="Login" raised="true" severity="contrast" (click)="loginAction()" />
+    </ng-template>
+  </p-toolbar>
+</div>
+<!-- <menu id="signup-login">
+             <li><a (click)="signupAction()">Signup</a></li>
+          <li>
+          <li><a (click)="loginAction()">Login</a></li>
+        </menu>  -->
+
+
+ <div class="card">
+            <p-carousel [value]="CarouselImages()" [numVisible]="1" [numScroll]="1"  [circular]="true" autoplayInterval="3000" [responsiveOptions]="responsiveOptions">
+                <ng-template let-CarouselImages #item>
+                    <div class="border border-surface-200 dark:border-surface-700 rounded m-2 p-4 carousel-item-card">
+                        <div class="mb-4">
+                            <div class="relative mx-auto">
+                                <img src="{{ CarouselImages.imageurl }}" [alt]="CarouselImages.info" class="w-full rounded-border carousel-img" />
+                            </div>
+                        </div>
+                        <div class="mb-4 font-medium">{{ CarouselImages.name }}</div>
+                        <div class="flex justify-between items-center">
+                            <div class="mt-0 font-semibold text-xl">{{  CarouselImages.info }}</div>
+
+                        </div>
+                    </div>
+                </ng-template>
+            </p-carousel>
+        </div>

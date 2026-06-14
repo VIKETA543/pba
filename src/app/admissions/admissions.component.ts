@@ -19,6 +19,7 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { ButtonModule } from 'primeng/button';
 import { Divider } from "primeng/divider";
 import { PopoverModule } from 'primeng/popover';
+import { RouterOutlet, RouterLinkWithHref } from "@angular/router";
 
 
 @Component({
@@ -28,7 +29,9 @@ import { PopoverModule } from 'primeng/popover';
     ToolbarModule,
     ButtonModule,
     Divider,
-    PopoverModule
+    PopoverModule,
+    RouterOutlet,
+    RouterLinkWithHref
 ],
   templateUrl: './admissions.component.html',
   styleUrl: './admissions.component.scss'

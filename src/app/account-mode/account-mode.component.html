@@ -3,7 +3,9 @@
       <ng-template #start>
          <p-button label="Payment" [raised]="true" severity="success" (click)="Payments()" />
          <p-divider />
-         <p-button label="Biils" [raised]="true" severity="info" (click)="op.toggle($event)" />
+         <p-button label="Bills" [raised]="true" severity="info" (click)="op.toggle($event)" />
+         <p-divider></p-divider>
+        <p-button label="Forms" [raised]="true" severity="info" (click)="op1.toggle($event)" />
       </ng-template>
       <ng-template #center>
 
@@ -22,6 +24,10 @@
         <p-button label="Buss Fee" [raised]="false" variant="text" severity="primary" (click)="bussFee()" />
         <p-button label="PTA Dues" [raised]="false" variant="text" severity="help" (click)="ptaDues()" />
         <p-button label="Uniforms" [raised]="false" variant="text" severity="success" (onClick)="uniForms()" />
+</p-popover>
+<p-popover #op1>
+     <p-button label="Form Price" [raised]="false" variant="text" severity="success" (onClick)="setFormprice()" />
+      <p-button label="Sell Form" [raised]="false" variant="text" severity="success" (onClick)="sellForm()" />
 </p-popover>
 
 

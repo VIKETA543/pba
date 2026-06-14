@@ -33,9 +33,51 @@ button:first-child:hover,button:last-child:hover{
 }
 button:first-child{
    background-color: rgb(6, 58, 117);
+     padding:10px;
 
 }
 button:last-child{
     background-color: rgb(230, 16, 9);
+    padding:10px;
     
     }
+    SCSS
+:host {
+  // Styles the field background (great for 'fill' appearance)
+  --mdc-filled-text-field-container-color: #f5f5f7;
+  
+  // Styles the borders (great for 'outline' appearance)
+  --mdc-outlined-text-field-outline-color: #cbd5e1;       /* Idle border */
+  --mdc-outlined-text-field-focus-outline-color: #3b82f6; /* Focused border */
+  
+  // Styles the label and text colors
+  --mat-form-field-state-layer-color: #3b82f6;
+  --mdc-outlined-text-field-label-text-color: #64748b;
+}
+
+// Ensure the flex layout handles the stretch properly
+mat-form-field[fxFlex] {
+  width: 100%; 
+}
+
+.auth-redirect {
+  display: block;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.875rem;          /* 14px - standard readable text */
+  color: #64748b;               /* Subtle grey for the prompt */
+  text-align: center;
+  margin-top: 1.5rem;
+  font-weight: 500;
+
+  .signin-link {
+    color: #3b82f6;             /* Modern blue brand color */
+    font-weight: 600;           /* Semi-bold to make it pop */
+    cursor: pointer;            /* Shows the pointer finger on hover */
+    transition: color 0.2s ease, text-decoration 0.2s ease;
+
+    &:hover {
+      color: #2563eb;           /* Darker blue on hover */
+      text-decoration: underline; /* Clear visual feedback */
+    }
+  }
+}

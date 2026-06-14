@@ -36,6 +36,7 @@ import { Learnerservice } from '../services/learnerservice';
 })
 
 export class AccountModeComponent {
+
 uniForms() {
   this.routerLink.navigate(['uniformbill'], { relativeTo: this.route });
 }
@@ -55,6 +56,15 @@ this.isSchoolfeeTpggle.set(true)
 }
 specialLevy() {
     this.routerLink.navigate(['speciallevy-billing'], { relativeTo: this.route });
+}
+
+setFormprice() {
+  this.routerLink.navigate(['forms-manager'], { relativeTo: this.route });
+  
+}
+sellForm() {
+  this.routerLink.navigate(['sell-forms'], { relativeTo: this.route });
+  
 }
      private messageService = inject(MessageService);
      message:any

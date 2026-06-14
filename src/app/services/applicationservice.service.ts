@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { SERIALNUMBERS } from '../interfaces/admission-data';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ url=environment.apiUrl;
   constructor(private httpClient:HttpClient) { }
 
 validateSerialLogin=(data:any)=>{
+console.log(data)
  return this.httpClient.post(this.url+"/addmissionform/applicationAuth",data,{headers:new HttpHeaders().set('contentType',"application/json")})
 }
 
@@ -140,5 +142,24 @@ validateSerialLogin=(data:any)=>{
   }
   loadDetailedRecords=()=>{
     return this.httpClient.post(this.url+"/admissions/loadDetailedRecords",{headers:new HttpHeaders().set('contentType',"application/json")}) 
+  }
+  loadPinyear=()=>{
+    return this.httpClient.get(this.url+"/admissions/loadPinyear",{headers:new HttpHeaders().set('contentType',"application/json")}) 
+  }
+
+  submitPins=(data:any)=>{
+    return this.httpClient.post(this.url+"/admissions/submitPins",data,{headers:new HttpHeaders().set('contentType',"application/json")}) 
+
+  }
+
+  
+  loadGrades=()=>{
+    return this.httpClient.get(this.url+"/admissions/loadGrades",{headers:new HttpHeaders().set('contentType',"application/json")}) 
+
+  }
+
+  formssummary=()=>{
+    return this.httpClient.get(this.url+"/admissions/get-total-forms-generated",{headers:new HttpHeaders().set('contentType',"application/json")}) 
+
   }
 }

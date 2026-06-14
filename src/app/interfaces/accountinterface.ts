@@ -107,6 +107,26 @@ isCurrentbillStatus:boolean,
 ac_session:string,
 TermlyObject:string,
 GradeDescription:string,
-dateposted:Date
-            
+dateposted:Date        
+}
+
+export interface FormPrices{
+    price_number:string,
+    price_value:number,
+    academic_grade:string,
+    academic_year:string,
+    date_posted:Date,
+    price_status:boolean
+}
+
+export interface SoldForms{
+SerialNumber:string,
+SerialPin:string, 
+SerialStatus:string, 
+SoldDate:string, 
+Authority:string, 
+dateGenerated:string, 
+academic_year:string,
+ac_session:string,
+price_value:number 
 }

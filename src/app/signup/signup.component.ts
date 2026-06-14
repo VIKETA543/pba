@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule,Validators } from '@angular
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { SnackbarService } from '../services/snackbar.service';
-import { MatDialogActions, MatDialogContent, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogActions, MatDialogConfig, MatDialogContent, MatDialogRef } from '@angular/material/dialog';
 import { NgxUiLoaderModule, NgxUiLoaderService } from 'ngx-ui-loader';
 import { GlobalConstants, ngxUiLoaderConfig } from '../shared/GlobalConstant-component';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -11,21 +11,24 @@ import {MatInputModule} from '@angular/material/input';
 
 
 import { MatIconModule } from '@angular/material/icon'
+import { LoginComponent } from '../login/login.component';
+import { AvatarModule } from 'primeng/avatar';
 @Component({
   selector: 'app-signup',
-  imports: [MatToolbarModule, MatDialogContent, ReactiveFormsModule, MatInputModule, MatDialogActions, MatIconModule],
+  imports: [MatToolbarModule, MatDialogContent,AvatarModule, ReactiveFormsModule, MatInputModule, MatDialogActions, MatIconModule],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
 })
 export class SignupComponent {
   signupForm:any=FormGroup;
   responseMessage:any;
+
 constructor(private snackBarservice:SnackbarService,
    private userServices:UserService,
     private router:Router, 
     private formBuider:FormBuilder,
   private dialogRef:MatDialogRef<SignupComponent>,
-private ngxService: NgxUiLoaderService){}
+private ngxService: NgxUiLoaderService,private dialog:MatDialog){}
 ngOnInit():void{
   this.signupForm=this.formBuider.group({
     //Validating fileds
@@ -64,4 +67,14 @@ handleSubmit=()=>{
    this.snackBarservice.openSnackBar(this.responseMessage,GlobalConstants.error);
   })
 }
+closeDialog=()=>{
+   this.dialogRef.close();
+}
+
+  goToLogin=()=>{
+    console.log("loging")
+ const diadlogConfig = new MatDialogConfig();
+ diadlogConfig.width='550px'
+ this.dialog.open(LoginComponent,diadlogConfig);
+  };
 }

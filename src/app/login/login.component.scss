@@ -11,9 +11,20 @@
 mat-form-field{
     padding: 5px;
 }
-.primary{
-    background-color: red;
+
+
+mat-dialog-actions {
+  display: flex;
+  justify-content: center; // Aligns buttons horizontally
+  gap: 1rem;               // Adds breathing room between buttons
+  padding: 1.5rem 1rem;    // Adds space around the action bar
+  border-top: 1px solid var(--mat-sys-outline-variant, #e2e8f0);
+  background-color: var(--mat-sys-surface-container-low, #f8fafc);
+  
+  // Ensures buttons have a consistent minimum size
 }
+
+
 button:first-child{
     border: none;
     outline: none;
@@ -21,11 +32,13 @@ button:first-child{
     background-color: rgb(7, 158, 125);
     transition: 1s;
     color: whitesmoke;
-    font-size: 2.0vw;
+    font-size:clamp(1ren,1.5rem,2rem);
     padding: 10px;
     display: flex;
     width: calc(100% - 70%);
     text-align: center;
+      width:auto;
+  margin: 10px;
 
 }
 button:last-child{
@@ -35,10 +48,11 @@ button:last-child{
   background-color: rgb(161, 7, 40);
   transition: 1s;
   color: whitesmoke;
-  font-size: 2.0vw;
+  font-size:clamp(1ren,1.5rem,2rem);
   padding: 10px;
   display: flex;
-  width: calc(100% - 70%);
+  width:auto;
+  margin: 10px;
   text-align: center;
 
 }
@@ -55,4 +69,72 @@ mat-toolbar{
 }
 mat-form-field {
     display: block;
+}
+
+.auth-toggle {
+  display: block;
+  text-align: left;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.875rem;          /* 14px */
+  color: #64748b;               /* Neutral grey text */
+  margin-top: 0;
+  font-weight: 500;
+  user-select: none;
+
+  .toggle-link {
+    color: #4f46e5;             /* Elegant Indigo brand color */
+    font-weight: 600;           /* Slightly bolder to stand out */
+    cursor: pointer;            /* Shows the clickable pointer icon */
+    margin-left: 0.25rem;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      color: #4338ca;           /* Darker variant on hover */
+      text-decoration: underline;
+    }
+  }
+}
+
+
+.form-options {
+  display: flex;
+  justify-content: space-between; /* Pushes checkbox left, link right */
+  align-items: center;
+  width: 100%;
+  margin: 1.25rem 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.875rem; /* 14px */
+  user-select: none;
+}
+
+// Checkbox Styling
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Spacing between box and text */
+  color: #475569; /* Slate grey */
+  cursor: pointer;
+  font-weight: 500;
+
+  input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    accent-color: #4f46e5; /* Colors the checked box indigo automatically */
+    cursor: pointer;
+    border-radius: 4px;
+  }
+}
+
+// Forgot Password Link Styling
+.forgot-password {
+  color: #4f46e5; /* Matching indigo accent */
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.15s ease-in-out;
+
+  &:hover {
+    color: #737375; /* Darker tone on hover */
+    text-decoration: underline;
+  }
 }

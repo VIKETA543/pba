@@ -1,5 +1,9 @@
 <mat-toolbar color="primary">
+   
   <mat-toolbar-row fxLayout="row">
+     <div class="flex-auto">
+        <p-avatar shape="circle" class="mr-2" size="xlarge" mb-4 image="assets/img/divine.png" />
+      </div>
     <span class="title-center">Login</span>
 
   </mat-toolbar-row>
@@ -40,10 +44,25 @@
       </mat-form-field>
     </div>
   </form>
+<label class="auth-toggle">
+  No account? <span class="toggle-link" (click)="onSignup()">Signup</span>
+</label>
+<div class="form-options">
+  <!-- Left Side: Remember Me Checkbox -->
+  <label class="remember-me">
+    <input type="checkbox" [(ngModel)]="rememberMe" name="rememberMe" class="remember-me" />
+    <span>Remember me</span>
+  </label>
+
+  <!-- Right Side: Forgot Password Link -->
+  <a class="forgot-password" (click)="onForgotPassword($event)">
+    Forgot password?
+  </a>
+</div>
 </mat-dialog-content>
 
 <mat-dialog-actions align="center">
   <button mat-raised-button color="primary" type="submit" (click)="handlesSubmit()"
   [disabled]="!(loginForm.valid && loginForm.dirty)">LOGIN</button>
-  <button mat-raised-button color="primary" mat-dialog-close>Close</button>
+  <button mat-raised-button color="primary" mat-dialog-close (click)="closeDialog()">Close</button>
 </mat-dialog-actions>

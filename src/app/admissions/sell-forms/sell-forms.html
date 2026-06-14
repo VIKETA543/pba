@@ -1,0 +1,188 @@
+<p-toolbar>
+    <ng-template #start>
+
+        <div class="card flex justify-center">
+            <p-select [options]="gradesData" [(ngModel)]="selectedGrde" optionLabel="GradeDescription" [filter]="true"
+                filterBy="GradeDescription" [showClear]="true" placeholder="Select a grade" class="w-full md:w-56"
+                appendTo="body">
+                <ng-template #selectedItem let-gradesData>
+                    <div class="flex items-center gap-2">
+                        <div>{{ gradesData.GradeDescription }}</div>
+                    </div>
+                </ng-template>
+                <ng-template let-gradesData #item>
+                    <div class="flex items-center gap-2">
+
+                        <div>{{ gradesData.GradeDescription }}</div>
+                    </div>
+                </ng-template>
+            </p-select>
+        </div>
+
+        <div class="card flex justify-center ">
+            <p-select [options]="academicYearData" [(ngModel)]="selectedYear" optionLabel="ac_session" [filter]="true"
+                filterBy="ac_session" [showClear]="true" placeholder="Select Academic Year" class="w-full md:w-56"
+                appendTo="body">
+                <ng-template #selectedItem let-academicYearData>
+                    <div class="flex items-center gap-2">
+
+                        <div>{{ academicYearData.ac_session }}</div>
+                    </div>
+                </ng-template>
+                <ng-template let-academicYearData #item>
+                    <div class="flex items-center gap-2">
+
+                        <div>{{ academicYearData.ac_session }}</div>
+                    </div>
+                </ng-template>
+            </p-select>
+        </div>
+
+    </ng-template>
+    <ng-template #center>
+
+    </ng-template>
+    <ng-template #end>
+        <p-button label="Get Form" [raised]="false" variant="text" severity="secondary" (onClick)="getForm()" />
+    </ng-template>
+</p-toolbar>
+
+@if(is_selling_form()){
+
+<p-dialog [(visible)]="is_selling_form" header="header" [modal]="true" [style]="{ width: '35rem' }">
+    <ng-template #header>
+        <span>APPLICATION FORM SERVICE</span>
+    </ng-template>
+
+    <div class="inline-flex items-center justify-center gap-2">
+
+        <!-- <p-avatar image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" -->
+        <!-- shape="circle" /> -->
+        <span class="font-bold whitespace-nowrap font-stl">FORM PURCHASE</span>
+        <div>
+            <section>
+                <label>Serial:</label>
+                <label>{{nextFormData[0]?.SerialNumber}}</label>
+            </section>
+            <section>
+                <label>Pin:</label>
+                <label>{{nextFormData[0]?.SerialPin}}</label>
+            </section>
+            <section>
+                <label>Price:</label>
+                <label>{{nextFormData[0]?.price_value |currency:'Ghø'}}</label>
+            </section>
+            <section>
+                <label>Date:</label>
+                <label>{{date}}</label>
+            </section>
+        </div>
+
+        <p-button label="Pay" [raised]="false" variant="text" severity="secondary" (onClick)="payForm()" />
+    </div>
+</p-dialog>
+}
+
+<div class="card">
+    <p-table #dt1 [value]="soldForms" dataKey="id" [rows]="10" [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
+        [globalFilterFields]="['billNumber', 'ac_session', 'TermlyObject', 'currentBill','dateposted','DeptName','GradeDescription']"
+        stripedRows="true">
+
+        <ng-template #caption>
+            <p-toolbar>
+                <ng-template #start>
+                    <p-button label="Clear" [outlined]="true" icon="pi pi-filter-slash" (click)="clear(dt1)" />
+
+                    <!-- <div class="card flex flex-wrap gap-4 justify-between">
+                        <p-button label="Current Bill" icon="pi pi-crown" class="mr-2" text severity="secondary" (onClick)="getCurrentBills()"/>
+                        <p-button  label="All bulls" icon="pi pi-history" class="mr-2" text severity="info" (onClick)="getBillhistory()" />
+            </div> -->
+                </ng-template>
+                <ng-template #end>
+                    <p-iconfield iconPosition="left" class="ml-auto">
+                        <p-inputicon>
+                            <i class="pi pi-search"></i>
+                        </p-inputicon>
+                        <input pInputText type="text" (input)="dt1.filterGlobal($event.target.value, 'contains')"
+                            placeholder="Search keyword" />
+                    </p-iconfield>
+                </ng-template>
+            </p-toolbar>
+        </ng-template>
+        <ng-template #header>
+            <tr>
+                <th>#</th>
+                <th style="min-width:15rem">
+                    <div class="flex items-center justify-between">
+                        Serial Number
+                    </div>
+                </th>
+                <th style="min-width:15rem">
+                    <div class="flex items-center justify-between">
+                        Pin
+                    </div>
+                </th>
+                <th style="min-width:15rem">
+                    <div class="flex items-center justify-between">
+                        Status
+                    </div>
+                </th>
+    <th style="min-width:15rem">
+                    <div class="flex items-center justify-between">
+                        Price
+                    </div>
+                </th>
+                
+                <th style="min-width:10rem">
+                    <div class="flex items-center justify-between">
+                        Authority
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                    <div class="flex items-center justify-between">
+                        Date
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                    <div class="flex items-center justify-between">
+                        Academic Year
+                    </div>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template #body let-soldForms let-i="rowIndex">
+            <tr>
+                <td>
+                    {{ i+1 }}
+                </td>
+                <td>
+                    <div class="flex items-center gap-2">
+
+                        <span>{{soldForms?.SerialNumber }}</span>
+                    </div>
+                </td>
+                <td>
+                    <div class="flex items-center gap-2">
+                        <span>{{ soldForms?.SerialPin }}</span>
+                    </div>
+                </td>
+                <td>{{soldForms?.SerialStatus}}</td>
+                <td>{{soldForms?.price_value |currency:'Ghø'}}</td>
+              
+                <td>{{soldForms?.Authority}}</td>
+                  <td class="text-center">
+                    {{soldForms?.SoldDate | date: 'MM/dd/yyyy'}}
+                </td>
+                <td>
+                    {{soldForms?.ac_session}}
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template #emptymessage>
+            <tr>
+                <td colspan="7">No customers found.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+<p-toast></p-toast>

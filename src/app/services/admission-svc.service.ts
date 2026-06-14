@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ApplicationserviceService } from './applicationservice.service';
-import { AdmissionData,AdmissionRegData, detailWithdrawnData, withdrawnPartialData } from '../interfaces/admission-data';
+import { AdmissionData,AdmissionRegData, detailWithdrawnData, FormGrades, PinAcademicyear, SERIALNUMBERS, withdrawnPartialData } from '../interfaces/admission-data';
 import { SnackbarService } from './snackbar.service';
 
 
@@ -16,6 +16,9 @@ export class AdmissionSvcService{
  WITHDRAWN_FULL_DETAIL:detailWithdrawnData[]=[];
  ADMISSION_DETAILS:any
  WITHDRAWAL_QUERY_DATA:any
+ PIN_ACADEMIC_YEAR:PinAcademicyear[]=[]
+ FORM_PRICE_GRADES:FormGrades[]=[]
+ 
  nextIndex:number=0;
  status_flag:boolean=false;
   constructor(private applicationServices:ApplicationserviceService,
@@ -157,4 +160,18 @@ this.applicationServices.loadDetailedRecords().subscribe((response:any)=>{
   }
 })
 }
+
+loadcureentadmissionyear=()=>{
+  return this.applicationServices.loadPinyear().subscribe((response:any)=>{
+    return this.PIN_ACADEMIC_YEAR=response?.data
+  })
+}
+
+loadGrades=()=>{
+  return this.applicationServices.loadGrades().subscribe((response:any)=>{
+    console.log(response?.data)
+    return this.FORM_PRICE_GRADES=response?.data
+  })
+}
+
 }

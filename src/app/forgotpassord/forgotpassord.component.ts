@@ -9,10 +9,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 
 import { MatIconModule } from '@angular/material/icon';
+import { AvatarModule } from 'primeng/avatar';
 
 @Component({
   selector: 'app-forgotpassord',
-  imports: [MatToolbarModule, MatDialogContent, MatDialogContent, ReactiveFormsModule, MatInputModule, MatDialogActions, MatIconModule],
+  imports: [MatToolbarModule,AvatarModule, MatDialogContent, MatDialogContent, ReactiveFormsModule, MatInputModule, MatDialogActions, MatIconModule],
   templateUrl: './forgotpassord.component.html',
   styleUrl: './forgotpassord.component.scss'
 })

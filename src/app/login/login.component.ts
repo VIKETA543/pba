@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import {  Router } from '@angular/router';
 import { UserService } from '../services/user.service';
-import { MatDialogActions, MatDialogContent, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogActions, MatDialogConfig, MatDialogContent, MatDialogRef } from '@angular/material/dialog';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { SnackbarService } from '../services/snackbar.service';
 import { GlobalConstants } from '../shared/GlobalConstant-component';
@@ -11,10 +11,20 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { User } from '../interfaces/user';
+import { SignupComponent } from '../signup/signup.component';
+import { DividerModule } from 'primeng/divider';
+import { ForgotpassordComponent } from '../forgotpassord/forgotpassord.component';
+import { AvatarModule } from 'primeng/avatar';
 
 @Component({
   selector: 'app-login',
-  imports: [MatToolbarModule, MatDialogContent, ReactiveFormsModule, MatInputModule, MatDialogActions, MatIconModule],
+  imports: [MatToolbarModule,
+    DividerModule,
+     MatDialogContent,
+      ReactiveFormsModule,
+       MatInputModule,
+        MatDialogActions,
+         MatIconModule, FormsModule,AvatarModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -30,6 +40,7 @@ export class LoginComponent implements OnInit {
     private ngxService: NgxUiLoaderService,
     private snackBarService: SnackbarService,
     private user:UserService,
+    private dialog:MatDialog
     
   ) {
 
@@ -73,4 +84,33 @@ this.userService.login(data).subscribe((response:any)=>{
   this.snackBarService.openSnackBar(this.responseMessage,GlobalConstants.error)
 })
   }
+
+  closeDialog=()=>{
+      this.dialogRef.close();
+  }
+
+    onSignup=()=>{
+
+    const diadlogConfig = new MatDialogConfig();
+    diadlogConfig.width='550px'
+    this.dialog.open(SignupComponent,diadlogConfig);
+    
+  };
+
+
+  rememberMe: boolean = false;
+
+  onForgotPassword(event: Event) {
+    event.preventDefault();
+   this.forgotPasswordAction()
+  }
+
+    forgotPasswordAction=()=>{
+    const diadlogConfig= new MatDialogConfig();
+    diadlogConfig.width='550px';
+    this.dialog.open(ForgotpassordComponent,diadlogConfig);
+    this.closeDialog()
+    
+  };
+
 }
